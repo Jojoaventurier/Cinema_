@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <?php
-            foreach($requete->fetchAll() as $film) { ?>
+            foreach($requete->fetchAll() as $genre) { ?>
                 <tr>
                     <td><?= $libelle["libelle"] ?></td>
                 </tr>

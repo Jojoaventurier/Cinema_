@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         <?php
-            foreach($requete->fetchAll() as $film) { ?>
+            foreach($requete->fetchAll() as $acteur) { ?>
                 <tr>
                     <td><?= $acteur["prenom"] ?></td>
                     <td><?= $acteur["nom"] ?></td>
