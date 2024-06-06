@@ -23,7 +23,7 @@
 </table>
 
 <?php
-$titre = "Liste des films";
-$titre_secondaire = "Liste des films";
+$titre = "Liste des acteurs et actrices";
+$titre_secondaire = "Liste des acteurs et actrices";
 $contenu = ob_get_clean();
 require "view/template.php";

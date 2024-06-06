@@ -6,7 +6,15 @@
     <title><?= $titre ?></title>
 </head>
 <body>
-    <nav></nav>
+    <nav>
+        <ul>
+            <li>Accueil<li>
+            <li>Films<li>
+            <li>Acteurs<li>
+            <li>Realisateurs<li>
+            <li>Genres<li>
+        </ul>
+    </nav>
 
     <div id="wrapper">
         <main>

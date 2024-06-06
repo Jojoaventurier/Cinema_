@@ -50,6 +50,20 @@ class CinemaController {
         require "view/listeActeurs.php";
 
     }
+  /**
+     * Lister les genres
+     */
+    public function listeRealisateurs() {
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+            SELECT prenom, nom, dateNaissance
+            FROM realisateur
+        ");
+
+        require "view/listeActeurs.php";
+
+    }
 
 
   /**
@@ -84,6 +98,6 @@ class CinemaController {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("SELECT * FROM realisateur WHERE id_realisateur = :id");
         $requete->execute(["id" => $id]);
-        require "view/acteur/detailActeur.php";
+        require "view/realisateur/detailRealisateur.php";
     }
 }
