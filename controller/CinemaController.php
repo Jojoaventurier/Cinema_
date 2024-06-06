@@ -8,7 +8,7 @@ class CinemaController {
     /**
      * Lister les films
      */
-    public function ListFilms() {
+    public function listeFilms() {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
@@ -16,9 +16,45 @@ class CinemaController {
             FROM film
         ");
 
-        require "view/listFilms.php";
+        require "view/listeFilms.php";
     }
 
+
+  /**
+     * Lister les acteurs
+     */
+    public function listeActeur() {
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+            SELECT prenom, nom, dateNaissance
+            FROM acteur
+        ");
+
+        require "view/listeActeurs.php";
+
+    }
+
+
+  /**
+     * Lister les réalisateurs
+     */
+    public function listeRealisateurs() {
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+            SELECT prenom, nom, dateNaissance
+            FROM realisateur
+        ");
+
+        require "view/listeActeurs.php";
+
+    }
+
+
+  /**
+     * Détails d'un film
+     */
     public function detailFilm($id) {
 
         $pdo = Connect::seConnecter();
@@ -27,7 +63,27 @@ class CinemaController {
         require "view/film/detailFilm.php";
     }
 
+
+     /**
+     * Détails d'un acteur
+     */
     public function detailActeur($id) {
-        
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("SELECT * FROM acteur WHERE id_acteur = :id");
+        $requete->execute(["id" => $id]);
+        require "view/acteur/detailActeur.php";
+    }
+
+
+    /**
+     * Détails d'un réalisateur
+     */
+    public function detailRealisateur($id) {
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("SELECT * FROM realisateur WHERE id_realisateur = :id");
+        $requete->execute(["id" => $id]);
+        require "view/acteur/detailActeur.php";
     }
 }
