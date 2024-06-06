@@ -53,15 +53,15 @@ class CinemaController {
   /**
      * Lister les genres
      */
-    public function listeRealisateurs() {
+    public function listeGenres() {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT prenom, nom, dateNaissance
-            FROM realisateur
+            SELECT libelle
+            FROM genres
         ");
 
-        require "view/listeActeurs.php";
+        require "view/listeGenres.php";
 
     }
 
