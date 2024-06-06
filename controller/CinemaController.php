@@ -5,6 +5,8 @@ use Model\Connect;
 
 class CinemaController {
 
+
+    //==========================LISTES============================//
     /**
      * Lister les films
      */
@@ -65,6 +67,8 @@ class CinemaController {
 
     }
 
+
+    //========================================DETAIL=====================================//
 
   /**
      * Détails d'un film
