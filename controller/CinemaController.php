@@ -138,8 +138,15 @@ class CinemaController {
     public function detailRealisateur($id) {
 
         $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("SELECT * FROM realisateur WHERE id_realisateur = :id");
+        $requete = $pdo->prepare("
+            SELECT prenom, nom, dateNaissance
+            FROM realisateur re, personne p
+            WHERE re.id_personne = p.id_personne
+            AND re.id_realisateur = :id
+        ");
         $requete->execute(["id" => $id]);
+
+        
 
         require "view/realisateur/detailRealisateur.php";
     }
