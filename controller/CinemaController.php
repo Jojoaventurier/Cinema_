@@ -166,11 +166,19 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
 
-        $requete = $pdo->prepare("SELECT titre, anneeSortieFrance FROM film WHERE id_genre = :id");
-        $requete->execute(["id" => $id]);
-
         $requeteGenre = $pdo->prepare("SELECT libelle FROM genre WHERE id_genre= :id");
         $requeteGenre->execute(["id" => $id]);
+
+        $requete = $pdo->prepare("
+            SELECT titre, YEAR(anneeSortieFrance) AS sortie
+            FROM film f, film_genres fg, genre g
+            WHERE f.id_film = fg.id_film 
+            AND fg.id_genre = g.id_genre
+            AND g.id_genre = 1
+            ORDER BY sortie DESC
+        ");
+        $requete->execute(["id" => $id]);
+
 
         require "view/genre/detailGenre.php";
     }

@@ -2,13 +2,15 @@
 
 <h2><?= $libelleGenre = $requeteGenre->fetch(); echo $libelleGenre["libelle"]; ?></h2>
 
-<p> Il y a <?= $requete->rowCount() ?> films du genre <? echo $libelleGenre["libelle"]; ?></p>
+<p> Il y a <?= $requete->rowCount() ?> films du genre <?= $libelleGenre["libelle"]; ?></p>
 
 <table>
     <thead>
         <tr>
             <th>Titre</th>
             <th>Année de sortie FR</th>
+            <th>Réalisateur</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +19,8 @@
                 <tr>
                     <td><?= $film["titre"] ?></td>
                     <td><?= $film["anneeSortieFrance"] ?></td>
+                    <td><?= $film["prenom"] ?></td>
+                    <td><?= $film["nom"] ?></td>
                 </tr>
         <?php } ?>
     </tbody>
