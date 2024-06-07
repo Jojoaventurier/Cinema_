@@ -23,7 +23,7 @@
 </table>
 
 <?php
-$titre = "Liste des films pour le genre " . $genre = $requeteGenre->fetch(); echo $genre["libelle"];
-$titre_secondaire = "Liste des films pour le genre" . $genre = $requeteGenre->fetch(); echo $genre["libelle"];
+$titre = "Liste des films pour le genre " . $genre["libelle"];
+$titre_secondaire = "Liste des films pour le genre" . $genre["libelle"];
 $contenu = ob_get_clean();
 require "view/template.php";

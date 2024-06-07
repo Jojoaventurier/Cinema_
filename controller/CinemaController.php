@@ -111,10 +111,13 @@ class CinemaController {
     public function detailGenre($id) {
 
         $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("SELECT titre, anneeSortieFrance, nom, prenom  FROM film WHERE id_genre = :id");
+
+        $requete = $pdo->prepare("SELECT titre, anneeSortieFrance FROM film WHERE id_genre = :id");
         $requete->execute(["id" => $id]);
+
         $requeteGenre = $pdo->prepare("SELECT libelle FROM genre WHERE id_genre= :id");
         $requeteGenre->execute(["id" => $id]);
+
         require "view/genre/detailGenre.php";
     }
     // ajouter fonction pour classer les films par réalisateur?
