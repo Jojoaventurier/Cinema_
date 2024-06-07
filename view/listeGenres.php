@@ -12,7 +12,7 @@
         <?php
             foreach($requete->fetchAll() as $genre) { ?>
                 <tr>
-                    <td><?= $libelle["libelle"] ?></td>
+                    <td><?= $genre["libelle"] ?></td>
                 </tr>
         <?php } ?>
     </tbody>

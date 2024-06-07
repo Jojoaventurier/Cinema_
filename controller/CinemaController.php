@@ -49,7 +49,7 @@ class CinemaController {
             FROM realisateur
         ");
 
-        require "view/listeActeurs.php";
+        require "view/listeRealisateurs.php";
 
     }
   /**
