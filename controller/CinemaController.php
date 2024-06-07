@@ -24,7 +24,7 @@ class CinemaController {
     }
 
 
-  /**
+    /**
      * Lister les acteurs
      */
     public function listeActeur() {
@@ -41,7 +41,7 @@ class CinemaController {
     }
 
 
-  /**
+    /**
      * Lister les réalisateurs
      */
     public function listeRealisateurs() {
@@ -56,7 +56,7 @@ class CinemaController {
         require "view/listeRealisateurs.php";
 
     }
-  /**
+    /**
      * Lister les genres
      */
     public function listeGenres() {
@@ -74,7 +74,7 @@ class CinemaController {
 
     //========================================DETAIL=====================================//
 
-  /**
+    /**
      * Détails d'un film
      */
     public function detailFilm($id) {
@@ -97,7 +97,7 @@ class CinemaController {
             AND c.id_role = r.id_role
             AND f.id_film = :id
         ");
-        $requêteRoles->execute(["id" => $id]);
+        $requeteCasting->execute(["id" => $id]);
 
         require "view/film/detailFilm.php";
     }
@@ -117,16 +117,17 @@ class CinemaController {
         ");
         $requete->execute(["id" => $id]);
 
-        $requêteRoles = $pdo->prepare("
-            SELECT nomRole, titre, YEAR(anneeSortieFrance)
+        $requeteRoles = $pdo->prepare("
+            SELECT  titre, nomRole, YEAR(anneeSortieFrance) AS sortie
             FROM personne p, acteur a, film f, casting c, role r
             WHERE p.id_personne = a.id_personne
             AND a.id_acteur = c.id_acteur
             AND f.id_film = c.id_film
             AND c.id_role = r.id_role
             AND a.id_acteur = :id
+            ORDER BY sortie
         ");
-        $requêteRoles->execute(["id" => $id]);
+        $requeteRoles->execute(["id" => $id]);
 
         require "view/acteur/detailActeur.php";
     }
@@ -146,7 +147,14 @@ class CinemaController {
         ");
         $requete->execute(["id" => $id]);
 
-        
+        $requeteFilms = $pdo->prepare("
+            SELECT titre, YEAR(anneeSortieFrance) AS sortie
+            FROM film f, realisateur re
+            WHERE f.id_realisateur = :id
+            GROUP BY f.id_film
+            ORDER BY sortie
+        ");
+        $requeteFilms->execute(["id" => $id]);
 
         require "view/realisateur/detailRealisateur.php";
     }
@@ -166,5 +174,5 @@ class CinemaController {
 
         require "view/genre/detailGenre.php";
     }
-    // ajouter fonction pour classer les films par réalisateur?
+    
 }
