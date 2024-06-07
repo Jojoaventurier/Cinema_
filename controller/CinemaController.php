@@ -14,7 +14,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT titre, anneeSortieFrance, prenom, nom
+            SELECT titre, YEAR(anneeSortieFrance), prenom, nom
             FROM film f, realisateur re, personne p
             WHERE f.id_realisateur = re.id_realisateur
             AND re.id_personne = p.id_personne 
@@ -32,7 +32,8 @@ class CinemaController {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
             SELECT prenom, nom, dateNaissance
-            FROM acteur
+            FROM acteur a, personne p
+            WHERE a.id_personne = p.id_personne
         ");
 
         require "view/listeActeurs.php";
@@ -48,7 +49,8 @@ class CinemaController {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
             SELECT prenom, nom, dateNaissance
-            FROM realisateur
+            FROM realisateur re, personne p
+            WHERE re.id_personne = p.id_personne
         ");
 
         require "view/listeRealisateurs.php";
@@ -78,8 +80,25 @@ class CinemaController {
     public function detailFilm($id) {
 
         $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("SELECT * FROM film WHERE id_film = :id");
+        $requete = $pdo->prepare("
+            SELECT titre, anneeSortieFrance, duree, prenom, nom 
+            FROM film f, realisateur re
+            WHERE f.id_realisateur = re.id_realisateur 
+            AND id_film = :id
+        ");
         $requete->execute(["id" => $id]);
+
+        $requeteCasting = $pdo->prepare("
+            SELECT prenom, nom, nomRole
+            FROM personne p, film f, casting c, acteur a, role r
+            WHERE p.id_personne = a.id_personne
+            AND f.id_film = c.id_film
+            AND c.id_acteur = a.id_acteur
+            AND c.id_role = r.id_role
+            AND f.id_film = :id
+        ");
+        $requêteRoles->execute(["id" => $id]);
+
         require "view/film/detailFilm.php";
     }
 
@@ -90,8 +109,25 @@ class CinemaController {
     public function detailActeur($id) {
 
         $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("SELECT * FROM acteur WHERE id_acteur = :id");
+        $requete = $pdo->prepare("
+            SELECT prenom, nom, dateNaissance
+            FROM personne p, acteur a
+            WHERE p.id_personne = a.id_personne
+            AND a.id_acteur = :id
+        ");
         $requete->execute(["id" => $id]);
+
+        $requêteRoles = $pdo->prepare("
+            SELECT nomRole, titre, YEAR(anneeSortieFrance)
+            FROM personne p, acteur a, film f, casting c, role r
+            WHERE p.id_personne = a.id_personne
+            AND a.id_acteur = c.id_acteur
+            AND f.id_film = c.id_film
+            AND c.id_role = r.id_role
+            AND a.id_acteur = :id
+        ");
+        $requêteRoles->execute(["id" => $id]);
+
         require "view/acteur/detailActeur.php";
     }
 
@@ -104,6 +140,7 @@ class CinemaController {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("SELECT * FROM realisateur WHERE id_realisateur = :id");
         $requete->execute(["id" => $id]);
+
         require "view/realisateur/detailRealisateur.php";
     }
 
