@@ -1,9 +1,18 @@
-<?php ob_start(); 
+<?php ob_start(); ?>
 
 
 
 
 
+
+
+
+
+
+
+
+
+<?
 
 $titre = "Accueil";
 $titre_secondaire = "Accueil";
