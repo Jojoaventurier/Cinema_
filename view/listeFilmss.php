@@ -12,15 +12,10 @@
         </tr>
     </thead> 
     <tbody>
-        <?php
-            foreach($requete->fetchAll() as $film) { ?>
-                <tr>
-                    <td><?= $film["titre"] ?></td>
-                    <td><?= $film["YEAR(anneeSortieFrance)"] ?></td>
-                    <td><?= $film["prenom"] ?></td>
-                    <td><?= $film["nom"] ?></td>
-                </tr>
-        <?php } ?>
+     <?php $film = $requete->fetch();
+     echo $film["titre"];
+
+     ?>
     </tbody>
 </table> 
 
@@ -29,3 +24,4 @@ $titre = "Liste des films";
 $titre_secondaire = "Liste des films";
 $contenu = ob_get_clean();
 require "template.php";
+;

@@ -14,14 +14,18 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT titre, YEAR(anneeSortieFrance), prenom, nom
-            FROM film f, realisateur re, personne p
-            WHERE f.id_realisateur = re.id_realisateur
-            AND re.id_personne = p.id_personne 
+            SELECT titre
+            FROM film
+            WHERE id_film = 1
         ");
 
-        require "view/listeFilms.php";
+        require "listeFilmss.php";
     }
+
+    /*SELECT titre, YEAR(anneeSortieFrance), prenom, nom
+            FROM film f, realisateur re, personne p
+            WHERE f.id_realisateur = re.id_realisateur
+            AND re.id_personne = p.id_personne */
 
 
     /**
