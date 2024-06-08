@@ -12,7 +12,7 @@
 
 
 
-<?
+<?php
 
 $titre = "Accueil";
 $titre_secondaire = "Accueil";
