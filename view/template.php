@@ -9,7 +9,7 @@
 <body>
     <nav>
         <ul>
-            <li>Accueil<//li>
+            <li>Accueil</li>
             <li>Films</li>
             <li>Acteurs</li>
             <li>Realisateurs</li>

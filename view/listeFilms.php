@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<p> Il y a <?= $requete->rowCount() ?> films</p>
+<!--<p> Il y a <?//= $requete->rowCount() ?> films</p>-->
 
 <table>
     <thead>
@@ -10,7 +10,7 @@
             <th>REALISATEUR</th>
             <th></th>
         </tr>
-    </thead>
+    </thead> 
     <tbody>
         <?php
             foreach($requete->fetchAll() as $film) { ?>
@@ -22,10 +22,10 @@
                 </tr>
         <?php } ?>
     </tbody>
-</table>
+</table> 
 
 <?php
 $titre = "Liste des films";
 $titre_secondaire = "Liste des films";
 $contenu = ob_get_clean();
-require "view/template.php";
+require "template.php";

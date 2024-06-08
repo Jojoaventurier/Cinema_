@@ -4,14 +4,6 @@
 
 
 
-
-
-
-
-
-
-
-
 <?php
 
 $titre = "Accueil";
