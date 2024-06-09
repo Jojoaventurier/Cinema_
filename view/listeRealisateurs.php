@@ -26,4 +26,4 @@
 $titre = "Liste des réalisateurs et réalisatrices";
 $titre_secondaire = "Liste des réalisateurs et réalisatrices";
 $contenu = ob_get_clean();
-require "view/template.php";
+require "template.php";
