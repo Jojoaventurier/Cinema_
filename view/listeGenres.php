@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<p> Il y a <?= $requete->rowCount() ?> genres</p>
+<p> Il y a <?/* = $requete->rowCount() */ ?> genres</p>
 
 <table>
     <thead>
@@ -9,12 +9,12 @@
         </tr>
     </thead>
     <tbody>
-        <?php
+        <?php /*
             foreach($requete->fetchAll() as $genre) { ?>
                 <tr>
                     <td><?= $genre["libelle"] ?></td>
                 </tr>
-        <?php } ?>
+        <?php }            */ ?>
     </tbody>
 </table>
 

@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<p> Il y a <?= $requete->rowCount() ?> réalisateurs et réalisatrices</p>
+<p> Il y a <?/* = $requete->rowCount() */?> réalisateurs et réalisatrices</p>
 
 <table>
     <thead>
@@ -11,14 +11,14 @@
         </tr>
     </thead>
     <tbody>
-        <?php
+        <?php /*
             foreach($requete->fetchAll() as $realisateur) { ?>
                 <tr>
                     <td><?= $realisateur["prenom"] ?></td>
                     <td><?= $realisateur["nom"] ?></td>
                     <td><?= $realisateur["dateNaissance"] ?></td>
                 </tr>
-        <?php } ?>
+        <?php }         */ ?>
     </tbody>
 </table>
 
