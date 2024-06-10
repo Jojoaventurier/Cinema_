@@ -22,7 +22,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT titre, YEAR(anneeSortieFrance) as 'year', prenom, nom
+            SELECT f.id_film, titre, YEAR(anneeSortieFrance) as 'year', prenom, nom
             FROM film f, realisateur re, personne p
             WHERE f.id_realisateur = re.id_realisateur
             AND re.id_personne = p.id_personne
@@ -92,8 +92,9 @@ class CinemaController {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
             SELECT titre, anneeSortieFrance, duree, prenom, nom 
-            FROM film f, realisateur re
-            WHERE f.id_realisateur = re.id_realisateur 
+            FROM film f, realisateur re, personne p
+            WHERE f.id_realisateur = re.id_realisateur
+            AND re.id_personne = p.id_personne 
             AND id_film = :id
         ");
         $requete->execute(["id" => $id]);
@@ -180,7 +181,7 @@ class CinemaController {
         $requeteGenre->execute(["id" => $id]);
 
         $requete = $pdo->prepare("
-            SELECT titre, YEAR(anneeSortieFrance) AS 'sortie', prenom, nom
+            SELECT f.id_film, titre, YEAR(anneeSortieFrance) AS 'sortie', prenom, nom
             FROM film f, film_genres fg, genre g, personne p, realisateur re
             WHERE f.id_film = fg.id_film 
             AND fg.id_genre = g.id_genre

@@ -22,7 +22,7 @@
         <?php
             foreach($requete->fetchAll() as $film) { ?>
                 <tr>
-                    <td><?= $film["titre"] ?></td>
+                    <td><a href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></td>
                     <td><?= $film["sortie"] ?></td>
                     <td><?= $film["prenom"] ?></td>
                     <td><?= $film["nom"] ?></td>
@@ -32,7 +32,7 @@
 </table>
 
 <?php
-$titre = "Liste des films pour le genre " . $libelleGenre["libelle"];
-$titre_secondaire = "Liste des films pour le genre" . $libelleGenre["libelle"];
+$titre = "Liste des films pour le genre :" ;
+$titre_secondaire = "Liste des films pour le genre :";
 $contenu = ob_get_clean();
 require "view/template.php";
