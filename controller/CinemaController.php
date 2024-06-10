@@ -22,30 +22,27 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT titre
-            FROM film
-  
+            SELECT titre, YEAR(anneeSortieFrance) as 'year', prenom, nom
+            FROM film f, realisateur re, personne p
+            WHERE f.id_realisateur = re.id_realisateur
+            AND re.id_personne = p.id_personne
         ");
 
         require "view/listeFilms.php";
     }
 
-    /*SELECT titre, YEAR(anneeSortieFrance), prenom, nom
-            FROM film f, realisateur re, personne p
-            WHERE f.id_realisateur = re.id_realisateur
-            AND re.id_personne = p.id_personne */
-
 
     /**
      * Lister les acteurs
      */
-    public function listeActeur() {
+    public function listeActeurs() {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
             SELECT prenom, nom, dateNaissance
             FROM acteur a, personne p
             WHERE a.id_personne = p.id_personne
+            ORDER BY nom
         ");
 
         require "view/listeActeurs.php";
@@ -63,6 +60,7 @@ class CinemaController {
             SELECT prenom, nom, dateNaissance
             FROM realisateur re, personne p
             WHERE re.id_personne = p.id_personne
+            ORDER BY nom
         ");
 
         require "view/listeRealisateurs.php";
@@ -76,7 +74,7 @@ class CinemaController {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
             SELECT libelle
-            FROM genres
+            FROM genre
         ");
 
         require "view/listeGenres.php";
