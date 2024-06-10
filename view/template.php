@@ -20,7 +20,7 @@
     <div id="wrapper">
         <main>
             <div id="contenu">
-                <h1>PDO Cinema</h1>
+                <h1>Le Ciné de Geoff</h1>
                 <h2><?= $titre_secondaire ?></h2>
                 <?= $contenu ?>
             </div>
