@@ -8,7 +8,7 @@ $titreFilm = $requeteTitre->fetch() ?>
             foreach($requete->fetchAll() as $film) { ?>
                 
                     <p>Sortie le : <?= $film["sortie"] ?></p>
-                    <p>Réalisé par <?= $film["prenom"] . " " . $film["nom"] ?></p>
+                    <p>Réalisé par <a href="index.php?action=detailRealisateur&id=<?= $film['id_realisateur']?>"><?= $film["prenom"] . " " . $film["nom"] ?></a></p>
             
         <?php } 
 
