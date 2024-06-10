@@ -22,7 +22,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT f.id_film, titre, YEAR(anneeSortieFrance) as 'year', prenom, nom
+            SELECT f.id_film, titre, YEAR(anneeSortieFrance) as 'year', CONCAT(prenom, ' ', nom) as 'realisateur', f.id_realisateur
             FROM film f, realisateur re, personne p
             WHERE f.id_realisateur = re.id_realisateur
             AND re.id_personne = p.id_personne
@@ -74,8 +74,12 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT id_genre, libelle
-            FROM genre
+            SELECT g.id_genre, libelle, COUNT(fg.id_film) as compte 
+            FROM genre g, film_genres fg
+            WHERE g.id_genre = fg.id_genre
+            GROUP BY g.id_genre
+            ORDER BY libelle
+            
         ");
 
         require "view/listeGenres.php";

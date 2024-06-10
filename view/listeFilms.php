@@ -10,8 +10,7 @@
                 <tr>
                     <td><a class='link' href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></td>
                     <td>(<?= $film["year"] ?>)</td>
-                    <td><?= $film["prenom"] ?></td>
-                    <td><?= $film["nom"] ?></td>
+                    <td><a class='link' href="index.php?action=detailRealisateur&id=<?=$film['id_realisateur']?>"><?= $film["realisateur"] ?></td>
                 </tr>
         <?php }   ?>
     </tbody>
