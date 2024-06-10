@@ -10,10 +10,10 @@
     <nav>
         <ul>
             <li><a href="index.php?action=accueil">Accueil</a></li>
-            <li><a href="index.php?action=listeFilms.php">Films</a></li>
-            <li><a href="listeActeurs.php">Acteurs</a></li>
-            <li><a href="listeRealisateurs.php">Realisateurs</a></li>
-            <li><a href="listeGenres.php">Genres</a></li>
+            <li><a href="index.php?action=listeFilms">Films</a></li>
+            <li><a href="index.php?action=listeActeurs">Acteurs</a></li>
+            <li><a href="index.php?action=listeRealisateurs">Realisateurs</a></li>
+            <li><a href="index.php?action=listeGenres">Genres</a></li>
         </ul>
     </nav>
 

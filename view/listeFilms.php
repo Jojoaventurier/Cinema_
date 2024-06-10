@@ -12,7 +12,7 @@
         </tr>
     </thead> 
     <tbody>
-        <?php /*
+        <?php 
             foreach($requete->fetchAll() as $film) { ?>
                 <tr>
                     <td><?= $film["titre"] ?></td>
@@ -20,7 +20,7 @@
                     <td><?= $film["prenom"] ?></td>
                     <td><?= $film["nom"] ?></td>
                 </tr>
-        <?php }  */ ?>
+        <?php }   ?>
     </tbody>
 </table> 
 
