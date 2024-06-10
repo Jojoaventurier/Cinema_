@@ -3,10 +3,11 @@
 use Controller\CinemaController;
 
 spl_autoload_register(function ($class_name) {
-    include $class_name . '.php';
+    include  $class_name . '.php';
 });
 
 $ctrlCinema = new CinemaController();
+
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 // $type = (isset($_GET["type])) ? $_GET["type"] : null;
@@ -14,7 +15,7 @@ $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 if (isset($_GET["action"])) {
     switch($_GET["action"]) {
         // Films
-        case "listeFilmss" : $ctrlCinema->listeFilms(); break;
+        case "listeFilms" : $ctrlCinema->listeFilms(); break;
         case "listeActeurs" : $ctrlCinema->listeActeurs(); break;
         case "listeRealisateurs" : $ctrlCinema->listeRealisateurs(); break;
         case "listeGenres" : $ctrlCinema->listeGenres(); break;
@@ -22,6 +23,8 @@ if (isset($_GET["action"])) {
         case "detailActeur" : $ctrlCinema->detailActeur($id); break;
         case "detailRealisateur" : $ctrlCinema->detailRealisateur($id); break;
         case "detailGenre" : $ctrlCinema->detailGenre($id); break;
+        case "accueil" : $ctrlCinema->pageAccueil(); break;
+        default: $ctrlCinema->pageAccueil(); break;
         
     }
 }

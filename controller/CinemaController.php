@@ -12,7 +12,7 @@ class CinemaController {
     public function pageAccueil() {
         $pdo = Connect::seConnecter();
 
-        require "accueil.php";
+        require "view/accueil.php";
     }
 
     /**
@@ -24,10 +24,10 @@ class CinemaController {
         $requete = $pdo->query("
             SELECT titre
             FROM film
-            WHERE id_film = 1
+  
         ");
 
-        require "listeFilmss.php";
+        require "view/listeFilms.php";
     }
 
     /*SELECT titre, YEAR(anneeSortieFrance), prenom, nom
