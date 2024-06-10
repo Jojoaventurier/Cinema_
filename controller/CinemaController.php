@@ -160,7 +160,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-            SELECT prenom, nom, dateNaissance
+            SELECT re.id_realisateur, CONCAT(prenom, ' ', nom) as 'realisateur', dateNaissance
             FROM realisateur re, personne p
             WHERE re.id_personne = p.id_personne
             AND re.id_realisateur = :id
@@ -168,11 +168,11 @@ class CinemaController {
         $requete->execute(["id" => $id]);
 
         $requeteFilms = $pdo->prepare("
-            SELECT titre, YEAR(anneeSortieFrance) AS sortie
+            SELECT titre, YEAR(anneeSortieFrance) AS sortie, id_film
             FROM film f, realisateur re
             WHERE f.id_realisateur = :id
             GROUP BY f.id_film
-            ORDER BY sortie
+            ORDER BY sortie DESC
         ");
         $requeteFilms->execute(["id" => $id]);
 

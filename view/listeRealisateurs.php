@@ -5,9 +5,9 @@
 <table>
     <thead>
         <tr>
-            <th>nom</th>
             <th></th>
-            <th>Date de naissance</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
