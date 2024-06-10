@@ -12,6 +12,9 @@ footer {
     background-color: black;
     height : 60px;
     color : white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav {
@@ -46,4 +49,13 @@ a, li {
 li {
     display: inline;
     padding-left: 40px;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+.link:hover {
+    color : black
 }

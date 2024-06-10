@@ -8,7 +8,7 @@
         <?php 
             foreach($requete->fetchAll() as $acteur) { ?>
                 <tr>
-                    <td><a href="index.php?action=detailActeur&id=<?=$acteur['id_acteur']?>"><?= $acteur["nom"]. " ". $acteur["prenom"] ?></a></td>
+                    <td><a class='link' href="index.php?action=detailActeur&id=<?=$acteur['id_acteur']?>"><?= $acteur["nom"]. " ". $acteur["prenom"] ?></a></td>
                     <td><?= $acteur["dateNaissance"] ?></td>
                 </tr>
         <?php }  ?>
