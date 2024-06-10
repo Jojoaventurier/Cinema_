@@ -12,10 +12,10 @@
         </tr>
     </thead> 
     <tbody>
-    <?php /* $film = $requete->fetch();
+    <?php  $film = $requete->fetch();
      echo $film["titre"];
 
-     */ ?>
+      ?>
     </tbody>
 </table> 
 
