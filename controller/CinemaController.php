@@ -73,7 +73,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT libelle
+            SELECT id_genre, libelle
             FROM genre
         ");
 
@@ -180,12 +180,14 @@ class CinemaController {
         $requeteGenre->execute(["id" => $id]);
 
         $requete = $pdo->prepare("
-            SELECT titre, YEAR(anneeSortieFrance) AS sortie
-            FROM film f, film_genres fg, genre g
+            SELECT titre, YEAR(anneeSortieFrance) AS 'sortie', prenom, nom
+            FROM film f, film_genres fg, genre g, personne p, realisateur re
             WHERE f.id_film = fg.id_film 
             AND fg.id_genre = g.id_genre
-            AND g.id_genre = 1
-            ORDER BY sortie DESC
+            AND f.id_realisateur = re.id_realisateur
+            AND re.id_personne = p.id_personne
+            AND g.id_genre = :id
+            ORDER BY titre 
         ");
         $requete->execute(["id" => $id]);
 
