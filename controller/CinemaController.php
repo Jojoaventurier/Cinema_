@@ -39,10 +39,11 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT prenom, nom, dateNaissance
+            SELECT id_acteur, prenom, nom, dateNaissance
             FROM acteur a, personne p
             WHERE a.id_personne = p.id_personne
             ORDER BY nom
+        
         ");
 
         require "view/listeActeurs.php";
@@ -57,7 +58,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT prenom, nom, dateNaissance
+            SELECT id_realisateur, prenom, nom, dateNaissance
             FROM realisateur re, personne p
             WHERE re.id_personne = p.id_personne
             ORDER BY nom
@@ -90,8 +91,15 @@ class CinemaController {
     public function detailFilm($id) {
 
         $pdo = Connect::seConnecter();
+
+        $requeteTitre = $pdo->prepare("
+            SELECT titre
+            FROM film
+            WHERE id_film= :id");
+        $requeteTitre->execute(["id" => $id]);
+
         $requete = $pdo->prepare("
-            SELECT titre, anneeSortieFrance, duree, prenom, nom 
+            SELECT f.id_film, titre, anneeSortieFrance as 'sortie', duree, prenom, nom 
             FROM film f, realisateur re, personne p
             WHERE f.id_realisateur = re.id_realisateur
             AND re.id_personne = p.id_personne 
@@ -100,7 +108,7 @@ class CinemaController {
         $requete->execute(["id" => $id]);
 
         $requeteCasting = $pdo->prepare("
-            SELECT prenom, nom, nomRole
+            SELECT f.id_film, c.id_acteur, prenom, nom, nomRole
             FROM personne p, film f, casting c, acteur a, role r
             WHERE p.id_personne = a.id_personne
             AND f.id_film = c.id_film

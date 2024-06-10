@@ -4,9 +4,7 @@
 
 
 
-<h2><?=
-
- $libelleGenre["libelle"]; ?></h2>
+<h2><?= $libelleGenre["libelle"]; ?></h2>
 
 
 <table>
