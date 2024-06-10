@@ -7,6 +7,14 @@ class CinemaController {
 
 
     //==========================LISTES============================//
+    
+
+    public function pageAccueil() {
+        $pdo = Connect::seConnecter();
+
+        require "accueil.php";
+    }
+
     /**
      * Lister les films
      */
