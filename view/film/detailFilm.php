@@ -23,6 +23,8 @@ foreach($requeteCasting->fetchAll() as $casting) { ?>
 <?php } ?>
     </table>
 
+    <p id="resume"><?= $film["resume"] ?>
+
 
 
 

@@ -99,7 +99,7 @@ class CinemaController {
         $requeteTitre->execute(["id" => $id]);
 
         $requete = $pdo->prepare("
-            SELECT f.id_film, titre, anneeSortieFrance as 'sortie', duree, prenom, nom, re.id_realisateur 
+            SELECT f.id_film, titre, anneeSortieFrance as 'sortie', duree, prenom, nom, re.id_realisateur, resume 
             FROM film f, realisateur re, personne p
             WHERE f.id_realisateur = re.id_realisateur
             AND re.id_personne = p.id_personne 
