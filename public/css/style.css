@@ -5,7 +5,7 @@
 }
 
 #wrapper {
-    background-color: blueviolet;
+    background-color: rgb(70, 149, 194);
 }
 
 footer {
@@ -13,8 +13,6 @@ footer {
     height : 60px;
     color : white;
 }
-
-
 
 nav {
     background-color: black;
