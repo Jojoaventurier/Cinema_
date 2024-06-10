@@ -24,6 +24,9 @@ if (isset($_GET["action"])) {
         case "detailRealisateur" : $ctrlCinema->detailRealisateur($id); break;
         case "detailGenre" : $ctrlCinema->detailGenre($id); break;
         case "accueil" : $ctrlCinema->pageAccueil(); break;
+
+        case "detailGenre" : $ctrlCinema->detailGenre(); break;
+        
         default: $ctrlCinema->pageAccueil(); break;
         
     }
