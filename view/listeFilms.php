@@ -3,20 +3,13 @@
 <p> Il y a <?= $requete->rowCount() ?> films</p>
 
 <table>
-    <thead>
-        <tr>
-            <th>TITRE</th>
-            <th>ANNEE SORTIE</th>
-            <th>REALISATEUR</th>
-            <th></th>
-        </tr>
-    </thead> 
+
     <tbody>
         <?php 
             foreach($requete->fetchAll() as $film) { ?>
                 <tr>
                     <td><a href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></td>
-                    <td><?= $film["year"] ?></td>
+                    <td>(<?= $film["year"] ?>)</td>
                     <td><?= $film["prenom"] ?></td>
                     <td><?= $film["nom"] ?></td>
                 </tr>

@@ -190,7 +190,7 @@ class CinemaController {
         $requeteGenre->execute(["id" => $id]);
 
         $requete = $pdo->prepare("
-            SELECT f.id_film, titre, YEAR(anneeSortieFrance) AS 'sortie', prenom, nom
+            SELECT f.id_film, titre, YEAR(anneeSortieFrance) AS 'sortie', CONCAT(prenom, ' ', nom) as 'realisateur', f.id_realisateur
             FROM film f, film_genres fg, genre g, personne p, realisateur re
             WHERE f.id_film = fg.id_film 
             AND fg.id_genre = g.id_genre

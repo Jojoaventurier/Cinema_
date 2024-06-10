@@ -3,13 +3,7 @@
 <p> Il y a <?= $requete->rowCount() ?> acteurs et actrices</p>
 
 <table>
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th></th>
-            <th>Date de naissance</th>
-        </tr>
-    </thead>
+    
     <tbody>
         <?php 
             foreach($requete->fetchAll() as $acteur) { ?>

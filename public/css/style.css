@@ -5,7 +5,7 @@
 }
 
 #wrapper {
-    background-color: rgb(70, 149, 194);
+    background-color: blueviolet;
 }
 
 footer {
@@ -30,16 +30,16 @@ a, li {
     color: white;
 }
 
-a {
+.navLink {
     text-decoration: none;
     margin: 0 -.25rem;
     padding: 0.25rem .25rem;
     box-shadow: inset 0 0 0 0 #ffffff;
-    transition: color .3s ease-in-out, box-shadow .2s ease-in-out;  
+    transition: color .4s ease-in-out, box-shadow .2s ease-in-out;  
 }
 
-a:hover {
-    box-shadow: inset 100px 0 0 0 #ffffff;
+.navLink:hover {
+    box-shadow: inset 300px 0 0 0 #ffffff;
     color : black;
 }
 

@@ -9,11 +9,11 @@
 <body>
     <nav>
         <ul>
-            <li><a href="index.php?action=accueil">Accueil</a></li>
-            <li><a href="index.php?action=listeFilms">Films</a></li>
-            <li><a href="index.php?action=listeActeurs">Acteurs</a></li>
-            <li><a href="index.php?action=listeRealisateurs">Realisateurs</a></li>
-            <li><a href="index.php?action=listeGenres">Genres</a></li>
+            <li><a class="navLink" href="index.php?action=accueil">ACCUEIL</a></li>
+            <li><a class="navLink" href="index.php?action=listeFilms">FILMS</a></li>
+            <li><a class="navLink" href="index.php?action=listeActeurs">ACTEURS</a></li>
+            <li><a class="navLink" href="index.php?action=listeRealisateurs">REALISATEURS</a></li>
+            <li><a class="navLink" href="index.php?action=listeGenres">GENRES</a></li>
         </ul>
     </nav>
 

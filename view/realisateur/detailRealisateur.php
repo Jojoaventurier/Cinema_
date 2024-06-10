@@ -9,7 +9,7 @@ $realisateur = $requete->fetch() ?>
         <?php
             foreach($requeteFilms->fetchAll() as $film) { ?>
                 <tr>
-                    <td><a href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></td>
+                    <td><a class='link' href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></td>
                     <td>(<?= $film["sortie"] ?>)</td>
                 </tr>
         <?php } ?>
