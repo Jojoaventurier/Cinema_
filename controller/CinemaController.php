@@ -128,16 +128,17 @@ class CinemaController {
     public function detailActeur($id) {
 
         $pdo = Connect::seConnecter();
+
         $requete = $pdo->prepare("
-            SELECT prenom, nom, dateNaissance
-            FROM personne p, acteur a
-            WHERE p.id_personne = a.id_personne
-            AND a.id_acteur = :id
+            SELECT a.id_acteur, CONCAT(prenom, ' ', nom) as 'acteur', prenom, nom, dateNaissance 
+            FROM acteur a, personne p
+            WHERE a.id_personne = p.id_personne
+            AND id_acteur= :id
         ");
         $requete->execute(["id" => $id]);
 
         $requeteRoles = $pdo->prepare("
-            SELECT  titre, nomRole, YEAR(anneeSortieFrance) AS sortie
+            SELECT a.id_acteur, titre, nomRole, YEAR(anneeSortieFrance) AS sortie, f.id_film
             FROM personne p, acteur a, film f, casting c, role r
             WHERE p.id_personne = a.id_personne
             AND a.id_acteur = c.id_acteur
