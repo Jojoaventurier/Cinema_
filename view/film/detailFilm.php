@@ -27,7 +27,7 @@ foreach($requeteCasting->fetchAll() as $casting) { ?>
     <p id="resume"><?= $film["resume"] ?>
 
     <div>
-        <form action="" method="POST">
+        <form action="index.php?action=addFilm" method="POST">
             <p>Nom du film :
                 <input type="text" name="titre" /><br>
             </p>
@@ -35,11 +35,12 @@ foreach($requeteCasting->fetchAll() as $casting) { ?>
                 <input type="text" name="anneeSortieFrance" /><br>
             </p>
             <p>Résumé :
-                <input type="text" name="resume" /><br>
+                <input class="resume" type="text" name="resume" /><br>
             </p>
             <p>
                 boutons radios choix réalisateur
             </p>
+            <input class="ajouter" type="submit">AJOUTER</input>
         </form> 
     </div>
 
