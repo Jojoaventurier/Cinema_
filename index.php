@@ -20,14 +20,18 @@ if (isset($_GET["action"])) {
     switch($_GET["action"]) {
         // 
         case "accueil" : $ctrlCinema->pageAccueil(); break;
-        case "listeFilms" : $ctrlFilm->listeFilms(); break;
-        case "listeActeurs" : $ctrlPersonne->listeActeurs(); break;
-        case "listeRealisateurs" : $ctrlPersonne->listeRealisateurs(); break;
         case "listeGenres" : $ctrlCinema->listeGenres(); break;
-        case "detailFilm" : $ctrlFilm->detailFilm($id); break;
-        case "detailActeur" : $ctrlPersonne->detailActeur($id); break;
-        case "detailRealisateur" : $ctrlPersonne->detailRealisateur($id); break;
         case "detailGenre" : $ctrlCinema->detailGenre($id); break;
+
+        case "listeFilms" : $ctrlFilm->listeFilms(); break;
+        case "detailFilm" : $ctrlFilm->detailFilm($id); break;
+        case "suppFilm" : $ctrlFilm->supprimerFilm($id); break;
+        
+        case "listeActeurs" : $ctrlPersonne->listeActeurs(); break;
+        case "detailActeur" : $ctrlPersonne->detailActeur($id); break;
+        
+        case "listeRealisateurs" : $ctrlPersonne->listeRealisateurs(); break;
+        case "detailRealisateur" : $ctrlPersonne->detailRealisateur($id); break;
         
 
         case "detailGenre" : $ctrlCinema->detailGenre(); break;

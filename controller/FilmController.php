@@ -6,7 +6,7 @@ use Model\Connect;
 class FilmController {
 
 
-    /**
+/**
  * Lister les films
  */
 public function listeFilms() {
@@ -56,6 +56,18 @@ public function detailFilm($id) {
     $requeteCasting->execute(["id" => $id]);
 
     require "view/film/detailFilm.php";
+}
+
+// SUPPRIMER UN FILM
+
+public function supprimerFilm() {
+    $pdo = Connect::seConnecter();
+
+    $requeteSupp = $pdo->query("
+        SELECT * FROM film
+        WHERE id_film = :id
+    ");
+
 }
 
 
