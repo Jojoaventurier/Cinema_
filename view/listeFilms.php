@@ -4,7 +4,7 @@
 
 <table>
     <tbody>
-        <?php 
+        <?php // afficher tous les films présents dans la BDD
             foreach($requete->fetchAll() as $film) { ?>
                 <tr>
                     <td><a class='link' href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></td>
@@ -14,6 +14,7 @@
         <?php }   ?>
     </tbody>
 </table><br> 
+
 
 <div>
         <h3>Ajouter un film</h3>
