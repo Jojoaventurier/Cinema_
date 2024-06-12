@@ -3,7 +3,6 @@
 <p> Il y a <?= $requete->rowCount() ?> acteurs et actrices</p>
 
 <table>
-    
     <tbody>
         <?php 
             foreach($requete->fetchAll() as $acteur) { ?>
@@ -14,8 +13,6 @@
         <?php }  ?>
     </tbody>
 </table>
-
-<p><?= var_dump($_SESSION) ?>
 
 <?php
 $titre = "Liste des acteurs et actrices";
