@@ -43,11 +43,10 @@ if (isset($_GET["action"])) {
         case "addFilm" :
             if (isset($_POST['submit'])){
                 $titreFilm = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $anneeSortie = filter_input(INPUT_POST, 'anneeSortieFrance', FILTER_VALIDATE_INT);
+                $anneeSortie = filter_input(INPUT_POST, 'anneeSortieFrance');
                 $duree = filter_input(INPUT_POST, 'duree', FILTER_VALIDATE_INT);
                 $resume = filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
-
             };
 
         default: $ctrlCinema->pageAccueil(); break;

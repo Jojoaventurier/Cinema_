@@ -28,19 +28,19 @@ foreach($requeteCasting->fetchAll() as $casting) { ?>
 
     <div>
         <form action="index.php?action=addFilm" method="POST">
-            <p>Nom du film :
-                <input type="text" name="titre" /><br>
-            </p>
-            <p>Année de sortie :
-                <input type="text" name="anneeSortieFrance" /><br>
-            </p>
-            <p>Résumé :
-                <input class="resume" type="text" name="resume" /><br>
-            </p>
-            <p>
+            <label for="titre">Nom du film :</label><br>
+                <input type="text" id="titre" name="titre" /><br>
+            
+            <label for="anneeSortieFrance">Année de sortie en France:</label><br>
+                <input type="date" id="anneeSortieFrance" name="anneeSortieFrance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
+            
+            <label for="resume">Résumé du film :</label><br>
+                <textarea id="resume" name="resume" rows="4" cols="50">Enter text here...</textarea><br>
+
+            <label>
                 boutons radios choix réalisateur
-            </p>
-            <input class="ajouter" type="submit">AJOUTER</input>
+            </label>
+            <input class="boutonAjouter" type="submit">
         </form> 
     </div>
 
