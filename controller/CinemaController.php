@@ -63,5 +63,9 @@ class CinemaController {
 
         require "view/genre/detailGenre.php";
     }
+
+    public function afficherNouveauFilm() {
+        console.log($titreFilm, $anneeSortie, $duree, $resume);
+    }
     
 }
