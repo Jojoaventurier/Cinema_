@@ -18,6 +18,12 @@ public function listeFilms() {
         WHERE f.id_realisateur = re.id_realisateur
         AND re.id_personne = p.id_personne
     ");
+        // requête pour la liste déroulante des réalisateurs du form "ajouter un film"
+    $requeteListe = $pdo->query("
+        SELECT id_realisateur, CONCAT(prenom, ' ', nom) as 'realisateur'
+        FROM personne p, realisateur re
+        WHERE p.id_personne = re.id_personne
+    ");
 
     require "view/listeFilms.php";
 }
@@ -58,17 +64,7 @@ public function detailFilm($id) {
     require "view/film/detailFilm.php";
 }
 
-// SUPPRIMER UN FILM
 
-public function supprimerFilm() {
-    $pdo = Connect::seConnecter();
-
-    $requeteSupp = $pdo->query("
-        SELECT * FROM film
-        WHERE id_film = :id
-    ");
-
-}
 
 
 }
