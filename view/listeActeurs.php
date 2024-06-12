@@ -15,6 +15,8 @@
     </tbody>
 </table>
 
+<p><?= var_dump($_SESSION) ?>
+
 <?php
 $titre = "Liste des acteurs et actrices";
 $titre_secondaire = "Liste des acteurs et actrices";

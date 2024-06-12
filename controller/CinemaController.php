@@ -65,7 +65,19 @@ class CinemaController {
     }
 
     public function afficherNouveauFilm() {
-        console.log($titreFilm, $anneeSortie, $duree, $resume);
+
+        if (isset($_POST['submit'])){
+
+            $titreFilm = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $anneeSortie = filter_input(INPUT_POST, 'anneeSortieFrance');
+            $duree = filter_input(INPUT_POST, 'duree');
+            $resume = filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $realisateur = filter_input(INPUT_POST, 'realisateur');
+
+            var_dump($titreFilm, $anneeSortie, $duree, $resume, $realisateur);
+        } else {
+            echo "l/'ajout n'a pas fonctionné";
+        }
+        require "view/listeFilms.php";
     }
-    
 }
