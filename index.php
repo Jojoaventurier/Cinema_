@@ -41,10 +41,13 @@ if (isset($_GET["action"])) {
         
 
         case "addFilm" :
-            $ctrlFilm->listeFilms(); break;
+            $ctrlCinema->afficherForm(); break;
 
         default: $ctrlCinema->pageAccueil(); break;
         
     }
 }
+
+
+
 
