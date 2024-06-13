@@ -99,9 +99,9 @@ class FilmController {
 
                 $pdo = Connect::seConnecter();
                 $requeteAjoutFilm = $pdo->prepare("
-                INSERT INTO film (titre, anneeSortieFrance, duree, synopsis, id_realisateur)
-                VALUES ('$titre', '$anneeSortieFrance', '$minutes', '$synopsis', '$idRealisateur')
-                ");
+                    INSERT INTO film (titre, anneeSortieFrance, duree, synopsis, id_realisateur)
+                    VALUES ('$titre', '$anneeSortieFrance', '$minutes', '$synopsis', '$idRealisateur')
+                    ");
                 $requeteAjoutFilm->execute();
             }
             //$confirmation = "Confirmez-vous l'ajout de l'élément à la base de donnée ?";
