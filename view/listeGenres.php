@@ -1,5 +1,7 @@
 <?php ob_start(); ?>
 
+<a href="index.php?action=afficherFormulaireGenre" class='link bouton'>AJOUTER UN GENRE</a>
+
 <p> Il y a <?= $requete->rowCount() ?> genres</p>
 
 <table>

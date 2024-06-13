@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
     
-        <form action="index.php?action=afficherNouveauFilm" method="post">
+        <form action="index.php?action=ajouterNouveauFilm" method="post">
         <label for="titre">Nom du film :</label><br>
             <input type="text" id="titre" name="titre" /><br>
         

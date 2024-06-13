@@ -2,8 +2,8 @@
 
     
         <form action="index.php?action=afficherNouveaugenre" method="post">
-        <label for="titre">Nom du film :</label><br>
-            <input type="text" id="titre" name="titre" /><br>
+        <label for="nomGenre">Nom du genre :</label><br>
+            <input type="text" id="nomGenre" name="nomGenre" /><br>
         
     
         <input type='submit' name='submit'>

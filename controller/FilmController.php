@@ -77,7 +77,7 @@ public function detailFilm($id) {
     // recupeère les donées de formulaire et on les sanityze
     // puis fonction d'insertion grave à une requete prépaprée
 
-    public function afficherNouveauFilm() {
+    public function ajouterNouveauFilm() {
 
             $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $anneeSortieFrance = ($_POST['anneeSortieFrance']);
@@ -94,7 +94,7 @@ public function detailFilm($id) {
             var_dump($idRealisateur);
             var_dump($_POST);
 
-           /* if ($_POST["submit"]) {
+       /*     if ($_POST["submit"]) {
 
                 $pdo = Connect::seConnecter();
                 $requeteAjoutFilm = $pdo->prepare("
@@ -105,17 +105,11 @@ public function detailFilm($id) {
             }
             //$confirmation = "Confirmez-vous l'ajout de l'élément à la base de donnée ?";
 */
-            
-        }
+    }
 
-    
-
-    public function ajouterNouveauFilm() {
-
-        $pdo= Connect::seConnecter();
-        $requeteAjoutFilm = $pdo->prepare( "
-            //requete d'ajout à la BDD
-        ");
+    public function afficherFormulaireGenre() {
+        
+        require "view/ajouterGenre.php";
     }
 
 
