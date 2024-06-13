@@ -1,5 +1,7 @@
 <?php ob_start(); ?>
 
+<a class="link bouton" href="index.php?action=ajouterActeur">AJOUTER UN ACTEUR/ACTRICE</a>
+
 <p> Il y a <?= $requete->rowCount() ?> acteurs et actrices</p>
 
 <table>

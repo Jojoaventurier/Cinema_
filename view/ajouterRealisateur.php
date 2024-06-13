@@ -1,7 +1,6 @@
 <?php ob_start(); ?>
 
-    
-        <form action="index.php?action=ajouterFilm" method="post">
+    <form>
         <label for="titre">Nom du film :</label><br>
             <input type="text" id="titre" name="titre" /><br>
         
@@ -33,8 +32,8 @@
 
 <?php
 
-$titre = "Ajouter un film";
-$titre_secondaire = "Ajouter un film";
+$titre = "Ajouter un acteur/actrice";
+$titre_secondaire = "Ajouter un acteur/actrice";
 $contenu = ob_get_clean();
 require "template.php";
 ?>

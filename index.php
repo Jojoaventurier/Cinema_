@@ -41,7 +41,14 @@ if (isset($_GET["action"])) {
         
 
         case "ajouterFilm" :
-            $ctrlCinema->afficherFormulaire(); break;
+            $ctrlFilm->afficherFormulaireFilm(); break;
+        case "ajouterActeur":
+            $ctrlCinema->afficherFormulaireActeur(); break;
+        case "ajouterRealisateur":
+            $ctrlCinema->afficherFormulaireRealisateur(); break;
+
+        case "ajouterFilm":
+            $ctrlFilm->ajouterFilm();
 
         default: $ctrlCinema->pageAccueil(); break;
         

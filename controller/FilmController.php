@@ -58,6 +58,30 @@ public function detailFilm($id) {
     require "view/film/detailFilm.php";
 }
 
+public function afficherFormulaireFilm() {
+    $pdo= Connect::seConnecter();
+
+    // requête pour la liste déroulante des réalisateurs du form "ajouter un film"
+    $requeteListe = $pdo->prepare("
+    SELECT id_realisateur, CONCAT(prenom, ' ', nom) as 'realisateur'
+    FROM personne p, realisateur re
+    WHERE p.id_personne = re.id_personne
+    ");
+    $requeteListe->execute();
+
+    require "view/ajouterFilm.php";
+}
+
+// creer fonction 
+// recupeère les donées de formulaire et on les sanityze
+// puis fonction d'insertion grave à une requete prépaprée
+public function ajouterFilm() {
+
+    $pdo= Connect::seConnecter();
+    $requeteAjoutFilm = $pdo->prepare( "
+    
+    ");
+}
 
 
 

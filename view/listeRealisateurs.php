@@ -1,5 +1,7 @@
 <?php ob_start(); ?>
 
+<a class="link bouton" href="index.php?action=ajouterRealisateur">AJOUTER UN REALISATEUR/REALISATRICE</a>
+
 <p> Il y a <?= $requete->rowCount() ?> réalisateurs et réalisatrices</p>
 
 <table>

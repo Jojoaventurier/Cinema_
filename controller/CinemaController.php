@@ -64,22 +64,23 @@ class CinemaController {
         require "view/genre/detailGenre.php";
     }
 
-    public function afficherFormulaire() {
+
+
+    public function afficherFormulaireActeur() {
         $pdo= Connect::seConnecter();
 
-        // requête pour la liste déroulante des réalisateurs du form "ajouter un film"
-        $requeteListe = $pdo->prepare("
-        SELECT id_realisateur, CONCAT(prenom, ' ', nom) as 'realisateur'
-        FROM personne p, realisateur re
-        WHERE p.id_personne = re.id_personne
-        ");
-        $requeteListe->execute();
-
-
-        
-        require "view/ajouterFilm.php";
+        require "view/ajouterActeur.php";
     }
+
+    public function afficherFormulaireRealisateur() {
+        $pdo= Connect::seConnecter();
+
+        require "view/ajouterRealisateur.php";
+    }
+
+
 }
+    
 
 
 
