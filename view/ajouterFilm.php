@@ -7,7 +7,7 @@
         
         <!-- choisir l'année de sortie du film-->
         <label for="anneeSortieFrance">Année de sortie en France:</label><br>
-            <input type="date" id="anneeSortieFrance" name="anneeSortieFrance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
+            <input required="required" type="date" id="anneeSortieFrance" name="anneeSortieFrance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
         
         <!--Insérer le résumé du film (texte) -->
         <label for="synopsis">Résumé du film :</label><br>
@@ -15,7 +15,7 @@
         
         <!--choisir la durée du film -->
         <label for="dureeTypeTime">Durée du film :</label><br>
-            <input id="dureeTypeTime" type="time" name="dureeTypeTime" value="01:00" /><br>
+            <input required="required" id="dureeTypeTime" type="time" name="dureeTypeTime" /><br>
         
         <!--choisir un réalisateur pour le film à ajouter-->
         <label for="realisateur">Réalisateur</label>

@@ -98,9 +98,20 @@ class PersonneController {
 
 
 
-public function afficherFormulaireActeur() {
-    require "view/ajouterActeur.php";
-}
+    public function afficherFormulaireActeur() {
+        require "view/ajouterActeur.php";
+    }
+
+    public function ajouterNouvelActeur() {
+
+        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $sexe = $_POST['sexe'];
+        $dateNaissance = $_POST['dateNaissance'];
+
+        var_dump($_POST);
+
+    }
 
 
 

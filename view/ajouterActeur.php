@@ -1,15 +1,15 @@
 <?php ob_start(); ?>
 
-    <form>
+    <form action="index.php?action=ajouterNouvelActeur" method="post">
         <label for="nom">Nom :</label><br>
-            <input type="text" id="nom" name="nom" /><br>
+            <input required="required" type="text" id="nom" name="nom" /><br>
 
         <label for="prenom">Prénom :</label><br>
-            <input type="text" id="prenom" name="prenom" /><br>
+            <input required="required" type="text" id="prenom" name="prenom" /><br>
         
         <!-- choisir la date de naissance-->
         <label for="anneeSortieFrance">Date de naissance:</label><br>
-            <input type="date" id="dateNaissance" name="dateNaissance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
+            <input required="required" type="date" id="dateNaissance" name="dateNaissance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
         
         <!--Insérer la biographie (texte) -->
         <label for="resume">Biographie :</label><br>
@@ -34,11 +34,10 @@
 
 
 <?php
-
-$titre = "Ajouter un acteur ou une actrice";
-$titre_secondaire = "Ajouter un acteur ou une actrice";
-$contenu = ob_get_clean();
-require "template.php";
+    $titre = "Ajouter un acteur ou une actrice";
+    $titre_secondaire = "Ajouter un acteur ou une actrice";
+    $contenu = ob_get_clean();
+    require "template.php";
 ?>
 
 

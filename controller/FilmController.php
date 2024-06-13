@@ -88,12 +88,12 @@ class FilmController {
             $idRealisateur = $_POST['realisateur'];
 
 
-            var_dump($titre);
+        /*  var_dump($titre);
             var_dump($anneeSortieFrance);
             var_dump($minutes);
             var_dump($synopsis);
             var_dump($idRealisateur);
-            var_dump($_POST);
+            var_dump($_POST); */
 
             if ($_POST["submit"]) {
 
