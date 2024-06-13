@@ -40,15 +40,20 @@ if (isset($_GET["action"])) {
         case "detailRealisateur" : $ctrlPersonne->detailRealisateur($id); break;
         
 
-        case "ajouterFilm" :
+        case "afficherFormulaireFilm" :
             $ctrlFilm->afficherFormulaireFilm(); break;
+        case "afficherNouveauFilm":
+            $ctrlFilm->afficherNouveauFilm();
+            $ctrlFilm->afficherFormulaireFilm(); break;
+        case "ajouterNouveauFilm":
+            $ctrlFilm->ajouterNouveauFilm();
+
         case "ajouterActeur":
             $ctrlCinema->afficherFormulaireActeur(); break;
         case "ajouterRealisateur":
             $ctrlCinema->afficherFormulaireRealisateur(); break;
 
-        case "ajouterFilm":
-            $ctrlFilm->ajouterFilm();
+       
 
         default: $ctrlCinema->pageAccueil(); break;
         

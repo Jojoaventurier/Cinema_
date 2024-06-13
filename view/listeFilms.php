@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<a class="link bouton" href="index.php?action=ajouterFilm">AJOUTER UN FILM</a>
+<a class="link bouton" href="index.php?action=afficherFormulaireFilm">AJOUTER UN FILM</a>
 
 <p> Il y a <?= $requete->rowCount() ?> films</p>
 
