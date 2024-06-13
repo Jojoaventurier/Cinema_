@@ -60,6 +60,12 @@ if (isset($_GET["action"])) {
         case "ajouterNouvelActeur" :
             $ctrlPersonne->ajouterNouvelActeur();
             $ctrlPersonne->afficherFormulaireActeur(); break;
+
+        case "afficherFormulaireRealisateur" :
+            $ctrlPersonne->afficherFormulaireRealisateur(); break;
+        case "ajouterNouveauRealisateur" :
+            $ctrlPersonne->ajouterNouveauRealisateur();
+            $ctrlPersonne->afficherFormulaireActeur(); break;
             
             
 

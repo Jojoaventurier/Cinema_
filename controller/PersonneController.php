@@ -119,12 +119,33 @@ class PersonneController {
                 VALUES ('$nom', '$prenom', '$sexe', '$dateNaissance')
             ");
             $requeteAjoutPersonne->execute();
-/*
-            $requeteAjoutActeur = $pdo->prepare("
-                INSERT INTO acteur (
-            "); */
         }
+    }
 
+
+    public function afficherFormulaireRealisateur() {
+        require "view/ajouterRealisateur.php";
+    }
+
+    public function ajouterNouveauRealisateur() {
+
+        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $sexe = $_POST['sexe'];
+        $dateNaissance = $_POST['dateNaissance'];
+
+         var_dump($_POST);
+        /*
+        if ($_POST["submit"]) {
+            
+            $pdo = Connect::seConnecter();
+            $requeteAjoutPersonne = $pdo->prepare("
+                INSERT INTO personne (nom, prenom, sexe, dateNaissance)
+                VALUES ('$nom', '$prenom', '$sexe', '$dateNaissance')
+            ");
+            $requeteAjoutPersonne->execute();
+        }
+        */
     }
 
 

@@ -8,13 +8,14 @@
             <input required="required" type="text" id="prenom" name="prenom" /><br>
         
         <!-- choisir la date de naissance-->
-        <label for="anneeSortieFrance">Date de naissance:</label><br>
+        <label for="dateNaissance">Date de naissance:</label><br>
             <input required="required" type="date" id="dateNaissance" name="dateNaissance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
         
-        <!--Insérer la biographie (texte) -->
+        <!--Insérer la biographie (texte) 
         <label for="resume">Biographie :</label><br>
             <textarea id="biographie" name="biographie" rows="4" cols="50"></textarea><br>
-        
+        -->
+
         <!--choisir le sexe -->
         <label for="realisateur">Sexe</label>
             <select name="sexe" id="sexe">
