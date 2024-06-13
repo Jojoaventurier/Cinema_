@@ -114,18 +114,34 @@ class PersonneController {
         if ($_POST["submit"]) {
             
             $pdo = Connect::seConnecter();
+           
             $requeteAjoutPersonne = $pdo->prepare("
                 INSERT INTO personne (nom, prenom, sexe, dateNaissance)
                 VALUES ('$nom', '$prenom', '$sexe', '$dateNaissance')
             ");
             $requeteAjoutPersonne->execute();
+
+            $last_id = $pdo->LastInsertId();
+            //var_dump($last_id);
+
+            $requeteAjoutActeur = $pdo->prepare("
+                INSERT INTO acteur (id_personne)
+                VALUES ('$last_id') 
+            ");
+            $requeteAjoutActeur->execute();
         }
+        
     }
 
 
     public function afficherFormulaireRealisateur() {
         require "view/ajouterRealisateur.php";
     }
+/*
+Faire une requete d'insertion d'une personne, 
+Récupérer l'id grâce à la fonction last insert id de php 
+Faire un insert dans acteur en utilisant la valeur de last insert id pour la clé étrangère id_personne.
+*/
 
     public function ajouterNouveauRealisateur() {
 
@@ -151,8 +167,3 @@ class PersonneController {
 
 
 }
-/*
-Faire une requete d'insertion d'une personne, 
-Récupérer l'id grâce à la fonction last insert id de php 
-Faire un insert dans acteur en utilisant la valeur de last insert id pour la clé étrangère id_personne.
-*/

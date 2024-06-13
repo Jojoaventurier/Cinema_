@@ -34,8 +34,8 @@
 
 
 <?php
-    $titre = "Ajouter un acteur ou une actrice";
-    $titre_secondaire = "Ajouter un acteur ou une actrice";
+    $titre = "Ajouter un réalisateur ou une réalisatrice";
+    $titre_secondaire = "Ajouter un réalisateur ou une réalisatrice";
     $contenu = ob_get_clean();
     require "template.php";
 ?>
