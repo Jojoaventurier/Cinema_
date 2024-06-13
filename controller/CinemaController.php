@@ -24,11 +24,10 @@ class CinemaController {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
             SELECT g.id_genre, libelle, COUNT(fg.id_film) as compte 
-            FROM genre g, film_genres fg
-            WHERE g.id_genre = fg.id_genre
+            FROM genre g 
+            LEFT JOIN film_genres fg ON g.id_genre = fg.id_genre
             GROUP BY g.id_genre
             ORDER BY libelle
-            
         ");
 
         require "view/listeGenres.php";

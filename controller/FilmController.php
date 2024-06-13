@@ -14,8 +14,9 @@ public function listeFilms() {
     $pdo = Connect::seConnecter();
     $requete = $pdo->query("
         SELECT f.id_film, titre, YEAR(anneeSortieFrance) as 'year', CONCAT(prenom, ' ', nom) as 'realisateur', f.id_realisateur
-        FROM film f, realisateur re, personne p
-        WHERE f.id_realisateur = re.id_realisateur
+        FROM film f
+        LEFT JOIN realisateur re ON f.id_realisateur = re.id_realisateur
+        LEFT JOIN personne p ON re.id_personne = p.id_personne
         AND re.id_personne = p.id_personne
     ");
 
@@ -73,9 +74,6 @@ public function detailFilm($id) {
         require "view/ajouterFilm.php";
     }
 
-    // creer fonction 
-    // recupeère les donées de formulaire et on les sanityze
-    // puis fonction d'insertion grave à une requete prépaprée
 
     public function ajouterNouveauFilm() {
 
@@ -98,8 +96,8 @@ public function detailFilm($id) {
 
                 $pdo = Connect::seConnecter();
                 $requeteAjoutFilm = $pdo->prepare("
-                INSERT INTO film (titre)
-                VALUES ('$titre')
+                INSERT INTO film (titre, anneeSortieFrance, duree, synopsis, id_realisateur)
+                VALUES ('$titre', '$anneeSortieFrance', '$minutes', '$synopsis', '$idRealisateur')
                 ");
                 $requeteAjoutFilm->execute();
             }
