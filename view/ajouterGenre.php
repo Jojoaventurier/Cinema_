@@ -3,7 +3,7 @@
     
         <form action="index.php?action=ajouterNouveauGenre" method="post">
         <label for="nomGenre">Nom du genre :</label><br>
-            <input type="text" id="nomNouveauGenre" name="nomNouveauGenre" /><br>
+            <input required="required" type="text" id="nomNouveauGenre" name="nomNouveauGenre" /><br>
         <input type='submit' name='submit'>
     </form>
 
