@@ -36,7 +36,7 @@ public function detailFilm($id) {
     $requeteTitre->execute(["id" => $id]);
 
     $requete = $pdo->prepare("
-        SELECT f.id_film, titre, anneeSortieFrance as 'sortie', duree, prenom, nom, re.id_realisateur, resume 
+        SELECT f.id_film, titre, anneeSortieFrance as 'sortie', CONCAT(FLOOR(duree/60), ' heure(s) et ',ROUND((duree/60 - FLOOR(duree/60)) * 60), ' minute(s)') AS 'durée', prenom, nom, re.id_realisateur, synopsis 
         FROM film f, realisateur re, personne p
         WHERE f.id_realisateur = re.id_realisateur
         AND re.id_personne = p.id_personne 
@@ -80,11 +80,18 @@ public function detailFilm($id) {
     public function afficherNouveauFilm() {
 
             $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $anneeSortieFrance = ($_POST['anneeSortieFrance']);
             $duree = ($_POST['dureeTypeTime']);
-            $resume = filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $Synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $minutes = date('h',strtotime($duree))*60+date('i',strtotime($duree));
+            $idRealisateur = $_POST['realisateur'];
             var_dump($titre);
-           $minutes = date('h',strtotime($duree))*60+date('i',strtotime($duree));
-           var_dump($minutes);
+            var_dump($anneeSortieFrance);
+            var_dump($minutes);
+            var_dump($Synopsis);
+            var_dump($idRealisateur);
+            //$confirmation = "Confirmez-vous l'ajout de l'élément à la base de donnée ?";
+            
         }
 
     

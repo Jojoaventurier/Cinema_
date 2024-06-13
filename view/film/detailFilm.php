@@ -10,6 +10,7 @@ $titreFilm = $requeteTitre->fetch() ?>
         
             <p>Sortie le : <?= $film["sortie"] ?></p>
             <p>Réalisé par <a class='link' href="index.php?action=detailRealisateur&id=<?= $film['id_realisateur']?>"><?= $film["prenom"] . " " . $film["nom"] ?></a></p>
+            <p>Durée : <?= $film["durée"] ?></p>
     
 <?php } 
 
@@ -24,7 +25,7 @@ foreach($requeteCasting->fetchAll() as $casting) { ?>
 <?php } ?>
     </table>
 
-    <p id="resume"><?= $film["resume"] ?>
+    <p id="synopsis"><?= $film["synopsis"] ?>
 
 <?php
 $titre = $titreFilm["titre"];
