@@ -10,8 +10,8 @@
             <input type="date" id="anneeSortieFrance" name="anneeSortieFrance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
         
         <!--Insérer le résumé du film (texte) -->
-        <label for="resume">Résumé du film :</label><br>
-            <textarea id="resume" name="resume" rows="4" cols="50"></textarea><br>
+        <label for="synopsis">Résumé du film :</label><br>
+            <textarea id="synopsis" name="synopsis" rows="4" cols="50"></textarea><br>
         
         <!--choisir la durée du film -->
         <label for="dureeTypeTime">Durée du film :</label><br>
