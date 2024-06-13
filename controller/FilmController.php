@@ -94,22 +94,44 @@ public function detailFilm($id) {
             var_dump($idRealisateur);
             var_dump($_POST);
 
-       /*     if ($_POST["submit"]) {
+            if ($_POST["submit"]) {
 
                 $pdo = Connect::seConnecter();
                 $requeteAjoutFilm = $pdo->prepare("
                 INSERT INTO film (titre)
-                VALUES ($titre)
+                VALUES ('$titre')
                 ");
                 $requeteAjoutFilm->execute();
             }
             //$confirmation = "Confirmez-vous l'ajout de l'élément à la base de donnée ?";
-*/
+
     }
+
+
 
     public function afficherFormulaireGenre() {
         
         require "view/ajouterGenre.php";
+    }
+
+    public function ajouterNouveauGenre() {
+
+        $pdo = Connect::seConnecter();
+
+        $nomNouveauGenre = filter_input(INPUT_POST, 'nomNouveauGenre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        var_dump($nomNouveauGenre);
+        var_dump($_POST);
+
+        if ($_POST["submit"]) {
+
+            $requeteAjoutGenre = $pdo->prepare("
+            INSERT INTO genre (libelle)
+            VALUES ('$nomNouveauGenre')
+            ");
+            $requeteAjoutGenre->execute();
+
+        }
+
     }
 
 

@@ -50,8 +50,10 @@ if (isset($_GET["action"])) {
             $ctrlFilm->afficherFormulaireFilm();break; 
             
             
-
         case "afficherFormulaireGenre" :
+            $ctrlFilm->afficherFormulaireGenre(); break;
+        case "ajouterNouveauGenre":
+            $ctrlFilm->ajouterNouveauGenre(); 
             $ctrlFilm->afficherFormulaireGenre(); break;
 
         default: $ctrlCinema->pageAccueil(); break;
