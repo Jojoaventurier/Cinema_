@@ -11,7 +11,7 @@
         
         <!--Insérer le résumé du film (texte) -->
         <label for="resume">Résumé du film :</label><br>
-            <textarea id="resume" name="resume" rows="4" cols="50">Enter text here...</textarea><br>
+            <textarea id="resume" name="resume" rows="4" cols="50"></textarea><br>
         
         <!--choisir la durée du film -->
         <label for="dureeTypeTime">Durée du film :</label><br>
@@ -27,7 +27,7 @@
                     }
                 ?>
             </select><br>
-        <input type="submit">
+        <input type='submit'>
     </form>
 
 

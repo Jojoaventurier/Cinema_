@@ -79,11 +79,15 @@ public function detailFilm($id) {
 
     public function afficherNouveauFilm() {
 
-        $titre = \htmlspecialchars($_POST['titre']);
+            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $duree = ($_POST['dureeTypeTime']);
+            $resume = filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            var_dump($titre);
+           $minutes = date('h',strtotime($duree))*60+date('i',strtotime($duree));
+           var_dump($minutes);
+        }
 
-        
-
-    }
+    
 
     public function ajouterNouveauFilm() {
 

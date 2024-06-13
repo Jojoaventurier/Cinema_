@@ -46,7 +46,8 @@ if (isset($_GET["action"])) {
             $ctrlFilm->afficherNouveauFilm();
             $ctrlFilm->afficherFormulaireFilm(); break;
         case "ajouterNouveauFilm":
-            $ctrlFilm->ajouterNouveauFilm();
+            $ctrlFilm->ajouterNouveauFilm(); break;
+            $ctrlFilm->afficherNouveauFilm(); break;
 
         case "ajouterActeur":
             $ctrlCinema->afficherFormulaireActeur(); break;
