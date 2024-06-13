@@ -73,8 +73,8 @@ class CinemaController {
         $pdo = Connect::seConnecter();
 
         $nomNouveauGenre = filter_input(INPUT_POST, 'nomNouveauGenre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        var_dump($nomNouveauGenre);
-        var_dump($_POST);
+        //var_dump($nomNouveauGenre);
+        //var_dump($_POST);
 
         if ($_POST["submit"]) {
 
