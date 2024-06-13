@@ -6,58 +6,62 @@ use Model\Connect;
 class FilmController {
 
 
-/**
- * Lister les films
- */
-public function listeFilms() {
+    /**
+     * Lister les films
+     */
+    public function listeFilms() {
 
-    $pdo = Connect::seConnecter();
-    $requete = $pdo->query("
-        SELECT f.id_film, titre, YEAR(anneeSortieFrance) as 'year', CONCAT(prenom, ' ', nom) as 'realisateur', f.id_realisateur
-        FROM film f
-        LEFT JOIN realisateur re ON f.id_realisateur = re.id_realisateur
-        LEFT JOIN personne p ON re.id_personne = p.id_personne
-        AND re.id_personne = p.id_personne
-    ");
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+            SELECT f.id_film, titre, YEAR(anneeSortieFrance) as 'year', CONCAT(prenom, ' ', nom) as 'realisateur', f.id_realisateur
+            FROM film f
+            LEFT JOIN realisateur re ON f.id_realisateur = re.id_realisateur
+            LEFT JOIN personne p ON re.id_personne = p.id_personne
+            AND re.id_personne = p.id_personne
+        ");
 
-    require "view/listeFilms.php";
-}
+        require "view/listeFilms.php";
+    }
 
-/**
- * Détails d'un film
- */
-public function detailFilm($id) {
+    /**
+     * Détails d'un film
+     */
+    public function detailFilm($id) {
 
-    $pdo = Connect::seConnecter();
+        $pdo = Connect::seConnecter();
 
-    $requeteTitre = $pdo->prepare("
-        SELECT titre
-        FROM film
-        WHERE id_film= :id");
-    $requeteTitre->execute(["id" => $id]);
+        $requeteTitre = $pdo->prepare("
+            SELECT titre
+            FROM film
+            WHERE id_film= :id");
+        $requeteTitre->execute(["id" => $id]);
 
-    $requete = $pdo->prepare("
-        SELECT f.id_film, titre, anneeSortieFrance as 'sortie', CONCAT(FLOOR(duree/60), ' heure(s) et ',ROUND((duree/60 - FLOOR(duree/60)) * 60), ' minute(s)') AS 'durée', prenom, nom, re.id_realisateur, synopsis 
-        FROM film f, realisateur re, personne p
-        WHERE f.id_realisateur = re.id_realisateur
-        AND re.id_personne = p.id_personne 
-        AND id_film = :id
-    ");
-    $requete->execute(["id" => $id]);
+        $requete = $pdo->prepare("
+            SELECT f.id_film, titre, anneeSortieFrance as 'sortie', CONCAT(FLOOR(duree/60), ' heure(s) et ',ROUND((duree/60 - FLOOR(duree/60)) * 60), ' minute(s)') AS 'durée', prenom, nom, re.id_realisateur, synopsis 
+            FROM film f, realisateur re, personne p
+            WHERE f.id_realisateur = re.id_realisateur
+            AND re.id_personne = p.id_personne 
+            AND id_film = :id
+        ");
+        $requete->execute(["id" => $id]);
 
-    $requeteCasting = $pdo->prepare("
-        SELECT f.id_film, c.id_acteur, prenom, nom, nomRole
-        FROM personne p, film f, casting c, acteur a, role r
-        WHERE p.id_personne = a.id_personne
-        AND f.id_film = c.id_film
-        AND c.id_acteur = a.id_acteur
-        AND c.id_role = r.id_role
-        AND f.id_film = :id
-    ");
-    $requeteCasting->execute(["id" => $id]);
+        $requeteCasting = $pdo->prepare("
+            SELECT f.id_film, c.id_acteur, prenom, nom, nomRole
+            FROM personne p, film f, casting c, acteur a, role r
+            WHERE p.id_personne = a.id_personne
+            AND f.id_film = c.id_film
+            AND c.id_acteur = a.id_acteur
+            AND c.id_role = r.id_role
+            AND f.id_film = :id
+        ");
+        $requeteCasting->execute(["id" => $id]);
 
-    require "view/film/detailFilm.php";
-}
+        require "view/film/detailFilm.php";
+    }
+
+
+
+
 
     public function afficherFormulaireFilm() {
         $pdo= Connect::seConnecter();
@@ -73,7 +77,6 @@ public function detailFilm($id) {
 
         require "view/ajouterFilm.php";
     }
-
 
     public function ajouterNouveauFilm() {
 
@@ -102,36 +105,7 @@ public function detailFilm($id) {
                 $requeteAjoutFilm->execute();
             }
             //$confirmation = "Confirmez-vous l'ajout de l'élément à la base de donnée ?";
-
     }
-
-
-
-    public function afficherFormulaireGenre() {
-        
-        require "view/ajouterGenre.php";
-    }
-
-    public function ajouterNouveauGenre() {
-
-        $pdo = Connect::seConnecter();
-
-        $nomNouveauGenre = filter_input(INPUT_POST, 'nomNouveauGenre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        var_dump($nomNouveauGenre);
-        var_dump($_POST);
-
-        if ($_POST["submit"]) {
-
-            $requeteAjoutGenre = $pdo->prepare("
-            INSERT INTO genre (libelle)
-            VALUES ('$nomNouveauGenre')
-            ");
-            $requeteAjoutGenre->execute();
-
-        }
-
-    }
-
 
 
 }

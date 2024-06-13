@@ -40,21 +40,28 @@ if (isset($_GET["action"])) {
         case "detailRealisateur" : $ctrlPersonne->detailRealisateur($id); break;
         
 
+        
+
+        case "afficherFormulaireGenre" :
+            $ctrlCinema->afficherFormulaireGenre(); break;
+        case "ajouterNouveauGenre":
+            $ctrlCinema->ajouterNouveauGenre(); 
+            $ctrlCinema->afficherFormulaireGenre(); break;
+
+
         case "afficherFormulaireFilm" :
             $ctrlFilm->afficherFormulaireFilm(); break;
-       /* case "afficherNouveauFilm":
-            $ctrlFilm->afficherNouveauFilm();
-            $ctrlFilm->afficherFormulaireFilm(); break; */
         case "ajouterNouveauFilm":
             $ctrlFilm->ajouterNouveauFilm(); 
             $ctrlFilm->afficherFormulaireFilm();break; 
+
+        case "afficherFormulaireActeur" :
+            $ctrlPersonne->afficherFormulaireActeur(); break;
+        case "ajouterNouvelActeur" :
+            $ctrlPersonne->ajouterNouvelActeur();
+            $ctrlPersonne->afficherFormulaireActeur(); break;
             
             
-        case "afficherFormulaireGenre" :
-            $ctrlFilm->afficherFormulaireGenre(); break;
-        case "ajouterNouveauGenre":
-            $ctrlFilm->ajouterNouveauGenre(); 
-            $ctrlFilm->afficherFormulaireGenre(); break;
 
         default: $ctrlCinema->pageAccueil(); break;
         

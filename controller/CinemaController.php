@@ -63,18 +63,29 @@ class CinemaController {
         require "view/genre/detailGenre.php";
     }
 
-
-
-    public function afficherFormulaireActeur() {
-        $pdo= Connect::seConnecter();
-
-        require "view/ajouterActeur.php";
+    public function afficherFormulaireGenre() {
+        
+        require "view/ajouterGenre.php";
     }
 
-    public function afficherFormulaireRealisateur() {
-        $pdo= Connect::seConnecter();
+    public function ajouterNouveauGenre() {
 
-        require "view/ajouterRealisateur.php";
+        $pdo = Connect::seConnecter();
+
+        $nomNouveauGenre = filter_input(INPUT_POST, 'nomNouveauGenre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        var_dump($nomNouveauGenre);
+        var_dump($_POST);
+
+        if ($_POST["submit"]) {
+
+            $requeteAjoutGenre = $pdo->prepare("
+            INSERT INTO genre (libelle)
+            VALUES ('$nomNouveauGenre')
+            ");
+            $requeteAjoutGenre->execute();
+
+        }
+
     }
 
 
