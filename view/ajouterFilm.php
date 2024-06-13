@@ -27,7 +27,7 @@
                     }
                 ?>
             </select><br>
-        <input type='submit'>
+        <input type='submit' name='submit'>
     </form>
 
 

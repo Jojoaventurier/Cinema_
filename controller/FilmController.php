@@ -82,15 +82,29 @@ public function detailFilm($id) {
             $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $anneeSortieFrance = ($_POST['anneeSortieFrance']);
             $duree = ($_POST['dureeTypeTime']);
-            $Synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $minutes = date('h',strtotime($duree))*60+date('i',strtotime($duree));
             $idRealisateur = $_POST['realisateur'];
+
+
             var_dump($titre);
             var_dump($anneeSortieFrance);
             var_dump($minutes);
-            var_dump($Synopsis);
+            var_dump($synopsis);
             var_dump($idRealisateur);
+            var_dump($_POST);
+
+           /* if ($_POST["submit"]) {
+
+                $pdo = Connect::seConnecter();
+                $requeteAjoutFilm = $pdo->prepare("
+                INSERT INTO film (titre)
+                VALUES ($titre)
+                ");
+                $requeteAjoutFilm->execute();
+            }
             //$confirmation = "Confirmez-vous l'ajout de l'élément à la base de donnée ?";
+*/
             
         }
 
