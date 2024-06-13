@@ -40,7 +40,7 @@ if (isset($_GET["action"])) {
         case "detailRealisateur" : $ctrlPersonne->detailRealisateur($id); break;
         
 
-        case "addFilm" :
+        case "ajouterFilm" :
             $ctrlCinema->afficherFormulaire(); break;
 
         default: $ctrlCinema->pageAccueil(); break;

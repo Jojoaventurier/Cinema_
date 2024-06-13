@@ -15,16 +15,7 @@
     </tbody>
 </table><br> 
 
-
-<div>
-        <h3>Ajouter un film</h3>
-        <!-- form pour ajouter un film à la BDD (attention : le réalisateur doit faire partie de la BDD!) -->
-        <form action="index.php?action=afficherFormulaire" method="POST">
-            
-
-            <input class="boutonAjouter" type="submit">
-        </form> 
-    </div>
+<a class="link bouton" href="index.php?action=ajouterFilm">AJOUTER UN FILM</a>
 
 <?php
 $titre = "Liste des films";
