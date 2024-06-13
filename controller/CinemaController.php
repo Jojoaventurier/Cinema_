@@ -91,12 +91,3 @@ class CinemaController {
 
 }
     
-
-
-
-            
-
-
-
-//une fonction dans le contrôleur qui créé la vue du formulaire
-//une autre fonction qui valide le formulaire

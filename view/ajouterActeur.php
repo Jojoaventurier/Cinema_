@@ -42,6 +42,6 @@
 ?>
 
 
-Faire une requete d'insertion d'une personne, 
-Récupérer l'id grâce à la fonction last insert id de php 
-Faire un insert dans acteur en utilisant la valeur de last insert id pour la clé étrangère id_personne.  
+
+
+  
