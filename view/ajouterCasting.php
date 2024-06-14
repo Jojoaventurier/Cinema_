@@ -29,8 +29,8 @@
                 ?>
         </select><br>
 
-        <label for="acteur">Acteur ou actrice :</label><br>
-        <select name="acteur" id="acteur">    
+        <label for="role">Acteur ou actrice :</label><br>
+        <select name="role" id="role">    
                 <?php
                     // alimenter la liste déroulante avec les rôles
                     foreach($requeteListeRoles->fetchAll() as $role) {
@@ -38,8 +38,6 @@
                     }
                 ?>
         </select><br>
-        
-
         <input type='submit' name='submit'>
 </form>
 

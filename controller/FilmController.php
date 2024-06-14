@@ -134,7 +134,45 @@ class FilmController {
         require "view\ajouterCasting.php";
     }
 
+    public function ajouterNouveauCasting() {
 
-    
+        $film = filter_input(INPUT_POST, 'film');
+        $acteur = filter_input(INPUT_POST, 'acteur');
+        $role = filter_input(INPUT_POST, 'role');
+
+        if($_POST["submit"]) {
+
+            $pdo = Connect::seConnecter();
+
+            $requeteAjoutCasting = $pdo->query("
+                INSERT INTO casting (id_film, id_acteur, id_role)
+                VALUES ('$film', '$acteur', '$role')
+            ");
+        }
+    }
+
+    public function afficherFormulaireRole() {
+        require 'view\ajouterRole.php';
+    }
+
+    public function ajouterNouveauRole() {
+
+        $pdo = Connect::seConnecter();
+
+        $role = filter_input(INPUT_POST, 'nomRole');
+
+        if ($_POST['submit']) { 
+
+            $requeteAjoutRole = $pdo->query("
+                INSERT INTO role (nomRole)
+                VALUES ('$role')
+            ");
+
+        }
+
+    }
+
+
+
 
 }
