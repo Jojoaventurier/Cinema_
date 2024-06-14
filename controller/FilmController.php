@@ -112,13 +112,29 @@ class FilmController {
 
             $pdo = Connect::seConnecter();
     
-            /*$requeteTitre = $pdo->prepare("
+            $requeteListeFilms = $pdo->query("
                 SELECT titre, id_film
                 FROM film
-                WHERE id_film= :id");
-            $requeteTitre->execute(["id" => $id]);*/
+                ");
+            
+
+            $requeteListeActeurs = $pdo->query("
+                SELECT a.id_personne, a.id_acteur, CONCAT(nom, ' ', prenom) as 'acteur'
+                FROM personne p, acteur a
+                WHERE p.id_personne = a.id_personne
+                ORDER BY nom
+            ");
+
+            $requeteListeRoles = $pdo->query("
+                SELECT id_role, nomRole
+                FROM role
+                ORDER BY nomRole
+            ");
 
         require "view\ajouterCasting.php";
     }
+
+
+    
 
 }
