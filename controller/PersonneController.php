@@ -137,11 +137,7 @@ class PersonneController {
     public function afficherFormulaireRealisateur() {
         require "view/ajouterRealisateur.php";
     }
-/*
-Faire une requete d'insertion d'une personne, 
-Récupérer l'id grâce à la fonction last insert id de php 
-Faire un insert dans acteur en utilisant la valeur de last insert id pour la clé étrangère id_personne.
-*/
+
 
     public function ajouterNouveauRealisateur() {
 
@@ -150,8 +146,8 @@ Faire un insert dans acteur en utilisant la valeur de last insert id pour la cl�
         $sexe = $_POST['sexe'];
         $dateNaissance = $_POST['dateNaissance'];
 
-        // var_dump($_POST);
-        /*
+        //var_dump($_POST);
+        
         if ($_POST["submit"]) {
             
             $pdo = Connect::seConnecter();
@@ -161,7 +157,7 @@ Faire un insert dans acteur en utilisant la valeur de last insert id pour la cl�
             ");
             $requeteAjoutPersonne->execute();
         }
-        */
+        
     }
 
 

@@ -65,7 +65,7 @@ if (isset($_GET["action"])) {
             $ctrlPersonne->afficherFormulaireRealisateur(); break;
         case "ajouterNouveauRealisateur" :
             $ctrlPersonne->ajouterNouveauRealisateur();
-            $ctrlPersonne->afficherFormulaireActeur(); break;
+            $ctrlPersonne->afficherFormulaireRealisateur(); break;
             
             
 
