@@ -29,7 +29,7 @@
                 ?>
         </select><br>
 
-        <label for="role">Acteur ou actrice :</label><br>
+        <label for="role">Rôle :</label><br>
         <select name="role" id="role">    
                 <?php
                     // alimenter la liste déroulante avec les rôles

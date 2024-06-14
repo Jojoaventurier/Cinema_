@@ -6,6 +6,7 @@
 use Controller\CinemaController;
 use Controller\PersonneController;
 use Controller\FilmController;
+use Controller\ModificationController;
 
 spl_autoload_register(function ($class_name) {
     include  $class_name . '.php';
@@ -14,6 +15,7 @@ spl_autoload_register(function ($class_name) {
 $ctrlCinema = new CinemaController();
 $ctrlPersonne = new PersonneController();
 $ctrlFilm = new FilmController();
+$ctrlModification = new ModificationController();
 
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
@@ -40,14 +42,11 @@ if (isset($_GET["action"])) {
         case "detailRealisateur" : $ctrlPersonne->detailRealisateur($id); break;
         
 
-        
-
         case "afficherFormulaireGenre" :
             $ctrlCinema->afficherFormulaireGenre(); break;
         case "ajouterNouveauGenre":
             $ctrlCinema->ajouterNouveauGenre(); 
             $ctrlCinema->afficherFormulaireGenre(); break;
-
 
         case "afficherFormulaireFilm" :
             $ctrlFilm->afficherFormulaireFilm(); break;
@@ -67,19 +66,20 @@ if (isset($_GET["action"])) {
             $ctrlPersonne->ajouterNouveauRealisateur();
             $ctrlPersonne->afficherFormulaireRealisateur(); break;
 
-
         case "afficherFormulaireCasting" :
             $ctrlFilm->afficherFormulaireCasting(); break;
         case "ajouterNouveauCasting" :
             $ctrlFilm->ajouterNouveauCasting();
             $ctrlFilm->afficherFormulaireCasting(); break;
 
-
         case "afficherFormulaireRole" :
             $ctrlFilm->afficherFormulaireRole(); break;
         case "ajouterNouveauRole" :
             $ctrlFilm->ajouterNouveauRole();
             $ctrlFilm->afficherFormulaireRole(); break;
+
+        case "modifierFilm" :
+            $ctrlModification->formulaireModifierFilm($id); break;    
 
         
     
