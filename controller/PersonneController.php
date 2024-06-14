@@ -156,8 +156,17 @@ class PersonneController {
                 VALUES ('$nom', '$prenom', '$sexe', '$dateNaissance')
             ");
             $requeteAjoutPersonne->execute();
+
+            $last_id = $pdo->LastInsertId();
+            //var_dump($last_id);
+
+            $requeteAjoutRealisateur = $pdo->prepare("
+                INSERT INTO realisateur (id_personne)
+                VALUES ('$last_id') 
+            ");
+            $requeteAjoutRealisateur->execute();
+
         }
-        
     }
 
 

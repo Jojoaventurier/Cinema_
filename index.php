@@ -66,8 +66,6 @@ if (isset($_GET["action"])) {
         case "ajouterNouveauRealisateur" :
             $ctrlPersonne->ajouterNouveauRealisateur();
             $ctrlPersonne->afficherFormulaireRealisateur(); break;
-            
-            
 
         default: $ctrlCinema->pageAccueil(); break;
         
