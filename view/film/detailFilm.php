@@ -11,7 +11,7 @@ $titreFilm = $requeteTitre->fetch() ?>
     
 <?php } ?>
 <p>
-    <a class='link bouton' href="index.php?action=afficherFormulaireCasting&id=<?= $film['id_film']?>">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
+    <a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
 </p>
 
 <?php
@@ -32,8 +32,6 @@ $titre = $titreFilm["titre"];
 $titre_secondaire = $titreFilm["titre"];
 $contenu = ob_get_clean();
 require "view/template.php";
-
-
 
 
 

@@ -3,6 +3,8 @@
 $acteur = $requete->fetch() ?>
 
 
+<a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ROLE</a>
+
 <p>Né(e) le <?= $acteur['dateNaissance'] ?>
 <table>
     <tbody>

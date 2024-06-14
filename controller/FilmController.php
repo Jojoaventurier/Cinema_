@@ -108,15 +108,15 @@ class FilmController {
     }
 
 
-    public function afficherFormulaireCasting($id) {
+    public function afficherFormulaireCasting() {
 
             $pdo = Connect::seConnecter();
     
-            $requeteTitre = $pdo->prepare("
+            /*$requeteTitre = $pdo->prepare("
                 SELECT titre, id_film
                 FROM film
                 WHERE id_film= :id");
-            $requeteTitre->execute(["id" => $id]);
+            $requeteTitre->execute(["id" => $id]);*/
 
         require "view\ajouterCasting.php";
     }
