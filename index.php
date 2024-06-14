@@ -67,6 +67,10 @@ if (isset($_GET["action"])) {
             $ctrlPersonne->ajouterNouveauRealisateur();
             $ctrlPersonne->afficherFormulaireRealisateur(); break;
 
+
+        case "afficherformulaireCasting" :
+            $ctrlFilm->afficherFormulaireCasting();
+
         default: $ctrlCinema->pageAccueil(); break;
         
     }
