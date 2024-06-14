@@ -1,9 +1,6 @@
 <?php ob_start(); 
 $titreFilm = $requeteTitre->fetch() ?>
 
-
-
-
 <?php
 
     foreach($requete->fetchAll() as $film) { ?>
@@ -13,8 +10,9 @@ $titreFilm = $requeteTitre->fetch() ?>
             <p>Durée : <?= $film["durée"] ?></p>
     
 <?php } ?>
-
-<a class='link bouton' href="index.php?action=ajouterCasting&id<?= $film['id_film']?>">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
+<p>
+    <a class='link bouton' href="index.php?action=afficherFormulaireCasting&id=<?= $film['id_film']?>">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
+</p>
 
 <?php
 foreach($requeteCasting->fetchAll() as $casting) { ?>

@@ -1,29 +1,12 @@
-<?php ob_start(); ?>
+<?php ob_start(); 
+$titreFilm = $requeteTitre->fetch() ?>
 
-    <form action="index.php?action=ajouterNouveauCasting" method="post">
-      
-
-        
-        <label for="realisateur">Sexe</label>
-            <select name="sexe" id="sexe">
-                <?php $el = array( "   ","homme", "femme");
-
-                        alimenterListeDeroulante($el);
-
-                        function alimenterListeDeroulante($array) {
-                            foreach($array as $value) {
-                            echo '<option value="'.strtolower($value).'">' .$value.'</option>';
-                            }
-                        }
-                ?>
-            </select><br>
-        <input type="submit" name="submit">
-    </form>
+<h3><a class='link' href="index.php?action=detailFilm&id=<?=$titreFilm['id_film']?>"><?= $titreFilm["titre"] ?></h3>
 
 
 <?php
-    $titre = "Ajouter un casting";
-    $titre_secondaire = "Ajouter un casting";
+    $titre = "Ajouter un acteur ou actrice au casting";
+    $titre_secondaire = "Ajouter un acteur ou une actrice au casting";
     $contenu = ob_get_clean();
     require "template.php";
 ?>

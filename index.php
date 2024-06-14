@@ -68,7 +68,7 @@ if (isset($_GET["action"])) {
             $ctrlPersonne->afficherFormulaireRealisateur(); break;
 
 
-        case "afficherformulaireCasting" :
+        case "afficherFormulaireCasting" :
             $ctrlFilm->afficherFormulaireCasting($id); break;
 
         default: $ctrlCinema->pageAccueil(); break;
