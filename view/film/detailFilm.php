@@ -12,9 +12,11 @@ $titreFilm = $requeteTitre->fetch() ?>
             <p>Réalisé par <a class='link' href="index.php?action=detailRealisateur&id=<?= $film['id_realisateur']?>"><?= $film["prenom"] . " " . $film["nom"] ?></a></p>
             <p>Durée : <?= $film["durée"] ?></p>
     
-<?php } 
+<?php } ?>
 
+<a class='link bouton' href="index.php?action=ajouterCasting&id<?= $film['id_film']?>">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
 
+<?php
 foreach($requeteCasting->fetchAll() as $casting) { ?>
     
     <table>
