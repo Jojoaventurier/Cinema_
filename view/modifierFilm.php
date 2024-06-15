@@ -11,7 +11,7 @@ $titreFilm = $requeteTitre->fetch() ?>
 
             <p>
                 <label for="realisateur">Réalisateur</label>
-                    <select name="realisateur" id="realisateur">    
+                    <select name="realisateur" id="realisateur" value="<?=$realisateur['id_realisateur']?>">    
                         <?php
                             // alimenter la liste déroulante avec les réalisateurs
                             foreach($requeteListerealisateurs->fetchAll() as $realisateur) {

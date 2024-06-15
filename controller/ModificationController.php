@@ -56,6 +56,4 @@ class ModificationController {
     
         require "view\modifierFilm.php";
     }
-
-
 }
