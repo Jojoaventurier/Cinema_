@@ -62,8 +62,8 @@ class ModificationController {
         $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $dateSortie = filter_input(INPUT_POST, 'anneeSortieFrance');
         $realisateur = filter_input(INPUT_POST, 'realisateur' );
-        $duree = 1;
-        $synopsis = 1;
+        $duree = filter_input(INPUT_POST, 'duree', FILTER_VALIDATE_INT);
+        $synopsis = filter_input(INPUT_POST,'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         var_dump($_POST);
         
@@ -71,7 +71,7 @@ class ModificationController {
 
         $requeteModifierFilm = $pdo->prepare("
             UPDATE film f
-            SET anneeSortieFrance = '$dateSortie', titre='$titre',  
+            SET anneeSortieFrance = '$dateSortie', titre='$titre', duree='$duree', id_realisateur='$realisateur', synopsis='$synopsis' 
             WHERE id_film = :id
         ");
         $requeteModifierFilm->execute(["id" => $id]);

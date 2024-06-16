@@ -34,7 +34,7 @@ $titreFilm = $requeteTitre->fetch() ?>
 
             <p> 
                 <label for="dureeTypeTime">Durée (en minutes) : </label>
-                <input required="required" id="dureeTypeTime" type="text" name="dureeTypeTime" value="<?=$film['duree']?>" /><br>
+                <input required="required" id="duree" type="text" name="duree" value="<?=$film['duree']?>" /><br>
             </p>
     
             <?php } ?>
