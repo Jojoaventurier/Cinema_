@@ -183,6 +183,17 @@ class ModificationController {
         require "view/supprimerActeur.php";
     }
 
+    public function confirmerSuppressionActeur($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requeteSuppressionActeur = $pdo->prepare("
+            DELETE FROM acteur
+            WHERE id_acteur= :id
+        ");
+        $requeteSuppressionActeur->execute(["id" => $id]);
+    }
+
 }
 
     

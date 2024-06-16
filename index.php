@@ -78,6 +78,7 @@ if (isset($_GET["action"])) {
             $ctrlFilm->ajouterNouveauRole();
             $ctrlFilm->afficherFormulaireRole(); break;
 
+
         case "modificationFilm" :
             $ctrlModification->formulaireModifierFilm($id); break;
         case "modifierFilm" : 
@@ -96,8 +97,12 @@ if (isset($_GET["action"])) {
             $ctrlModification->modifierRealisateur($id);
             $ctrlModification->afficherModifierRealisateur($id); break;
 
+
         case "afficherSupprimerActeur" :
             $ctrlModification->afficherSupprimerActeur($id); break;
+        case "confirmerSuppressionActeur" :
+            $ctrlModification->confirmerSuppressionActeur($id);
+            $ctrlPersonne->listeActeurs(); break;
 
 
         default: $ctrlCinema->pageAccueil(); break;
