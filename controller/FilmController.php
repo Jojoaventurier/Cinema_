@@ -31,7 +31,7 @@ class FilmController {
         $pdo = Connect::seConnecter();
 
         $requeteTitre = $pdo->prepare("
-            SELECT titre
+            SELECT titre, id_film
             FROM film
             WHERE id_film= :id");
         $requeteTitre->execute(["id" => $id]);

@@ -9,6 +9,8 @@ $titreFilm = $requeteTitre->fetch() ?>
                 <input required="required" type="date" id="anneeSortieFrance" name="anneeSortieFrance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
             </p>
 
+
+
             <p>
                 <label for="realisateur">Réalisateur</label>
                     <select name="realisateur" id="realisateur" value="<?=$realisateur['id_realisateur']?>">    
@@ -20,6 +22,9 @@ $titreFilm = $requeteTitre->fetch() ?>
                         ?>
                     </select><br>
             </p>
+
+
+
             <p> 
                 <label for="dureeTypeTime">Durée : </label>
                 <input required="required" id="dureeTypeTime" type="time" name="dureeTypeTime" value="durée" /><br>
@@ -29,10 +34,8 @@ $titreFilm = $requeteTitre->fetch() ?>
 
 
 <p>
-    <a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
-</p>
-<p> 
-    <a class='link bouton'>SUPPRIMER UN ACTEUR OU UNE ACTRICE DU CASTING</a>
+    <label for="synopsis">Résumé du film :</label><br>  
+    <textarea id="synopsis" name="synopsis" rows="4" cols="50"><?= $film["synopsis"] ?></textarea><br>      
 </p>
 
 <?php
@@ -46,8 +49,14 @@ $titreFilm = $requeteTitre->fetch() ?>
 <?php } ?>
         </table>
 
-    <label for="synopsis">Résumé du film :</label><br>
-        <textarea id="synopsis" name="synopsis" rows="4" cols="50"><?= $film["synopsis"] ?></textarea><br>
+<p>
+    <a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
+</p>
+<p> 
+    <a class='link bouton'>SUPPRIMER UN ACTEUR OU UNE ACTRICE DU CASTING</a>
+</p>
+
+    
     
 
     
