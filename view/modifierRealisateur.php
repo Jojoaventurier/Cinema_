@@ -3,19 +3,19 @@
 $realisateur = $requete->fetch() ?>
 
 
-<form action="index.php?action=modifierActeur&id=<?= $realisateur['id_personne'] ?>" method='post'>
+<form action="index.php?action=modifierRealisateur&id=<?= $realisateur['id_realisateur'] ?>" method='post'>
     <p>
         <label for='prenom'>Prénom : </label>
-            <input type='text' name='prenom' id='prenom' value="<?= $acteur['prenom'] ?>">
+            <input type='text' name='prenom' id='prenom' value="<?= $realisateur['prenom'] ?>">
     </p>
     <p>
         <label for='nom'>Nom : </label>
-            <input type='text' name='nom' id='nom' value="<?= $acteur['nom'] ?>">
+            <input type='text' name='nom' id='nom' value="<?= $realisateur['nom'] ?>">
     </p>
 
     <p>
     <label for="dateNaissance">Date de naissance :</label>
-        <input required="required" type="date" value="<?= $acteur['dateNaissance'] ?>" id="dateNaissance" name="dateNaissance" min='1895-01-01' max="<?= date('Y-m-d');?>" value='<?= $acteur['dateNaissance'] ?>' />
+        <input required="required" type="date" value="<?= $realisateur['dateNaissance'] ?>" id="dateNaissance" name="dateNaissance" min='1895-01-01' max="<?= date('Y-m-d');?>" value='<?= $realisateur['dateNaissance'] ?>' />
     </p>
 
     <input type='submit' name='submit'>

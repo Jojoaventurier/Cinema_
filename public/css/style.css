@@ -69,3 +69,7 @@ li {
     margin: 10px;
 }
 
+.rouge {
+    border-color: red;
+    color : red;
+}

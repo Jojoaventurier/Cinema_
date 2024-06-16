@@ -79,7 +79,7 @@ class ModificationController {
             SELECT a.id_acteur, CONCAT(prenom, ' ', nom) as 'acteur', prenom, nom, dateNaissance, p.id_personne 
             FROM acteur a, personne p
             WHERE a.id_personne = p.id_personne
-            AND id_acteur= :id
+            AND a.id_acteur = :id
         ");
         $requete->execute(["id" => $id]);
 
@@ -112,9 +112,10 @@ class ModificationController {
             $pdo = Connect::seConnecter();
 
         $requeteModificationActeur = $pdo->prepare("
-            UPDATE personne p
-            SET nom = '$nom', prenom ='$prenom', dateNaissance='$dateNaissance'
-            WHERE p.id_personne = :id
+            UPDATE personne p, acteur a
+            SET p.nom = '$nom', p.prenom ='$prenom', p.dateNaissance='$dateNaissance'
+            WHERE p.id_personne = a.id_personne
+            AND a.id_acteur = :id
         ");
         $requeteModificationActeur->execute(["id" => $id]);
         }
@@ -127,7 +128,7 @@ class ModificationController {
         $requete = $pdo->prepare("
             SELECT re.id_realisateur, CONCAT(prenom, ' ', nom) as 'realisateur', prenom, nom, dateNaissance, p.id_personne 
             FROM realisateur re, personne p
-            WHERE a.id_personne = p.id_personne
+            WHERE re.id_personne = p.id_personne
             AND id_realisateur = :id
         ");
         $requete->execute(["id" => $id]);
@@ -156,15 +157,31 @@ class ModificationController {
         if ($_POST["submit"]) {
             $pdo = Connect::seConnecter();
 
-        $requeteModificationActeur = $pdo->prepare("
-            UPDATE personne p
-            SET nom = '$nom', prenom ='$prenom', dateNaissance='$dateNaissance'
-            WHERE p.id_personne = :id
+        $requeteModificationRealisateur = $pdo->prepare("
+            UPDATE personne p, realisateur re
+            SET p.nom = '$nom', p.prenom ='$prenom', p.dateNaissance='$dateNaissance'
+            WHERE p.id_personne = re.id_personne
+            AND re.id_realisateur= :id
         ");
-        $requeteModificationActeur->execute(["id" => $id]);
+        $requeteModificationRealisateur->execute(["id" => $id]);
         }
     }
 
+
+    public function afficherSupprimerActeur($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requete = $pdo->prepare("
+            SELECT CONCAT(prenom, ' ', nom) as 'acteur', a.id_acteur, p.id_personne
+            FROM personne p, acteur a
+            WHERE a.id_personne = p.id_personne
+            AND a.id_acteur = :id
+            ");
+        $requete->execute(["id" => $id]);
+
+        require "view/supprimerActeur.php";
+    }
 
 }
 

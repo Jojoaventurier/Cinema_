@@ -3,7 +3,7 @@
 $acteur = $requete->fetch() ?>
 
 
-<form action="index.php?action=modifierActeur&id=<?= $acteur['id_personne'] ?>" method='post'>
+<form action="index.php?action=modifierActeur&id=<?= $acteur['id_acteur'] ?>" method='post'>
     <p>
         <label for='prenom'>Prénom : </label>
             <input type='text' name='prenom' id='prenom' value="<?= $acteur['prenom'] ?>">
@@ -25,6 +25,7 @@ $acteur = $requete->fetch() ?>
 <p>
     <a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ROLE</a><br>
 </p>
+
 <table>
     <tbody>
         <?php
@@ -38,9 +39,12 @@ $acteur = $requete->fetch() ?>
     </tbody>
 </table>
 
-
+<p>
+    <a class='link bouton rouge' href="index.php?action=afficherSupprimerActeur&id=<?= $acteur['id_acteur']?>">SUPPRIMER LA FICHE</a>
+</p>
 
 <?php
+
 $titre = ' MODIFIER : '. $acteur['acteur'];
 $titre_secondaire = ' MODIFIER : '. $acteur['acteur'];
 $contenu = ob_get_clean();
