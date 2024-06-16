@@ -61,7 +61,7 @@ class ModificationController {
 
         var_dump($_POST);
         $pdo = Connect::seConnecter();
-        $requeteModifierDateSortieFilm = $pdo->prepare("
+        $requeteModifierFilm = $pdo->prepare("
             UPDATE film f
             SET anneeSortieFrance = ':param'
             WHERE id_film = :id
