@@ -5,12 +5,13 @@ $titreFilm = $requeteTitre->fetch() ?>
 
     foreach($requete->fetchAll() as $film) { ?>
         
+        <form action="" method="post">
             <p>Sorti le : <br>
                 <input required="required" type="date" id="anneeSortieFrance" name="anneeSortieFrance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
             </p>
+        </form>
 
-
-
+        <form action="" method="post">
             <p>
                 <label for="realisateur">Réalisateur</label>
                     <select name="realisateur" id="realisateur" value="<?=$realisateur['id_realisateur']?>">    
@@ -22,7 +23,7 @@ $titreFilm = $requeteTitre->fetch() ?>
                         ?>
                     </select><br>
             </p>
-
+        </form>
 
 
             <p> 

@@ -56,4 +56,15 @@ class ModificationController {
     
         require "view\modifierFilm.php";
     }
+
+    public function modifierDateSortieFilm($id, $param) {
+
+        $requeteModifierDateSortieFilm = $pdo->prepare("
+            UPDATE film f
+            SET anneeSortieFrance = '$param'
+            WHERE id_film = :id
+        ");
+        $requeteModifierDateSortieFilm->execute(["id" => $id]);
+
+    }
 }
