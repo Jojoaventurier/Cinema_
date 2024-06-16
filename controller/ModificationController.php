@@ -59,9 +59,9 @@ class ModificationController {
 
     public function modifierFilm($id) {
 
-        $titre = 1;
-        $dateSortie = 1;
-        $realisateur = 1;
+        $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $dateSortie = filter_input(INPUT_POST, 'anneeSortieFrance');
+        $realisateur = filter_input(INPUT_POST, 'realisateur' );
         $duree = 1;
         $synopsis = 1;
 
@@ -69,10 +69,11 @@ class ModificationController {
         
         $pdo = Connect::seConnecter();
 
-        /*$requeteModifierFilm = $pdo->prepare("
+        $requeteModifierFilm = $pdo->prepare("
             UPDATE film f
-            SET anneeSortieFrance = $dateSortie, 
+            SET anneeSortieFrance = '$dateSortie', titre='$titre',  
             WHERE id_film = :id
-        ");*/
+        ");
+        $requeteModifierFilm->execute(["id" => $id]);
     }
 }

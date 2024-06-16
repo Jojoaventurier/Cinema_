@@ -19,7 +19,6 @@ $ctrlModification = new ModificationController();
 
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
-$param = (isset($_GET["param"])) ? $_GET["param"] : null;
 
 
 // $type = (isset($_GET["type])) ? $_GET["type"] : null;

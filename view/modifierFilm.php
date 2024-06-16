@@ -6,9 +6,15 @@ $titreFilm = $requeteTitre->fetch() ?>
     foreach($requete->fetchAll() as $film) { ?>
         
         <form id="formulaireModification" action="index.php?action=modifierFilm&id=<?= $film['id_film'] ?>" method="post">
-            <label for="anneeSortieFrance">Sortie française le :</label>
+            
+        
+        <label for='titre'>Titre du film :</label>
+            <input required type='text' name='titre' value='<?= $film['titre'] ?>'><br>
+
+
+        <label for="anneeSortieFrance">Sortie française le :</label>
                 <input required="required" type="date" value="<?= $film['sortie'] ?>" id="anneeSortieFrance" name="anneeSortieFrance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
-            </p>
+            
         
 
         
