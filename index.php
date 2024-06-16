@@ -86,9 +86,11 @@ if (isset($_GET["action"])) {
 
         case "afficherModifierActeur" : 
             $ctrlModification->afficherModifierActeur($id); break;
-                
-            
-    
+        case "modifierActeur" :
+            $ctrlModification->modifierActeur($id);
+            $ctrlModification->afficherModifierActeur($id); break;
+
+
         default: $ctrlCinema->pageAccueil(); break;
         
     }

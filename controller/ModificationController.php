@@ -96,12 +96,14 @@ class ModificationController {
     }
 
 
-    
+
     public function modifierActeur($id) {
 
         $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $dateNaissance = filter_input(INPUT_POST, 'dateNaissance');
+
+        var_dump($_POST);
 
     }
 
