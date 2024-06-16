@@ -19,6 +19,7 @@ $ctrlModification = new ModificationController();
 
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+$param = (isset($_GET["param"])) ? $_GET["param"] : null;
 
 
 // $type = (isset($_GET["type])) ? $_GET["type"] : null;
@@ -79,9 +80,12 @@ if (isset($_GET["action"])) {
             $ctrlFilm->afficherFormulaireRole(); break;
 
         case "modifierFilm" :
-            $ctrlModification->formulaireModifierFilm($id); break;    
-
-        
+            $ctrlModification->formulaireModifierFilm($id); break;
+        case "modifierDateSortieFilm" : 
+            $ctrlModification->modifierDateSortieFilm($id);     
+            $ctrlModification->formulaireModifierFilm($id); break;
+                
+            
     
         default: $ctrlCinema->pageAccueil(); break;
         

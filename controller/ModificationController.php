@@ -10,13 +10,13 @@ class ModificationController {
         $pdo = Connect::seConnecter();
 
         $requeteTitre = $pdo->prepare("
-            SELECT titre
+            SELECT titre, id_film
             FROM film
             WHERE id_film= :id");
         $requeteTitre->execute(["id" => $id]);
 
         $requete = $pdo->prepare("
-            SELECT f.id_film, titre, anneeSortieFrance as 'sortie', CONCAT(FLOOR(duree/60), ' heure(s) et ',ROUND((duree/60 - FLOOR(duree/60)) * 60), ' minute(s)') AS 'durée', prenom, nom, re.id_realisateur, synopsis 
+            SELECT f.id_film, titre, anneeSortieFrance as 'sortie', CONCAT(FLOOR(duree/60), ' heure(s) et ',ROUND((duree/60 - FLOOR(duree/60)) * 60), ' minute(s)') AS 'durée', CONCAT(prenom, ' ', nom) as 'realisateur', re.id_realisateur, synopsis, duree 
             FROM film f, realisateur re, personne p
             WHERE f.id_realisateur = re.id_realisateur
             AND re.id_personne = p.id_personne 
@@ -57,14 +57,16 @@ class ModificationController {
         require "view\modifierFilm.php";
     }
 
-    public function modifierDateSortieFilm($id, $param) {
+    public function modifierDateSortieFilm($id) {
 
+        var_dump($_POST);
+        $pdo = Connect::seConnecter();
         $requeteModifierDateSortieFilm = $pdo->prepare("
             UPDATE film f
-            SET anneeSortieFrance = '$param'
+            SET anneeSortieFrance = ':param'
             WHERE id_film = :id
         ");
-        $requeteModifierDateSortieFilm->execute(["id" => $id]);
+        //$requeteModifierDateSortieFilm->execute(["id" => $id, "param" => $param]);
 
     }
 }
