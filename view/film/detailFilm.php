@@ -3,7 +3,7 @@ $titreFilm = $requeteTitre->fetch() ?>
 
 
 
-<a class='link bouton' href="index.php?action=modifierFilm&id=<?=$titreFilm['id_film']?>">MODIFIER LE FILM</a>
+<a class='link bouton' href="index.php?action=modificationFilm&id=<?=$titreFilm['id_film']?>">MODIFIER LE FILM</a>
                 
 <?php
     foreach($requete->fetchAll() as $film) { ?>

@@ -79,10 +79,10 @@ if (isset($_GET["action"])) {
             $ctrlFilm->ajouterNouveauRole();
             $ctrlFilm->afficherFormulaireRole(); break;
 
-        case "modifierFilm" :
+        case "modificationFilm" :
             $ctrlModification->formulaireModifierFilm($id); break;
-        case "modifierDateSortieFilm" : 
-            $ctrlModification->modifierDateSortieFilm($id);     
+        case "modifierFilm" : 
+            $ctrlModification->modifierFilm($id);     
             $ctrlModification->formulaireModifierFilm($id); break;
                 
             
