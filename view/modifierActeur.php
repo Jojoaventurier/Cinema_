@@ -2,11 +2,10 @@
 
 $acteur = $requete->fetch() ?>
 
+<p>Né(e) le <?= $acteur['dateNaissance'] ?>
 
 <a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ROLE</a>
-<a class='link bouton' href="index.php?action=afficherModifierActeur">MODIFIER LES INFORMATIONS</a>
 
-<p>Né(e) le <?= $acteur['dateNaissance'] ?>
 <table>
     <tbody>
         <?php
@@ -23,7 +22,7 @@ $acteur = $requete->fetch() ?>
 
 
 <?php
-$titre = $acteur['acteur'];
-$titre_secondaire = $acteur['acteur'];
+$titre = ' MODIFIER : '. $acteur['acteur'];
+$titre_secondaire = ' MODIFIER : '. $acteur['acteur'];
 $contenu = ob_get_clean();
 require "view/template.php";

@@ -83,6 +83,9 @@ if (isset($_GET["action"])) {
         case "modifierFilm" : 
             $ctrlModification->modifierFilm($id);     
             $ctrlModification->formulaireModifierFilm($id); break;
+
+        case "afficherModifierActeur" : 
+            $ctrlModification->afficherModifierActeur($id); break;
                 
             
     

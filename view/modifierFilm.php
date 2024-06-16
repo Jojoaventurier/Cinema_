@@ -1,4 +1,4 @@
-<?php ob_start(); 
+<?php ob_start();
 $titreFilm = $requeteTitre->fetch() ?>
 
 <?php
@@ -33,7 +33,7 @@ $titreFilm = $requeteTitre->fetch() ?>
 
 
             <p> 
-                <label for="dureeTypeTime">Durée (en minutes) : </label>
+                <label for="duree">Durée (en minutes) : </label>
                 <input required="required" id="duree" type="text" name="duree" value="<?=$film['duree']?>" /><br>
             </p>
     

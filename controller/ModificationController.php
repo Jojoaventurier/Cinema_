@@ -35,18 +35,6 @@ class ModificationController {
         ");
         $requeteCasting->execute(["id" => $id]);
 
-        $requeteListeActeurs = $pdo->query("
-                SELECT a.id_personne, a.id_acteur, CONCAT(nom, ' ', prenom) as 'acteur'
-                FROM personne p, acteur a
-                WHERE p.id_personne = a.id_personne
-                ORDER BY nom
-            ");
-
-        $requeteListeRoles = $pdo->query("
-            SELECT id_role, nomRole
-            FROM role
-            ORDER BY nomRole
-        ");
 
         $requeteListerealisateurs = $pdo->query("
         SELECT id_realisateur, CONCAT(prenom, ' ', nom) as 'realisateur'
@@ -76,4 +64,48 @@ class ModificationController {
         ");
         $requeteModifierFilm->execute(["id" => $id]);
     }
+
+
+
+
+    public function afficherModifierActeur($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requete = $pdo->prepare("
+            SELECT a.id_acteur, CONCAT(prenom, ' ', nom) as 'acteur', prenom, nom, dateNaissance 
+            FROM acteur a, personne p
+            WHERE a.id_personne = p.id_personne
+            AND id_acteur= :id
+        ");
+        $requete->execute(["id" => $id]);
+
+        $requeteRoles = $pdo->prepare("
+            SELECT a.id_acteur, titre, nomRole, YEAR(anneeSortieFrance) AS sortie, f.id_film
+            FROM personne p, acteur a, film f, casting c, role r
+            WHERE p.id_personne = a.id_personne
+            AND a.id_acteur = c.id_acteur
+            AND f.id_film = c.id_film
+            AND c.id_role = r.id_role
+            AND a.id_acteur = :id
+            ORDER BY sortie
+        ");
+        $requeteRoles->execute(["id" => $id]);
+
+        require "view/modifierActeur.php";
+    }
+
+
+    
+    public function modifierActeur($id) {
+
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $dateNaissance = filter_input(INPUT_POST, 'dateNaissance');
+
+    }
+
+
 }
+
+    
