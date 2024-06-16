@@ -3,7 +3,7 @@
 $acteur = $requete->fetch() ?>
 
 
-<form action="index.php?action=modifierActeur&id=<?= $acteur['id_acteur'] ?>" method=post>
+<form action="index.php?action=modifierActeur&id=<?= $acteur['id_personne'] ?>" method='post'>
     <p>
         <label for='prenom'>Prénom : </label>
             <input type='text' name='prenom' id='prenom' value="<?= $acteur['prenom'] ?>">

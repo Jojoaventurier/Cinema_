@@ -54,15 +54,18 @@ class ModificationController {
         $synopsis = filter_input(INPUT_POST,'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         //var_dump($_POST);
-        
-        $pdo = Connect::seConnecter();
 
-        $requeteModifierFilm = $pdo->prepare("
-            UPDATE film f
-            SET anneeSortieFrance = '$dateSortie', titre='$titre', duree='$duree', id_realisateur='$realisateur', synopsis='$synopsis' 
-            WHERE id_film = :id
-        ");
-        $requeteModifierFilm->execute(["id" => $id]);
+        if ($_POST["submit"]) {
+        
+            $pdo = Connect::seConnecter();
+
+            $requeteModifierFilm = $pdo->prepare("
+                UPDATE film f
+                SET anneeSortieFrance = '$dateSortie', titre='$titre', duree='$duree', id_realisateur='$realisateur', synopsis='$synopsis' 
+                WHERE id_film = :id
+            ");
+            $requeteModifierFilm->execute(["id" => $id]);
+        }
     }
 
 
@@ -73,7 +76,7 @@ class ModificationController {
         $pdo = Connect::seConnecter();
 
         $requete = $pdo->prepare("
-            SELECT a.id_acteur, CONCAT(prenom, ' ', nom) as 'acteur', prenom, nom, dateNaissance 
+            SELECT a.id_acteur, CONCAT(prenom, ' ', nom) as 'acteur', prenom, nom, dateNaissance, p.id_personne 
             FROM acteur a, personne p
             WHERE a.id_personne = p.id_personne
             AND id_acteur= :id
@@ -103,8 +106,18 @@ class ModificationController {
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $dateNaissance = filter_input(INPUT_POST, 'dateNaissance');
 
-        var_dump($_POST);
+        //var_dump($_POST);
 
+        if ($_POST["submit"]) {
+            $pdo = Connect::seConnecter();
+
+        $requeteModificationActeur = $pdo->prepare("
+            UPDATE personne p
+            SET nom = '$nom', prenom ='$prenom', dateNaissance='$dateNaissance'
+            WHERE p.id_personne = :id
+        ");
+        $requeteModificationActeur->execute(["id" => $id]);
+        }
     }
 
 
