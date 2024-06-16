@@ -65,7 +65,7 @@ class ModificationController {
         $duree = filter_input(INPUT_POST, 'duree', FILTER_VALIDATE_INT);
         $synopsis = filter_input(INPUT_POST,'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        var_dump($_POST);
+        //var_dump($_POST);
         
         $pdo = Connect::seConnecter();
 
