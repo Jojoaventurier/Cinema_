@@ -3,6 +3,9 @@
 $realisateur = $requete->fetch() ?>
 
 
+<a class='link bouton' href="index.php?action=afficherFormulaireFilm">AJOUTER UN FILM</a>
+<a class='link bouton' href="index.php?action=afficherModifierRealisateur&id=<?= $realisateur['id_realisateur'] ?>">MODIFIER LES INFORMATIONS</a>
+
 <p>Né(e) le <?= $realisateur['dateNaissance'] ?>
 <table>
     <tbody>

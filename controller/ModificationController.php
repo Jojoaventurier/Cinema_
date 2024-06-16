@@ -120,6 +120,51 @@ class ModificationController {
         }
     }
 
+    public function afficherModifierRealisateur($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requete = $pdo->prepare("
+            SELECT re.id_realisateur, CONCAT(prenom, ' ', nom) as 'realisateur', prenom, nom, dateNaissance, p.id_personne 
+            FROM realisateur re, personne p
+            WHERE a.id_personne = p.id_personne
+            AND id_realisateur = :id
+        ");
+        $requete->execute(["id" => $id]);
+
+        $requeteFilms = $pdo->prepare("
+            SELECT titre, YEAR(anneeSortieFrance) AS sortie, id_film
+            FROM film f, realisateur re
+            WHERE f.id_realisateur = :id
+            GROUP BY f.id_film
+            ORDER BY sortie DESC
+        ");
+        $requeteFilms->execute(["id" => $id]);
+
+        require "view/modifierRealisateur.php";
+    }
+
+
+    public function modifierRealisateur($id) {
+
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $dateNaissance = filter_input(INPUT_POST, 'dateNaissance');
+
+        //var_dump($_POST);
+
+        if ($_POST["submit"]) {
+            $pdo = Connect::seConnecter();
+
+        $requeteModificationActeur = $pdo->prepare("
+            UPDATE personne p
+            SET nom = '$nom', prenom ='$prenom', dateNaissance='$dateNaissance'
+            WHERE p.id_personne = :id
+        ");
+        $requeteModificationActeur->execute(["id" => $id]);
+        }
+    }
+
 
 }
 
