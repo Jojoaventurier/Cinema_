@@ -3,7 +3,7 @@
 $film = $requete->fetch() ?>
 
 
-<form action="" method='post'>
+<form action="index.php?action=confirmerModifierGenresFilm&id=<?=$film['id_film']?>" method='post'>
 
 
 <?php

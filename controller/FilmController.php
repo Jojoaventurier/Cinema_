@@ -237,6 +237,9 @@ class FilmController {
         ");
 
         require "view/modifierGenresFilm.php";
+    }
 
+    public function confirmerModificationGenresFilm($id) {
+        var_dump($_POST);
     }
 }
