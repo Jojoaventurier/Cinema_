@@ -42,35 +42,36 @@ $titreFilm = $requeteTitre->fetch() ?>
                 <textarea id="synopsis" name="synopsis" rows="4" cols="50"><?= $film["synopsis"] ?></textarea><br>      
             </p>
 
-            <p>
-                <?php 
-                    foreach($requeteGenres->fetchAll() as $genre) { ?>
-
-                    <a class="link" href="index.php?action=detailGenre&id=<?= $genre['id_genre']?>"><?=$genre['libelle']?></a>
-                    
-                <?php  }
-                ?>
-                <a class='link' href="" >Modifier le(s) genre(s)</a>
-            </p>
-
             <input type='submit' name='submit'>
 
         </form>
 
-            <p>
-                <a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
-            </p>
-            
-            <?php
-                foreach($requeteCasting->fetchAll() as $casting) { ?>
+
+        <p>
+            <?php 
+                foreach($requeteGenres->fetchAll() as $genre) { ?>
+
+                <a class="link" href="index.php?action=detailGenre&id=<?= $genre['id_genre']?>"><?=$genre['libelle']?></a>
                 
-                    <table>
-                        <tr>
-                            <td><a class='link' href="index.php?action=detailActeur&id=<?=$casting['id_acteur']?>"><?= $casting["prenom"]. " ". $casting["nom"] ?></a></td>
-                            <td><?= " : ". $casting["nomRole"] ?></td>
-                        </tr>
-            <?php } ?>
-                    </table>
+            <?php  }
+            ?>
+            <a class='link bouton' href="" >Modifier le(s) genre(s)</a>
+        </p>
+
+        <?php
+            foreach($requeteCasting->fetchAll() as $casting) { ?>
+            
+                <table>
+                    <tr>
+                        <td><a class='link' href="index.php?action=detailActeur&id=<?=$casting['id_acteur']?>"><?= $casting["prenom"]. " ". $casting["nom"] ?></a></td>
+                        <td><?= " : ". $casting["nomRole"] ?></td>
+                    </tr>
+        <?php } ?>
+                </table>
+
+        <p>
+            <a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
+        </p>
 
             
 
