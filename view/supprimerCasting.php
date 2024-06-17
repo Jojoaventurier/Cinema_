@@ -1,18 +1,18 @@
 <?php ob_start();
 
-$acteur = $requete->fetch() ?>
+$Casting = $requeteRole->fetch() ?>
 
 
 
-<a class='link bouton' href="index.php?action=confirmerSuppressionActeur&id=<?= $acteur['id_acteur'] ?>">OUI</a>
-<a class='link bouton' href="index.php?action=afficherModifierActeur&id=<?= $acteur['id_acteur'] ?>">NON</a>
+<a class='link bouton' href="index.php?action=confirmerSuppressionActeur&id=<?= $casting['id_acteur'] ?>">OUI</a>
+<a class='link bouton' href="index.php?action=afficherModifierActeur&id=<?= $casting['id_acteur'] ?>">NON</a>
 
 
 
 
 
 <?php
-$titre = 'ETES VOUS SÛR DE VOULOIR SUPPRIMER : ' . $acteur['acteur'] ;
-$titre_secondaire = 'ETES VOUS SÛR DE VOULOIR SUPPRIMER : ' . $acteur['acteur'] ;
+$titre = 'ETES VOUS SÛR DE VOULOIR SUPPRIMER : ' . $casting['nomRole'] . ' DES RÔLES DE : ' .$casting['acteur'];
+$titre_secondaire = 'ETES VOUS SÛR DE VOULOIR SUPPRIMER : ' . $casting['nomRole'] . ' DES RÔLES DE : ' .$casting['acteur'];
 $contenu = ob_get_clean();
 require "view/template.php";

@@ -132,10 +132,10 @@ if (isset($_GET["action"])) {
             $ctrlFilm->listeFilms(); break;
 
         case "afficherSupprimerCasting":
-            $ctrlFilm->afficherSupprimerCasting(); break;
+            $ctrlFilm->afficherSupprimerCasting($id); break;
         case "confirmerSupprimerCasting":
             $ctrlFilm->confirmerSuppressionCasting();
-            $ctrlFilm->listeFilms(); break;
+            $ctrlPersonne->detailActeur($id); break;
 
 
         default: $ctrlCinema->pageAccueil(); break;
