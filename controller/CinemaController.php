@@ -44,7 +44,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
 
-        $requeteGenre = $pdo->prepare("SELECT libelle FROM genre WHERE id_genre= :id");
+        $requeteGenre = $pdo->prepare("SELECT libelle, id_genre FROM genre WHERE id_genre = :id");
         $requeteGenre->execute(["id" => $id]);
 
         $requete = $pdo->prepare("

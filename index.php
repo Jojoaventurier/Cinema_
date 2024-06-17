@@ -96,7 +96,13 @@ if (isset($_GET["action"])) {
         case "modifierRealisateur" :
             $ctrlModification->modifierRealisateur($id);
             $ctrlModification->afficherModifierRealisateur($id); break;
-
+        
+        case "afficherModifierGenre" :
+            $ctrlModification->afficherModifierGenre($id); break;
+        case "modifierGenre" :
+            $ctrlModification->modifierGenre($id);
+            $ctrlModification->afficherModifierGenre($id); break;
+        //case ajouter un film au genre
 
         case "afficherSupprimerActeur" :
             $ctrlModification->afficherSupprimerActeur($id); break;

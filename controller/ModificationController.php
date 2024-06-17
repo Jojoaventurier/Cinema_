@@ -98,8 +98,6 @@ class ModificationController {
         require "view/modifierActeur.php";
     }
 
-
-
     public function modifierActeur($id) {
 
         $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -120,6 +118,8 @@ class ModificationController {
         $requeteModificationActeur->execute(["id" => $id]);
         }
     }
+
+
 
     public function afficherModifierRealisateur($id) {
 
@@ -161,13 +161,48 @@ class ModificationController {
             UPDATE personne p, realisateur re
             SET p.nom = '$nom', p.prenom ='$prenom', p.dateNaissance='$dateNaissance'
             WHERE p.id_personne = re.id_personne
-            AND re.id_realisateur= :id
+            AND re.id_realisateur = :id
         ");
         $requeteModificationRealisateur->execute(["id" => $id]);
         }
     }
 
     
+        public function afficherModifierGenre($id) {
+
+            $pdo = Connect::seConnecter();
+
+            $requete = $pdo->prepare("
+                SELECT libelle, id_genre
+                FROM genre
+                WHERE id_genre = :id
+            ");
+            $requete->execute(["id" => $id]);
+
+            require "view/modifierGenre.php";
+        }
+
+        public function modifierGenre($id) {
+
+            $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if ($_POST['submit']) {
+
+                $pdo = Connect::seConnecter();
+
+                $requeteModificationGenre = $pdo->prepare("
+                    UPDATE genre
+                    SET libelle = '$libelle'
+                    WHERE id_genre = :id
+                ");
+                $requeteModificationGenre->execute(["id" => $id]);
+            }
+        }
+
+
+
+
+
 
     public function afficherSupprimerActeur($id) {
 
@@ -200,6 +235,7 @@ class ModificationController {
         ");
         $requeteSuppressionActeur->execute(["id" => $id]);
     }
+
 
 
 

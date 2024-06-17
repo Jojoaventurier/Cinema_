@@ -2,7 +2,7 @@
  $libelleGenre = $requeteGenre->fetch(); 
 ?>
 
-
+<a class='link bouton' href="index.php?action=afficherModifierGenre&id=<?=$libelleGenre['id_genre']?>">MODIFIER LE GENRE</a>
 
 <h2><?= $libelleGenre["libelle"]; ?></h2>
 
