@@ -56,7 +56,7 @@ class PersonneController {
         $requete->execute(["id" => $id]);
 
         $requeteRoles = $pdo->prepare("
-            SELECT a.id_acteur, titre, nomRole, YEAR(anneeSortieFrance) AS sortie, f.id_film
+            SELECT a.id_acteur, titre, nomRole, YEAR(anneeSortieFrance) AS sortie, f.id_film, r.id_role
             FROM personne p, acteur a, film f, casting c, role r
             WHERE p.id_personne = a.id_personne
             AND a.id_acteur = c.id_acteur

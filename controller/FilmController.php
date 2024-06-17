@@ -182,8 +182,8 @@ class FilmController {
         ");
         $requete->execute(["id" => $id]);
 
-        $requeteRole = $pdo->prepare("
-            SELECT a.id_acteur, titre, nomRole, YEAR(anneeSortieFrance) AS sortie, f.id_film
+        $requeteRoles = $pdo->prepare("
+            SELECT a.id_acteur, titre, nomRole, YEAR(anneeSortieFrance) AS sortie, f.id_film, r.id_role
             FROM personne p, acteur a, film f, casting c, role r
             WHERE p.id_personne = a.id_personne
             AND a.id_acteur = c.id_acteur
@@ -192,17 +192,17 @@ class FilmController {
             AND a.id_acteur = :id
             ORDER BY sortie
         ");
-        $requeteRole->execute(["id" => $id]);
+        $requeteRoles->execute(["id" => $id]);
 
         require "view/supprimerCasting.php";
     }
 
-    public function confirmerSuppressionCasting() {
+    public function confirmerSuppressionCasting($id, $idRrole) {
 
 
-        var_dump($_POST);
+        var_dump($_GET);
 
-        require "view/supprimerCasting.php";
+        
 
     }
 

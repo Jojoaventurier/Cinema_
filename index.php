@@ -19,6 +19,7 @@ $ctrlModification = new ModificationController();
 
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+$idRole = (isset($_GET["idRole"])) ? $_GET["idRole"] : null;
 
 
 // $type = (isset($_GET["type])) ? $_GET["type"] : null;
@@ -131,10 +132,11 @@ if (isset($_GET["action"])) {
             $ctrlModification->confirmerSuppressionFilm($id);
             $ctrlFilm->listeFilms(); break;
 
+            
         case "afficherSupprimerCasting":
-            $ctrlFilm->afficherSupprimerCasting($id); break;
-        case "confirmerSupprimerCasting":
-            $ctrlFilm->confirmerSuppressionCasting();
+            $ctrlFilm->afficherSupprimerCasting($id, $idRole); break;
+        case "confirmerSuppressionCasting":
+            $ctrlFilm->confirmerSuppressionCasting($id, $idRole);
             $ctrlPersonne->detailActeur($id); break;
 
 
