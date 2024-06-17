@@ -115,6 +115,13 @@ if (isset($_GET["action"])) {
         case "confirmerSuppressionRealisateur" :
             $ctrlModification->confirmerSuppressionRealisateur($id);
             $ctrlPersonne->listeRealisateurs(); break;
+        
+        case "afficherSupprimerGenre" :
+            $ctrlModification->afficherSupprimerGenre($id); break;
+        case "confirmerSuppressionGenre" :
+            $ctrlModification->confirmerSuppressionGenre($id);
+            $ctrlCinema->listeGenres(); break;
+
 
         default: $ctrlCinema->pageAccueil(); break;
         

@@ -289,6 +289,32 @@ class ModificationController {
         $requeteSuppressionRealisateur->execute(["id" => $id]);
     }
 
+
+    public function afficherSupprimerGenre($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requete = $pdo->prepare("
+            SELECT libelle, id_genre
+            FROM genre
+            WHERE id_genre = :id
+        ");
+        $requete->execute(["id" => $id]);
+
+        require "view/supprimerGenre.php";
+    }
+
+    public function confirmerSuppressionGenre ($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requeteSuppressionGenre = $pdo->prepare("
+            
+        ");
+        //$requeteSuppressionGenre->execute(['id' => $id]);
+
+    }
+
 }
 
     
