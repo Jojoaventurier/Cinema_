@@ -218,4 +218,11 @@ class FilmController {
         ");
         $requeteSuppressionCasting->execute(["id" => $id, "id_role" => $idRole]);
     }
+
+
+    public function afficherModifierGenresFilm($id) {
+
+        $po = Connect::seConnecter(); 
+
+    }
 }

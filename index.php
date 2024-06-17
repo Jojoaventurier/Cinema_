@@ -143,7 +143,7 @@ if (isset($_GET["action"])) {
         case "afficherModifierGenresFilm" :
             $ctrlFilm->afficherModifierGenresFilm($id); break;
         case "confirmerModifierGenresFilm" :
-            $ctrlFilm->confirmerSuppression($id); break;
+            $ctrlFilm->confirmerModificationGenresFilm($id); break;
 
 
         default: $ctrlCinema->pageAccueil(); break;

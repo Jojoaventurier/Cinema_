@@ -13,9 +13,6 @@ $genre = $requete->fetch() ?>
     <input type='submit' name='submit'>
 </form>
 
-<p>
-    <a class='link bouton rouge' href="index.php?action=afficherSupprimerGenre&id=<?= $genre['id_genre']?>">SUPPRIMER LA FICHE</a>
-</p>
 
 <?php
 

@@ -55,7 +55,7 @@ $titreFilm = $requeteTitre->fetch() ?>
                 
             <?php  }
             ?>
-            <a class='link bouton' href="" >Modifier le(s) genre(s)</a>
+            <a class='link bouton' href="index.php?action=afficherModifierGenresFilm&id=<?= $film['id_film']?>" >Modifier le(s) genre(s)</a>
         </p>
 
         <?php
