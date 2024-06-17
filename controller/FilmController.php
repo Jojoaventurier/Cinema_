@@ -236,6 +236,14 @@ class FilmController {
             FROM genre
         ");
 
+        $requeteListeGenresDuFilm = $pdo->prepare("
+            SELECT libelle, g.id_genre
+            FROM genre g, film_genres fg
+            WHERE g.id_genre = fg.id_genre
+            AND fg.id_film = :id
+        ");
+        $requeteListeGenresDuFilm->execute(["id" => $id]);
+
         require "view/modifierGenresFilm.php";
     }
 

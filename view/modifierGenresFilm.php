@@ -7,13 +7,18 @@ $film = $requete->fetch() ?>
 
 
 <?php
-
-
+$ListeGenresDuFilm = $requeteListeGenresDuFilm->fetchAll();
+var_dump($ListeGenresDuFilm);
 
 
     foreach($listeGenres = $requeteListeGenres->fetchAll() as $genre) {
-            echo '<input  type = "checkbox" value ="'.strtolower($genre['libelle']).'">' .$genre['libelle']. '</input><br>';
-        }  
+
+        //comparer listegenres et listegenresdufilm pour marquer les checkbox avez checked, sinon unchecked
+
+
+
+        echo '<input  type = "checkbox" value ="'.strtolower($genre['libelle']).'">' .$genre['libelle']. '</input><br>';
+    }  
     
 ?>
 
