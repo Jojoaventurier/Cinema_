@@ -222,7 +222,21 @@ class FilmController {
 
     public function afficherModifierGenresFilm($id) {
 
-        $po = Connect::seConnecter(); 
+        $pdo = Connect::seConnecter(); 
+
+        $requete = $pdo->prepare("
+            SELECT titre, id_film
+            FROM film
+            WHERE id_film = :id
+        ");
+        $requete->execute(["id" => $id]);
+
+        $requeteListeGenres = $pdo->query("
+            SELECT libelle, id_genre
+            FROM genre
+        ");
+
+        require "view/modifierGenresFilm.php";
 
     }
 }
