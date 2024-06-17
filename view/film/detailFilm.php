@@ -11,9 +11,17 @@ $titreFilm = $requeteTitre->fetch() ?>
             <p>Sortie le : <?= $film["sortie"] ?></p>
             <p>Réalisé par <a class='link' href="index.php?action=detailRealisateur&id=<?= $film['id_realisateur']?>"><?= $film["prenom"] . " " . $film["nom"] ?></a></p>
             <p>Durée : <?= $film["durée"] ?></p>
-    
 <?php } ?>
 
+<p>
+    <?php 
+        foreach($requeteGenres->fetchAll() as $genre) { ?>
+
+        <a class="link" href="index.php?action=detailGenre&id=<?= $genre['id_genre']?>"><?=$genre['libelle']?></a>
+        
+    <?php  }
+    ?>
+</p>
 <?php
 foreach($requeteCasting->fetchAll() as $casting) { ?>
     
