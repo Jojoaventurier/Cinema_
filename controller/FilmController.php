@@ -197,13 +197,17 @@ class FilmController {
         require "view/supprimerCasting.php";
     }
 
-    public function confirmerSuppressionCasting($id, $idRrole) {
+    public function confirmerSuppressionCasting($id,$idRole) {
 
-
-        var_dump($_GET);
-
+        //$idRole = $_GET['idRole'];
+        $pdo = Connect::seConnecter();
         
-
+        $requeteSuppressionCasting = $pdo->prepare("
+            DELETE FROM casting
+            WHERE id_film = :id
+            AND id_role = :id_role
+        ");
+        $requeteSuppressionCasting->execute(["id" => $id, "id_role" => $idRole]);
     }
 
 

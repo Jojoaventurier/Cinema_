@@ -137,7 +137,7 @@ if (isset($_GET["action"])) {
             $ctrlFilm->afficherSupprimerCasting($id, $idRole); break;
         case "confirmerSuppressionCasting":
             $ctrlFilm->confirmerSuppressionCasting($id, $idRole);
-            $ctrlPersonne->detailActeur($id); break;
+            $ctrlModification->formulaireModifierFilm($id); break;
 
 
         default: $ctrlCinema->pageAccueil(); break;
