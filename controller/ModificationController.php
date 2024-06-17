@@ -187,9 +187,15 @@ class ModificationController {
 
         $pdo = Connect::seConnecter();
 
+        $requeteSupressionCasting = $pdo->prepare("
+            DELETE FROM casting
+            WHERE id_acteur = :id
+        ");
+        $requeteSupressionCasting->execute(["id" => $id]);
+
         $requeteSuppressionActeur = $pdo->prepare("
             DELETE FROM acteur
-            WHERE id_acteur= :id
+            WHERE id_acteur = :id
         ");
         $requeteSuppressionActeur->execute(["id" => $id]);
     }
