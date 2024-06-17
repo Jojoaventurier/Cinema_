@@ -37,6 +37,10 @@ $realisateur = $requete->fetch() ?>
     </tbody>
 </table>
 
+<p>
+    <a class='link bouton rouge' href="index.php?action=afficherSupprimerRealisateur&id=<?= $realisateur['id_realisateur']?>">SUPPRIMER LA FICHE</a>
+</p>
+
 
 
 <?php

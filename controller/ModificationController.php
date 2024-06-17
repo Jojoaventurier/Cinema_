@@ -167,6 +167,7 @@ class ModificationController {
         }
     }
 
+    
 
     public function afficherSupprimerActeur($id) {
 
@@ -198,6 +199,42 @@ class ModificationController {
             WHERE id_acteur = :id
         ");
         $requeteSuppressionActeur->execute(["id" => $id]);
+    }
+
+
+
+
+    public function afficherSupprimerRealisateur($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requete = $pdo->prepare("
+            SELECT CONCAT(prenom, ' ', nom) as 'realisateur', re.id_realisateur, p.id_personne
+            FROM personne p, realisateur re
+            WHERE re.id_personne = p.id_personne
+            AND re.id_Realisateur = :id
+            ");
+        $requete->execute(["id" => $id]);
+
+        require "view/supprimerRealisateur.php";
+    }
+
+    public function confirmerSuppressionRealisateur($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requeteSupressionFilm = $pdo->prepare("
+            DELETE FROM casting c, film f
+            WHERE c.id_film = f.id_film
+            AND id_realisateur = :id
+        ");
+        $requeteSupressionFilm->execute(["id" => $id]); 
+
+        $requeteSuppressionRealisateur = $pdo->prepare("
+            DELETE FROM realisateur
+            WHERE id_realisateur = :id
+        ");
+        $requeteSuppressionRealisateur->execute(["id" => $id]);
     }
 
 }
