@@ -223,13 +223,29 @@ class ModificationController {
 
         $pdo = Connect::seConnecter();
 
-        $requeteSupressionFilm = $pdo->prepare("
-            DELETE FROM casting c, film f
-            WHERE c.id_film = f.id_film
-            AND id_realisateur = :id
+        $requeteSupressionCasting = $pdo->prepare("
+            DELETE c.*
+            FROM casting c
+            INNER JOIN film f ON c.id_film = f.id_film
+            WHERE id_realisateur = :id
         ");
-        $requeteSupressionFilm->execute(["id" => $id]); 
+        $requeteSupressionCasting->execute(["id" => $id]); 
 
+        $requeteSuppressionGenre = $pdo->prepare ("
+            DELETE fg.* 
+            FROM film_genres fg
+            INNER JOIN film f ON f.id_film = fg.id_film
+            WHERE id_realisateur = :id
+        ");
+        $requeteSuppressionGenre->execute(["id" => $id]);
+
+        $requeteSuppressionFilm = $pdo->prepare("
+            DELETE FROM film
+            WHERE id_realisateur = :id
+        ");
+        $requeteSuppressionFilm->execute(["id" => $id]);
+
+    
         $requeteSuppressionRealisateur = $pdo->prepare("
             DELETE FROM realisateur
             WHERE id_realisateur = :id
