@@ -13,7 +13,7 @@ var_dump($ListeGenresDuFilm);
 
     foreach($listeGenres = $requeteListeGenres->fetchAll() as $genre) {
 
-        //comparer listegenres et listegenresdufilm pour marquer les checkbox avez checked, sinon unchecked
+        //comparer $listegenres et $listegenresdufilm pour marquer les checkbox avez checked, sinon unchecked
 
 
 
