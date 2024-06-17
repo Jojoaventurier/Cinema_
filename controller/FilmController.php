@@ -209,8 +209,4 @@ class FilmController {
         ");
         $requeteSuppressionCasting->execute(["id" => $id, "id_role" => $idRole]);
     }
-
-
-
-
 }
