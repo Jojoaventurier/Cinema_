@@ -30,8 +30,6 @@ $titreFilm = $requeteTitre->fetch() ?>
                     </select><br>
             </p>
         
-
-
             <p> 
                 <label for="duree">Durée (en minutes) : </label>
                 <input required="required" id="duree" type="text" name="duree" value="<?=$film['duree']?>" /><br>
@@ -42,6 +40,17 @@ $titreFilm = $requeteTitre->fetch() ?>
             <p>
                 <label for="synopsis">Résumé du film :</label><br>  
                 <textarea id="synopsis" name="synopsis" rows="4" cols="50"><?= $film["synopsis"] ?></textarea><br>      
+            </p>
+
+            <p>
+                <?php 
+                    foreach($requeteGenres->fetchAll() as $genre) { ?>
+
+                    <a class="link" href="index.php?action=detailGenre&id=<?= $genre['id_genre']?>"><?=$genre['libelle']?></a>
+                    
+                <?php  }
+                ?>
+                <a class='link' href="" >Modifier le(s) genre(s)</a>
             </p>
 
             <input type='submit' name='submit'>

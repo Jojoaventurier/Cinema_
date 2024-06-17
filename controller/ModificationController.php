@@ -35,6 +35,15 @@ class ModificationController {
         ");
         $requeteCasting->execute(["id" => $id]);
 
+        $requeteGenres = $pdo->prepare("
+            SELECT libelle, g.id_genre
+            FROM film f, genre g, film_genres fg
+            WHERE f.id_film = fg.id_film
+            AND g.id_genre = fg.id_genre
+            AND f.id_film = :id
+        ");
+        $requeteGenres->execute(["id" => $id]);
+
 
         $requeteListerealisateurs = $pdo->query("
         SELECT id_realisateur, CONCAT(prenom, ' ', nom) as 'realisateur'

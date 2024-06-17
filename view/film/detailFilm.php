@@ -22,6 +22,7 @@ $titreFilm = $requeteTitre->fetch() ?>
     <?php  }
     ?>
 </p>
+
 <?php
 foreach($requeteCasting->fetchAll() as $casting) { ?>
     
