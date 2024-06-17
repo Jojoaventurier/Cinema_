@@ -51,9 +51,7 @@ $titreFilm = $requeteTitre->fetch() ?>
             <p>
                 <a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ACTEUR OU UNE ACTRICE AU CASTING</a>
             </p>
-            <p> 
-                <a class='link bouton'>SUPPRIMER UN ACTEUR OU UNE ACTRICE DU CASTING</a>
-            </p>
+            
             <?php
                 foreach($requeteCasting->fetchAll() as $casting) { ?>
                 

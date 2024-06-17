@@ -167,8 +167,41 @@ class FilmController {
                 INSERT INTO role (nomRole)
                 VALUES ('$role')
             ");
-
         }
+    }
+
+    public function afficherSupprimerCasting() {
+
+        $pdo = Connect::seConnecter();
+    
+        $requeteListeFilms = $pdo->query("
+            SELECT titre, id_film
+            FROM film
+            ");
+        
+
+        $requeteListeActeurs = $pdo->query("
+            SELECT a.id_personne, a.id_acteur, CONCAT(nom, ' ', prenom) as 'acteur'
+            FROM personne p, acteur a
+            WHERE p.id_personne = a.id_personne
+            ORDER BY nom
+        ");
+
+        $requeteListeRoles = $pdo->query("
+            SELECT id_role, nomRole
+            FROM role
+            ORDER BY nomRole
+        ");
+
+        require "view/modifierCasting.php";
+    }
+
+    public function confirmerSuppressionCasting() {
+
+
+        var_dump($_POST);
+
+        require "view/supprimerCasting.php";
 
     }
 

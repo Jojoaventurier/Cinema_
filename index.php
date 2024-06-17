@@ -131,6 +131,12 @@ if (isset($_GET["action"])) {
             $ctrlModification->confirmerSuppressionFilm($id);
             $ctrlFilm->listeFilms(); break;
 
+        case "afficherSupprimerCasting":
+            $ctrlFilm->afficherSupprimerCasting(); break;
+        case "confirmerSupprimerCasting":
+            $ctrlFilm->confirmerSuppressionCasting();
+            $ctrlFilm->listeFilms(); break;
+
 
         default: $ctrlCinema->pageAccueil(); break;
         

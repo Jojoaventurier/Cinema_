@@ -34,6 +34,7 @@ $acteur = $requete->fetch() ?>
                     <td><a class='link' href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></td>
                     <td>(<?= $film["sortie"] ?>)</td>
                     <td><?= $film["nomRole"] ?></td>
+                    <td><a class='link'>Supprimer le rôle</a></td>
                 </tr>
         <?php } ?>
     </tbody>

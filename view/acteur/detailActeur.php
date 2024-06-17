@@ -2,8 +2,6 @@
 
 $acteur = $requete->fetch() ?>
 
-
-<a class='link bouton' href="index.php?action=afficherFormulaireCasting">AJOUTER UN ROLE</a>
 <a class='link bouton' href="index.php?action=afficherModifierActeur&id=<?= $acteur['id_acteur'] ?>">MODIFIER LES INFORMATIONS</a>
 
 <p>Né(e) le <?= $acteur['dateNaissance'] ?>
