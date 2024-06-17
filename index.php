@@ -40,6 +40,7 @@ if (isset($_GET["action"])) {
         
         case "listeRealisateurs" : $ctrlPersonne->listeRealisateurs(); break;
         case "detailRealisateur" : $ctrlPersonne->detailRealisateur($id); break;
+
         
 
         case "afficherFormulaireGenre" :
@@ -77,6 +78,8 @@ if (isset($_GET["action"])) {
         case "ajouterNouveauRole" :
             $ctrlFilm->ajouterNouveauRole();
             $ctrlFilm->afficherFormulaireRole(); break;
+
+
 
 
         case "modificationFilm" :
@@ -121,6 +124,12 @@ if (isset($_GET["action"])) {
         case "confirmerSuppressionGenre" :
             $ctrlModification->confirmerSuppressionGenre($id);
             $ctrlCinema->listeGenres(); break;
+
+        case "afficherSupprimerFilm" :
+            $ctrlModification->afficherSupprimerFilm($id); break;
+        case "confirmerSuppressionFilm" :
+            $ctrlModification->confirmerSuppressionFilm($id);
+            $ctrlFilm->listeFilms(); break;
 
 
         default: $ctrlCinema->pageAccueil(); break;

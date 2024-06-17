@@ -223,11 +223,11 @@ class ModificationController {
 
         $pdo = Connect::seConnecter();
 
-        $requeteSupressionCasting = $pdo->prepare("
+     /*   $requeteSupressionCasting = $pdo->prepare("
             DELETE FROM casting
             WHERE id_acteur = :id
         ");
-        $requeteSupressionCasting->execute(["id" => $id]);
+        $requeteSupressionCasting->execute(["id" => $id]); */
 
         $requeteSuppressionActeur = $pdo->prepare("
             DELETE FROM acteur
@@ -259,7 +259,7 @@ class ModificationController {
 
         $pdo = Connect::seConnecter();
 
-        $requeteSupressionCasting = $pdo->prepare("
+        /*$requeteSupressionCasting = $pdo->prepare("
             DELETE c.*
             FROM casting c
             INNER JOIN film f ON c.id_film = f.id_film
@@ -279,14 +279,14 @@ class ModificationController {
             DELETE FROM film
             WHERE id_realisateur = :id
         ");
-        $requeteSuppressionFilm->execute(["id" => $id]);
+        $requeteSuppressionFilm->execute(["id" => $id]); */
 
     
         $requeteSuppressionRealisateur = $pdo->prepare("
             DELETE FROM realisateur
             WHERE id_realisateur = :id
         ");
-        $requeteSuppressionRealisateur->execute(["id" => $id]);
+        $requeteSuppressionRealisateur->execute(["id" => $id]); // on peut utiliser DELETE ON CASCADE dans la configuration des tables, qui permet de gérer automatiquement les suppressions de données relatives entre plusieurs tables reliées par une contrainte de clé étrangère (Foreign Key) en cascade.
     }
 
 
@@ -309,9 +309,37 @@ class ModificationController {
         $pdo = Connect::seConnecter();
 
         $requeteSuppressionGenre = $pdo->prepare("
-            
+            DELETE FROM genre
+            WHERE id_genre = :id
         ");
-        //$requeteSuppressionGenre->execute(['id' => $id]);
+        $requeteSuppressionGenre->execute(['id' => $id]);
+
+    }
+
+
+    public function afficherSupprimerFilm($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requete = $pdo->prepare("
+            SELECT titre, id_film
+            FROM film
+            WHERE id_film = :id
+        ");
+        $requete->execute(["id" => $id]);
+
+        require "view/supprimerFilm.php";
+    }
+
+    public function confirmerSuppressionFilm ($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requeteSuppressionGenre = $pdo->prepare("
+            DELETE FROM film
+            WHERE id_film = :id
+        ");
+        $requeteSuppressionGenre->execute(['id' => $id]);
 
     }
 

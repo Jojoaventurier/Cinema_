@@ -67,6 +67,10 @@ $titreFilm = $requeteTitre->fetch() ?>
 
             
 
+<p>
+    <a class='link bouton rouge' href="index.php?action=afficherSupprimerFilm&id=<?= $titreFilm['id_film']?>">SUPPRIMER LA FICHE</a>
+</p>
+
     
     
 

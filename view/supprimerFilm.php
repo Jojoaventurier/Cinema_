@@ -1,18 +1,16 @@
 <?php ob_start();
 
-$realisateur = $requete->fetch() ?>
+$film = $requete->fetch() ?>
 
 
 
-<a class='link bouton' href="index.php?action=confirmerSuppressionRealisateur&id=<?= $realisateur['id_realisateur'] ?>">OUI</a>
-<a class='link bouton' href="index.php?action=afficherModifierRealisateur&id=<?= $realisateur['id_realisateur'] ?>">NON</a>
-
-
+<a class='link bouton' href="index.php?action=confirmerSuppressionFilm&id=<?= $film['id_film'] ?>">OUI</a>
+<a class='link bouton' href="index.php?action=modificationFilm&id=<?= $film['id_film'] ?>">NON</a>
 
 
 
 <?php
-$titre = 'ETES VOUS SÛR DE VOULOIR SUPPRIMER : ' . $realisateur['realisateur'] ;
-$titre_secondaire = 'ETES VOUS SÛR DE VOULOIR SUPPRIMER : ' . $realisateur['realisateur'] ;
+$titre = 'ETES VOUS SÛR DE VOULOIR SUPPRIMER : ' . $film['titre'] ;
+$titre_secondaire = 'ETES VOUS SÛR DE VOULOIR SUPPRIMER : ' . $film['titre'] ;
 $contenu = ob_get_clean();
 require "view/template.php";
