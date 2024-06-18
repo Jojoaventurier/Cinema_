@@ -20,7 +20,7 @@ $ctrlModification = new ModificationController();
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 $idRole = (isset($_GET["idRole"])) ? $_GET["idRole"] : null;
-$idGenre = (isset($_GET["idGenre"])) ? $_GET["idGenre"] : null;
+$idGenre = (isset($_POST['filmGenre'])) ? $_POST['filmGenre'] : array(); 
 
 
 // $type = (isset($_GET["type])) ? $_GET["type"] : null;
