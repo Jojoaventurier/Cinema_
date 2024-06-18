@@ -247,7 +247,18 @@ class FilmController {
         require "view/modifierGenresFilm.php";
     }
 
-    public function confirmerModificationGenresFilm($id) {
+    public function confirmerModificationGenresFilm($id, $idGenre) {
+
+        $idGenre = filter_input(INPUT_POST, 'filmGenre');
+
+        $pdo = Connect::seConnecter();
+
+        $requeteAjoutGenres = $pdo->prepare("
+            INSERT INTO film_genres
+            VALUES ( :id_genre )
+        ");
+        $requeteAjoutGenres->execute(["id" => $id, "id_genre" => $idGenre]);
+
         var_dump($_POST);
     }
 }

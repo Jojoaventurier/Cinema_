@@ -17,7 +17,7 @@ var_dump($ListeGenresDuFilm);
 
 
 
-        echo '<input  type = "checkbox" value ="'.strtolower($genre['libelle']).'">' .$genre['libelle']. '</input><br>';
+        echo '<input name="filmGenre"  type = "checkbox" value ="'.strtolower($genre['id_genre']).'">' .$genre['libelle']. '</input><br>';
     }  
     
 ?>

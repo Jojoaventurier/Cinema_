@@ -20,6 +20,7 @@ $ctrlModification = new ModificationController();
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 $idRole = (isset($_GET["idRole"])) ? $_GET["idRole"] : null;
+$idGenre = (isset($_GET["idGenre"])) ? $_GET["idGenre"] : null;
 
 
 // $type = (isset($_GET["type])) ? $_GET["type"] : null;
@@ -143,7 +144,7 @@ if (isset($_GET["action"])) {
         case "afficherModifierGenresFilm" :
             $ctrlFilm->afficherModifierGenresFilm($id); break;
         case "confirmerModifierGenresFilm" :
-            $ctrlFilm->confirmerModificationGenresFilm($id); 
+            $ctrlFilm->confirmerModificationGenresFilm($id, $idGenre); 
             $ctrlFilm->afficherModifierGenresFilm($id); break;
 
 
