@@ -3,6 +3,7 @@
         <!-- Formulaire d'ajout d'un genre -->
         <form action="index.php?action=ajouterNouveauGenre" method="post">
 
+        <!-- édition du libellé du genre -->
         <label for="nomGenre">Nom du genre :</label><br>
             <input required="required" type="text" id="nomNouveauGenre" name="nomNouveauGenre" /><br>
 
