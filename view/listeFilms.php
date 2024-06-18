@@ -2,6 +2,7 @@
 
 <a class="link bouton" href="index.php?action=afficherFormulaireFilm">AJOUTER UN FILM</a>
 
+<!-- Affiche le nombre total de films enregistrés dans la BDD (table film) -->
 <p> Il y a <?= $requete->rowCount() ?> films</p>
 
 <table>

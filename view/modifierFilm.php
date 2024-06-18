@@ -5,6 +5,7 @@ $titreFilm = $requeteTitre->fetch() ?>
 
     foreach($requete->fetchAll() as $film) { ?>
         
+        <!-- Formulaire de modification des informations d'un film -->
         <form id="formulaireModification" action="index.php?action=modifierFilm&id=<?= $film['id_film'] ?>" method="post">
             
         

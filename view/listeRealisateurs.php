@@ -2,6 +2,7 @@
 
 <a class="link bouton" href="index.php?action=afficherFormulaireRealisateur">AJOUTER UN REALISATEUR/REALISATRICE</a>
 
+<!-- Affiche le nb total de réalisateurs.trices enregistrés en BDD (table realisateur) -->
 <p> Il y a <?= $requete->rowCount() ?> réalisateurs et réalisatrices</p>
 
 <table>
@@ -13,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php 
+        <?php // Récupère et affiche tous les enregistrements de la table réalisateur
             foreach($requete->fetchAll() as $realisateur) { ?>
                 <tr>
                 <td><a class='link' href="index.php?action=detailRealisateur&id=<?=$realisateur['id_realisateur']?>"><?= $realisateur["nom"]. " ". $realisateur["prenom"] ?></a></td>

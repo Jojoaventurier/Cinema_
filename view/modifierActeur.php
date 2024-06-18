@@ -3,19 +3,20 @@
 $acteur = $requete->fetch() ?>
 
 
+<!-- Formulaire pour modifier les informations d'un.e acteur.trice -->
 <form action="index.php?action=modifierActeur&id=<?= $acteur['id_acteur'] ?>" method='post'>
-    <p>
+    <p> <!-- Modifier le prénom -->
         <label for='prenom'>Prénom : </label>
             <input type='text' name='prenom' id='prenom' value="<?= $acteur['prenom'] ?>">
     </p>
-    <p>
+    <p> <!-- Modifier le nom -->
         <label for='nom'>Nom : </label>
             <input type='text' name='nom' id='nom' value="<?= $acteur['nom'] ?>">
     </p>
 
-    <p>
-    <label for="dateNaissance">Date de naissance :</label>
-        <input required="required" type="date" value="<?= $acteur['dateNaissance'] ?>" id="dateNaissance" name="dateNaissance" min='1895-01-01' max="<?= date('Y-m-d');?>" value='<?= $acteur['dateNaissance'] ?>' />
+    <p><!-- Modifier la date de naissance -->
+        <label for="dateNaissance">Date de naissance :</label>
+            <input required="required" type="date" value="<?= $acteur['dateNaissance'] ?>" id="dateNaissance" name="dateNaissance" min='1895-01-01' max="<?= date('Y-m-d');?>" value='<?= $acteur['dateNaissance'] ?>' />
     </p>
 
     <input type='submit' name='submit'>
@@ -28,7 +29,7 @@ $acteur = $requete->fetch() ?>
 
 <table>
     <tbody>
-        <?php
+        <?php // requête qui récupère tous les rôles joués par l'acteur (table casting)
             foreach($requeteRoles->fetchAll() as $film) { ?>
                 <tr>
                     <td><a class='link' href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></td>
@@ -40,7 +41,7 @@ $acteur = $requete->fetch() ?>
     </tbody>
 </table>
 
-<p>
+<p> <!-- Lien qui fait appel à la requête de suppression de l'acteur de la table acteur (il reste toujours présent dans la table personne) -->
     <a class='link bouton rouge' href="index.php?action=afficherSupprimerActeur&id=<?= $acteur['id_acteur']?>">SUPPRIMER LA FICHE</a>
 </p>
 

@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-    
+        <!-- Formulaire pour l'ajout d'une rôle à la BDD -->
         <form action="index.php?action=ajouterNouveauRole" method="post">
         <label for="nomRole">Nom du rôle :</label><br>
             <input required="required" type="text" id="nomRole" name="nomRole" /><br>

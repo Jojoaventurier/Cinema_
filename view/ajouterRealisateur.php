@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 
+    <!-- Formulaire d'ajout d'un réalisateur à la BDD -->
     <form action="index.php?action=ajouterNouveauRealisateur" method="post">
         <label for="nom">Nom :</label><br>
             <input required="required" type="text" id="nom" name="nom" /><br>
@@ -11,10 +12,6 @@
         <label for="dateNaissance">Date de naissance:</label><br>
             <input required="required" type="date" id="dateNaissance" name="dateNaissance" min='1895-01-01' max="<?= date('Y-m-d');?>" /><br>
         
-        <!--Insérer la biographie (texte) 
-        <label for="resume">Biographie :</label><br>
-            <textarea id="biographie" name="biographie" rows="4" cols="50"></textarea><br>
-        -->
         <!--choisir le sexe -->
         <label for="realisateur">Sexe</label>
             <select name="sexe" id="sexe">
@@ -29,6 +26,8 @@
                         }
                 ?>
             </select><br>
+
+            
         <input type="submit" name="submit">
     </form>
 

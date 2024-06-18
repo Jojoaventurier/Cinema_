@@ -2,6 +2,7 @@
 
 <a class="link bouton" href="index.php?action=afficherFormulaireActeur">AJOUTER UN ACTEUR/ACTRICE</a>
 
+<!-- affiche le nb d'acteurs.trices présents en BDD (basé sur la table Acteur) -->
 <p> Il y a <?= $requete->rowCount() ?> acteurs et actrices</p>
 
 <table>

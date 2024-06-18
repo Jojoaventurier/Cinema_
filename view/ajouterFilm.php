@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-    
+        <!-- Formulaire pour ajouter un film à la BDD (le réalisateur doit être présent en BDD) -->
         <form action="index.php?action=ajouterNouveauFilm" method="post">
         <label for="titre">Nom du film :</label><br>
             <input type="text" id="titre" name="titre" /><br>
@@ -27,6 +27,7 @@
                     }
                 ?>
             </select><br>
+            
         <input type='submit' name='submit'>
     </form>
 
