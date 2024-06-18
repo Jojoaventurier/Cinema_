@@ -249,10 +249,10 @@ class FilmController {
 
     public function confirmerModificationGenresFilm($id, $idGenre) {
 
-        //$idGenres = filter_input(INPUT_POST, 'filmGenre');
+        $idGenres = $_POST['filmGenre[]'];
 
         //var_dump($idGenre);
-        var_dump($_POST);
+        var_dump($idGenres);
         $pdo = Connect::seConnecter();
 
        /* foreach ($idGenres as $idGenre) {
