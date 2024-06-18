@@ -109,8 +109,6 @@ class PersonneController {
         $sexe = $_POST['sexe'];
         $dateNaissance = $_POST['dateNaissance'];
 
-        // var_dump($_POST);
-
         if ($_POST["submit"]) {
             
             $pdo = Connect::seConnecter();
@@ -122,7 +120,6 @@ class PersonneController {
             $requeteAjoutPersonne->execute();
 
             $last_id = $pdo->LastInsertId();
-            //var_dump($last_id);
 
             $requeteAjoutActeur = $pdo->prepare("
                 INSERT INTO acteur (id_personne)
@@ -146,8 +143,6 @@ class PersonneController {
         $sexe = $_POST['sexe'];
         $dateNaissance = $_POST['dateNaissance'];
 
-        //var_dump($_POST);
-        
         if ($_POST["submit"]) {
             
             $pdo = Connect::seConnecter();
@@ -158,17 +153,13 @@ class PersonneController {
             $requeteAjoutPersonne->execute();
 
             $last_id = $pdo->LastInsertId();
-            //var_dump($last_id);
 
             $requeteAjoutRealisateur = $pdo->prepare("
                 INSERT INTO realisateur (id_personne)
                 VALUES ('$last_id') 
             ");
             $requeteAjoutRealisateur->execute();
-
         }
     }
-
-
 
 }

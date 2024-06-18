@@ -6,7 +6,7 @@ use Model\Connect;
 class CinemaController {
 
 
-    //==========================LISTES============================//
+    
     
 
     public function pageAccueil() {
@@ -15,7 +15,7 @@ class CinemaController {
         require "view/accueil.php";
     }
 
-
+//==========================LISTES============================//
     /**
      * Lister les genres
      */
@@ -34,7 +34,7 @@ class CinemaController {
 
     }
 
-    //========================================DETAIL=====================================//
+    //========================================DETAILS=====================================//
 
 
     /**
@@ -59,22 +59,19 @@ class CinemaController {
         ");
         $requete->execute(["id" => $id]);
 
-
         require "view/genre/detailGenre.php";
     }
 
     public function afficherFormulaireGenre() {
-        
         require "view/ajouterGenre.php";
     }
+
 
     public function ajouterNouveauGenre() {
 
         $pdo = Connect::seConnecter();
 
         $nomNouveauGenre = filter_input(INPUT_POST, 'nomNouveauGenre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        //var_dump($nomNouveauGenre);
-        //var_dump($_POST);
 
         if ($_POST["submit"]) {
 
@@ -83,11 +80,7 @@ class CinemaController {
             VALUES ('$nomNouveauGenre')
             ");
             $requeteAjoutGenre->execute();
-
         }
-
     }
-
-
 }
     

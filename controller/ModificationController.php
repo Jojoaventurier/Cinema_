@@ -209,10 +209,6 @@ class ModificationController {
         }
 
 
-
-
-
-
     public function afficherSupprimerActeur($id) {
 
         $pdo = Connect::seConnecter();
@@ -227,6 +223,7 @@ class ModificationController {
 
         require "view/supprimerActeur.php";
     }
+
 
     public function confirmerSuppressionActeur($id) {
 
@@ -244,9 +241,6 @@ class ModificationController {
         ");
         $requeteSuppressionActeur->execute(["id" => $id]);
     }
-
-
-
 
 
     public function afficherSupprimerRealisateur($id) {
@@ -268,41 +262,17 @@ class ModificationController {
 
         $pdo = Connect::seConnecter();
 
-        /*$requeteSupressionCasting = $pdo->prepare("
-            DELETE c.*
-            FROM casting c
-            INNER JOIN film f ON c.id_film = f.id_film
-            WHERE id_realisateur = :id
-        ");
-        $requeteSupressionCasting->execute(["id" => $id]); 
-
-        $requeteSuppressionGenre = $pdo->prepare ("
-            DELETE fg.* 
-            FROM film_genres fg
-            INNER JOIN film f ON f.id_film = fg.id_film
-            WHERE id_realisateur = :id
-        ");
-        $requeteSuppressionGenre->execute(["id" => $id]);
-
-        $requeteSuppressionFilm = $pdo->prepare("
-            DELETE FROM film
-            WHERE id_realisateur = :id
-        ");
-        $requeteSuppressionFilm->execute(["id" => $id]); */
-
-    
         $requeteSuppressionRealisateur = $pdo->prepare("
             DELETE FROM realisateur
             WHERE id_realisateur = :id
         ");
-        $requeteSuppressionRealisateur->execute(["id" => $id]); // on peut utiliser DELETE ON CASCADE dans la configuration des tables, qui permet de gérer automatiquement les suppressions de données relatives entre plusieurs tables reliées par une contrainte de clé étrangère (Foreign Key) en cascade.
+        $requeteSuppressionRealisateur->execute(["id" => $id]); //Utilisation du DELETE ON CASCADE dans la configuration des tables, qui permet de gérer automatiquement les suppressions de données relatives entre plusieurs tables reliées par une contrainte de clé étrangère (Foreign Key) en cascade.
     }
 
 
     public function afficherSupprimerGenre($id) {
 
         $pdo = Connect::seConnecter();
-
         $requete = $pdo->prepare("
             SELECT libelle, id_genre
             FROM genre
@@ -316,7 +286,6 @@ class ModificationController {
     public function confirmerSuppressionGenre ($id) {
 
         $pdo = Connect::seConnecter();
-
         $requeteSuppressionGenre = $pdo->prepare("
             DELETE FROM genre
             WHERE id_genre = :id
@@ -329,7 +298,6 @@ class ModificationController {
     public function afficherSupprimerFilm($id) {
 
         $pdo = Connect::seConnecter();
-
         $requete = $pdo->prepare("
             SELECT titre, id_film
             FROM film
@@ -343,7 +311,6 @@ class ModificationController {
     public function confirmerSuppressionFilm ($id) {
 
         $pdo = Connect::seConnecter();
-
         $requeteSuppressionGenre = $pdo->prepare("
             DELETE FROM film
             WHERE id_film = :id

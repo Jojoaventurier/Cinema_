@@ -96,14 +96,6 @@ class FilmController {
             $minutes = date('h',strtotime($duree))*60+date('i',strtotime($duree));
             $idRealisateur = $_POST['realisateur'];
 
-
-        /*  var_dump($titre);
-            var_dump($anneeSortieFrance);
-            var_dump($minutes);
-            var_dump($synopsis);
-            var_dump($idRealisateur);
-            var_dump($_POST); */
-
             if ($_POST["submit"]) {
 
                 $pdo = Connect::seConnecter();
@@ -113,7 +105,6 @@ class FilmController {
                     ");
                 $requeteAjoutFilm->execute();
             }
-            //$confirmation = "Confirmez-vous l'ajout de l'élément à la base de donnée ?";
     }
 
 
@@ -208,7 +199,7 @@ class FilmController {
 
     public function confirmerSuppressionCasting($id,$idRole) {
 
-        //$idRole = $_GET['idRole'];
+       
         $pdo = Connect::seConnecter();
         
         $requeteSuppressionCasting = $pdo->prepare("
@@ -265,7 +256,5 @@ class FilmController {
             
         } 
         
-
-        //var_dump($_POST);
     }
 }
