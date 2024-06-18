@@ -6,23 +6,30 @@ use Model\Connect;
 class FilmController {
 
 
+
+
+
+//==========================LISTES============================//
+
     /**
      * Lister les films
      */
     public function listeFilms() {
 
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
+        $pdo = Connect::seConnecter(); 
+        $requete = $pdo->query(" 
             SELECT f.id_film, titre, YEAR(anneeSortieFrance) as 'year', CONCAT(prenom, ' ', nom) as 'realisateur', f.id_realisateur
             FROM film f
             LEFT JOIN realisateur re ON f.id_realisateur = re.id_realisateur
             LEFT JOIN personne p ON re.id_personne = p.id_personne
             AND re.id_personne = p.id_personne
-        ");
+        "); // requête qui récupère tous les films de la base de donnée
 
         require "view/listeFilms.php";
     }
 
+
+//========================================DETAILS=====================================//
     /**
      * Détails d'un film
      */
@@ -34,7 +41,7 @@ class FilmController {
             SELECT titre, id_film
             FROM film
             WHERE id_film= :id");
-        $requeteTitre->execute(["id" => $id]);
+        $requeteTitre->execute(["id" => $id]); // requête récupère le titre et l'id du film
 
         $requete = $pdo->prepare("
             SELECT f.id_film, titre, anneeSortieFrance as 'sortie', CONCAT(FLOOR(duree/60), ' heure(s) et ',ROUND((duree/60 - FLOOR(duree/60)) * 60), ' minute(s)') AS 'durée', prenom, nom, re.id_realisateur, synopsis 
@@ -43,16 +50,16 @@ class FilmController {
             AND re.id_personne = p.id_personne 
             AND id_film = :id
         ");
-        $requete->execute(["id" => $id]);
+        $requete->execute(["id" => $id]); // requête qui récupère toutes les informations du film (titre, année de sortie, durée en h et min, prénom et nom du réalisateur)
 
         $requeteGenres = $pdo->prepare("
             SELECT libelle, g.id_genre
             FROM film f, genre g, film_genres fg
             WHERE f.id_film = fg.id_film
             AND g.id_genre = fg.id_genre
-            AND f.id_film = :id
+            AND f.id_film = :id 
         ");
-        $requeteGenres->execute(["id" => $id]);
+        $requeteGenres->execute(["id" => $id]); // requête qui récupère les genres associés au film
 
         $requeteCasting = $pdo->prepare("
             SELECT f.id_film, c.id_acteur, prenom, nom, nomRole
@@ -61,9 +68,9 @@ class FilmController {
             AND f.id_film = c.id_film
             AND c.id_acteur = a.id_acteur
             AND c.id_role = r.id_role
-            AND f.id_film = :id
+            AND f.id_film = :id 
         ");
-        $requeteCasting->execute(["id" => $id]);
+        $requeteCasting->execute(["id" => $id]); // requête qui récupère tous les acteurs associés au film et le nom du rôle correspondant
 
         require "view/film/detailFilm.php";
     }
@@ -89,7 +96,7 @@ class FilmController {
 
     public function ajouterNouveauFilm() {
 
-            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // 
             $anneeSortieFrance = ($_POST['anneeSortieFrance']);
             $duree = ($_POST['dureeTypeTime']);
             $synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);

@@ -34,7 +34,7 @@ class CinemaController {
 
     }
 
-    //========================================DETAILS=====================================//
+//========================================DETAILS=====================================//
     /**
      * Détails d'un genre
      */
@@ -60,11 +60,15 @@ class CinemaController {
         require "view/genre/detailGenre.php";
     }
 
+
+//========================================FORMULAIRE AJOUT=====================================//
+
+    // permet d'accéder au formulaire d'un ajout de genre
     public function afficherFormulaireGenre() {
         require "view/ajouterGenre.php";
     }
 
-
+    // permet d'ajouter un nouveau genre à la base de donnée
     public function ajouterNouveauGenre() {
 
         $pdo = Connect::seConnecter();
