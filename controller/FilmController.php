@@ -78,7 +78,10 @@ class FilmController {
 
 
 
+//========================================FORMULAIRES=====================================//
 
+
+    // fonction pour afficher le formulaire de modification
     public function afficherFormulaireFilm() {
         $pdo= Connect::seConnecter();
 
@@ -94,18 +97,19 @@ class FilmController {
         require "view/ajouterFilm.php";
     }
 
+    // fonction qui ajoute les valeurs saisies dans le formulaire à la BDD
     public function ajouterNouveauFilm() {
 
-            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // 
-            $anneeSortieFrance = ($_POST['anneeSortieFrance']);
-            $duree = ($_POST['dureeTypeTime']);
-            $synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $minutes = date('h',strtotime($duree))*60+date('i',strtotime($duree));
-            $idRealisateur = $_POST['realisateur'];
+            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et filtre le titre saisi par l'utilisateur
+            $anneeSortieFrance = ($_POST['anneeSortieFrance']); // récupère la date de sortie choisie par l'utilisateur
+            $duree = ($_POST['dureeTypeTime']); // récupère la durée saisie (en type time)
+            $synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère la synopsis saisi par l'utilisateur
+            $minutes = date('h',strtotime($duree))*60+date('i',strtotime($duree)); // convertit la durée en minutes et la stocke dans la variable $minutes
+            $idRealisateur = $_POST['realisateur']; // récupère le réalisateur de la liste déroulante choisi par l'utilisateur 
 
             if ($_POST["submit"]) {
 
-                $pdo = Connect::seConnecter();
+                $pdo = Connect::seConnecter(); // requête qui insère dans la table film en utilisant les valeurs saisies par l'utilisateur récupérées
                 $requeteAjoutFilm = $pdo->prepare("
                     INSERT INTO film (titre, anneeSortieFrance, duree, synopsis, id_realisateur)
                     VALUES ('$titre', '$anneeSortieFrance', '$minutes', '$synopsis', '$idRealisateur')
@@ -114,7 +118,7 @@ class FilmController {
             }
     }
 
-
+    // fonction pour afficher le formulaire d'ajout de casting pour un film
     public function afficherFormulaireCasting() {
 
             $pdo = Connect::seConnecter();
@@ -123,7 +127,7 @@ class FilmController {
                 SELECT titre, id_film
                 FROM film
                 ");
-            
+            // récupère la liste des films pour le premier menu déroulant
 
             $requeteListeActeurs = $pdo->query("
                 SELECT a.id_personne, a.id_acteur, CONCAT(nom, ' ', prenom) as 'acteur'
@@ -131,16 +135,19 @@ class FilmController {
                 WHERE p.id_personne = a.id_personne
                 ORDER BY nom
             ");
+            // récupère la liste des acteurs pour le second menu déroulant
 
             $requeteListeRoles = $pdo->query("
                 SELECT id_role, nomRole
                 FROM role
                 ORDER BY nomRole
             ");
+            // récupère la liste de tous les rôles présents en BDD pour le troisième menu déroulant
 
         require "view\ajouterCasting.php";
     }
 
+    // fonction qui ajoute les associations saisies grâce aux menus déroulants à la table casting de la BDD
     public function ajouterNouveauCasting() {
 
         $film = filter_input(INPUT_POST, 'film');
