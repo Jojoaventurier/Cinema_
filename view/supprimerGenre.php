@@ -3,7 +3,7 @@
 $genre = $requete->fetch() ?>
 
 
-
+<!-- Confirmation de la suppression d'un genre de la BDD ou retour vers la page de modification d'un genre -->
 <a class='link bouton' href="index.php?action=confirmerSuppressionGenre&id=<?= $genre['id_genre'] ?>">OUI</a>
 <a class='link bouton' href="index.php?action=afficherModifierGenre&id=<?= $genre['id_genre'] ?>">NON</a>
 

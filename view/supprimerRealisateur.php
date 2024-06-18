@@ -3,7 +3,7 @@
 $realisateur = $requete->fetch() ?>
 
 
-
+<!-- Confirmation de la suppression d'un réalisateur de la BDD (attention, supprime les films de la BDD) -->
 <a class='link bouton' href="index.php?action=confirmerSuppressionRealisateur&id=<?= $realisateur['id_realisateur'] ?>">OUI</a>
 <a class='link bouton' href="index.php?action=afficherModifierRealisateur&id=<?= $realisateur['id_realisateur'] ?>">NON</a>
 

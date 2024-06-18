@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav>
-        <ul>
+        <ul> <!-- navigation vers les différentes section du site -->
             <li><a class="navLink" href="index.php?action=accueil">ACCUEIL</a></li>
             <li><a class="navLink" href="index.php?action=listeFilms">FILMS</a></li>
             <li><a class="navLink" href="index.php?action=listeActeurs">ACTEURS</a></li>
@@ -22,7 +22,7 @@
             <div id="contenu">
                 <h1>Le Ciné de Geoff</h1>
                 <h2><?= $titre_secondaire ?></h2>
-                <?= $contenu ?>
+                <?= $contenu ?> <!-- Contenu qui s'adapte à la page selon les views demandées par les méthodes du controleur -->
             </div>
         </main>
     </div>

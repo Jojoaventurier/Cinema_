@@ -3,7 +3,7 @@
 $film = $requete->fetch() ?>
 
 
-
+<!-- Confirmation de la suppression d'un film de la BDD' -->
 <a class='link bouton' href="index.php?action=confirmerSuppressionFilm&id=<?= $film['id_film'] ?>">OUI</a>
 <a class='link bouton' href="index.php?action=modificationFilm&id=<?= $film['id_film'] ?>">NON</a>
 
