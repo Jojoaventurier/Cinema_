@@ -68,7 +68,7 @@ class CinemaController {
         require "view/ajouterGenre.php";
     }
 
-    // permet d'ajouter un nouveau genre à la base de donnée
+    // permet d'ajouter le nouveau genre saisi à la base de donnée
     public function ajouterNouveauGenre() {
 
         $pdo = Connect::seConnecter();

@@ -150,40 +150,43 @@ class FilmController {
     // fonction qui ajoute les associations saisies grâce aux menus déroulants à la table casting de la BDD
     public function ajouterNouveauCasting() {
 
-        $film = filter_input(INPUT_POST, 'film');
-        $acteur = filter_input(INPUT_POST, 'acteur');
-        $role = filter_input(INPUT_POST, 'role');
+        $film = filter_input(INPUT_POST, 'film'); // récupère le film choisi par l'utilisateur sur la page de modification de casting
+        $acteur = filter_input(INPUT_POST, 'acteur'); // récupère l'acteur choisi par l'utilisateur à associer au film et au rôle
+        $role = filter_input(INPUT_POST, 'role'); // récupère le rôle choisi par l'utilisateur à associer au film et à l'acteur
 
         if($_POST["submit"]) {
 
-            $pdo = Connect::seConnecter();
+            $pdo = Connect::seConnecter(); 
 
             $requeteAjoutCasting = $pdo->query("
                 INSERT INTO casting (id_film, id_acteur, id_role)
                 VALUES ('$film', '$acteur', '$role')
-            ");
+            "); // requête qui ajoute l'association des trois valeurs à la table casting
         }
     }
 
+    // fonction pour afficher le formulaire d'ajout de rôle à la BDD
     public function afficherFormulaireRole() {
         require 'view\ajouterRole.php';
     }
 
+    // fonction qui permet d'ajouter le rôle que l'on souhaite créer à la BDD 
     public function ajouterNouveauRole() {
 
         $pdo = Connect::seConnecter();
 
-        $role = filter_input(INPUT_POST, 'nomRole');
+        $role = filter_input(INPUT_POST, 'nomRole', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et filtre la valeur saisie par l'utilisateur
 
         if ($_POST['submit']) { 
 
             $requeteAjoutRole = $pdo->query("
                 INSERT INTO role (nomRole)
                 VALUES ('$role')
-            ");
+            "); // requete qui ajoute le nouveau rôle à la BDD
         }
     }
 
+    // fonction qui permet de confirmer la suppression d'un rôle pour un acteur
     public function afficherSupprimerCasting($id) {
 
         $pdo = Connect::seConnecter();
