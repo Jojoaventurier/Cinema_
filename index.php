@@ -152,7 +152,7 @@ if (isset($_GET["action"])) {
         
     }
 }
-
+// (manque la fonction pour supprimer des genres associés à un film)
 
 
 

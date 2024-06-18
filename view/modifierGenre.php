@@ -2,7 +2,7 @@
 
 $genre = $requete->fetch() ?>
 
-
+<!-- formulaire pour éditer le libellé d'un genre -->
 <form action="index.php?action=modifierGenre&id=<?= $genre['id_genre'] ?>" method='post'>
     <p>
         <label for='libelle'>Libellé : </label>
@@ -13,7 +13,7 @@ $genre = $requete->fetch() ?>
     <input type='submit' name='submit'>
 </form>
 
-<p>
+<p> <!-- lien pour la suppression du genre de la BDD -->
     <a class='link bouton rouge' href="index.php?action=afficherSupprimerGenre&id=<?= $genre['id_genre']?>">SUPPRIMER LA FICHE</a>
 </p>
 
