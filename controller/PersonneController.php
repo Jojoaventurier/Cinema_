@@ -5,6 +5,8 @@ use Model\Connect;
 
 class PersonneController {
 
+
+//========================================LISTES=====================================//
     /**
      * Lister les acteurs
      */
@@ -40,6 +42,9 @@ class PersonneController {
 
         }
 
+
+
+//========================================DETAILS=====================================//
     /**
      * Détails d'un acteur
      */
@@ -98,6 +103,11 @@ class PersonneController {
 
 
 
+
+    //========================================FORMULAIRES AJOUT=====================================//
+     /**
+     * Ajout d'un nouvel acteur à la BDD
+     */
     public function afficherFormulaireActeur() {
         require "view/ajouterActeur.php";
     }
@@ -131,11 +141,13 @@ class PersonneController {
     }
 
 
+
+     /**
+     * Ajout d'un nouveau réalisateur à la BDD
+     */
     public function afficherFormulaireRealisateur() {
         require "view/ajouterRealisateur.php";
     }
-
-
     public function ajouterNouveauRealisateur() {
 
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -161,5 +173,4 @@ class PersonneController {
             $requeteAjoutRealisateur->execute();
         }
     }
-
 }

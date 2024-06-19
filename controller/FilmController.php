@@ -78,7 +78,7 @@ class FilmController {
 
 
 
-//========================================FORMULAIRES=====================================//
+//========================================FORMULAIRES D'AJOUT=====================================//
 
 
     // fonction pour afficher le formulaire de modification
@@ -186,7 +186,7 @@ class FilmController {
         }
     }
 
-    // fonction qui permet de confirmer la suppression d'un rôle pour un acteur
+    // fonction qui permet d'afficher la confirmation de la suppression d'un rôle pour un acteur
     public function afficherSupprimerCasting($id) {
 
         $pdo = Connect::seConnecter();
@@ -197,7 +197,7 @@ class FilmController {
         WHERE a.id_personne = p.id_personne
         AND id_acteur= :id
         ");
-        $requete->execute(["id" => $id]);
+        $requete->execute(["id" => $id]); // requête qui permet de récupérer les infos d'un acteur
 
         $requeteRoles = $pdo->prepare("
             SELECT a.id_acteur, titre, nomRole, YEAR(anneeSortieFrance) AS sortie, f.id_film, r.id_role
@@ -209,11 +209,11 @@ class FilmController {
             AND a.id_acteur = :id
             ORDER BY sortie
         ");
-        $requeteRoles->execute(["id" => $id]);
+        $requeteRoles->execute(["id" => $id]); // requête qui récupère tous les rôles de l'acteur
 
         require "view/supprimerCasting.php";
     }
-
+    // fonction qui effectye la suppression du rôle associé à un acteur et à un film de la table casting
     public function confirmerSuppressionCasting($id,$idRole) {
 
        
@@ -228,6 +228,7 @@ class FilmController {
     }
 
 
+    //  fonction qui permet d'afficher le formulaire de modification des genres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public function afficherModifierGenresFilm($id) {
 
         $pdo = Connect::seConnecter(); 
@@ -255,6 +256,7 @@ class FilmController {
         require "view/modifierGenresFilm.php";
     }
 
+    // permet d'ajouter plusieurs genres à un film (attention si un genre est déjà enregistré il sera enregistré plusieurs fois)
     public function confirmerModificationGenresFilm($id, $idGenre) {
 
         $idGenres = $_POST['filmGenres'];

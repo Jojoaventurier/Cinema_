@@ -5,6 +5,10 @@ use Model\Connect;
 
 class ModificationController {
 
+
+//========================================FORMULAIRES DE MODIFICATION=====================================//
+
+    // affiche le formulaire d'édition des infos d'un film
     public function formulaireModifierFilm($id) {
 
         $pdo = Connect::seConnecter();
@@ -13,7 +17,7 @@ class ModificationController {
             SELECT titre, id_film
             FROM film
             WHERE id_film= :id");
-        $requeteTitre->execute(["id" => $id]);
+        $requeteTitre->execute(["id" => $id]); // requête qui récupère l'id et le nom du film
 
         $requete = $pdo->prepare("
             SELECT f.id_film, titre, anneeSortieFrance as 'sortie', CONCAT(FLOOR(duree/60), ' heure(s) et ',ROUND((duree/60 - FLOOR(duree/60)) * 60), ' minute(s)') AS 'durée', CONCAT(prenom, ' ', nom) as 'realisateur', re.id_realisateur, synopsis, duree 
@@ -22,7 +26,7 @@ class ModificationController {
             AND re.id_personne = p.id_personne 
             AND id_film = :id
         ");
-        $requete->execute(["id" => $id]);
+        $requete->execute(["id" => $id]); // requête qui récupère année de sortie, le réalisateur, le synopsis convertit la durée de minutes en H et Min, 
 
         $requeteCasting = $pdo->prepare("
             SELECT f.id_film, c.id_acteur, prenom, nom, nomRole
@@ -33,7 +37,7 @@ class ModificationController {
             AND c.id_role = r.id_role
             AND f.id_film = :id
         ");
-        $requeteCasting->execute(["id" => $id]);
+        $requeteCasting->execute(["id" => $id]); // requête qui récupère tout le casting d'un film
 
         $requeteGenres = $pdo->prepare("
             SELECT libelle, g.id_genre
@@ -51,18 +55,17 @@ class ModificationController {
         WHERE p.id_personne = re.id_personne
         ");
     
-        require "view\modifierFilm.php";
+        require "view\modifierFilm.php";  // requête qui récupère la liste des réalisateurs(liste déroulante pour modification)
     }
 
+    // fonction qui récupère les informations de modification du film saisies par l'utilisateur
     public function modifierFilm($id) {
 
-        $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $dateSortie = filter_input(INPUT_POST, 'anneeSortieFrance');
-        $realisateur = filter_input(INPUT_POST, 'realisateur' );
-        $duree = filter_input(INPUT_POST, 'duree', FILTER_VALIDATE_INT);
-        $synopsis = filter_input(INPUT_POST,'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-        //var_dump($_POST);
+        $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et filtre le titre saisi
+        $dateSortie = filter_input(INPUT_POST, 'anneeSortieFrance'); // récupère la date de sortie saisie
+        $realisateur = filter_input(INPUT_POST, 'realisateur' ); // récupère le réalisateur choisi
+        $duree = filter_input(INPUT_POST, 'duree', FILTER_VALIDATE_INT); // récupère et filtre la durée saisie
+        $synopsis = filter_input(INPUT_POST,'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et filtre le résumé saisi
 
         if ($_POST["submit"]) {
         
@@ -73,13 +76,13 @@ class ModificationController {
                 SET anneeSortieFrance = '$dateSortie', titre='$titre', duree='$duree', id_realisateur='$realisateur', synopsis='$synopsis' 
                 WHERE id_film = :id
             ");
-            $requeteModifierFilm->execute(["id" => $id]);
+            $requeteModifierFilm->execute(["id" => $id]); // requête qui rend les modifications effectives (modification directe de la BDD)
         }
     }
 
 
 
-
+    // affiche le formulaire de modification des informations d'un acteur
     public function afficherModifierActeur($id) {
 
         $pdo = Connect::seConnecter();
@@ -90,7 +93,7 @@ class ModificationController {
             WHERE a.id_personne = p.id_personne
             AND a.id_acteur = :id
         ");
-        $requete->execute(["id" => $id]);
+        $requete->execute(["id" => $id]); // requête qui récupère les infos de l'acteur à modifier
 
         $requeteRoles = $pdo->prepare("
             SELECT a.id_acteur, titre, nomRole, YEAR(anneeSortieFrance) AS sortie, f.id_film, r.id_role
@@ -102,18 +105,17 @@ class ModificationController {
             AND a.id_acteur = :id
             ORDER BY sortie
         ");
-        $requeteRoles->execute(["id" => $id]);
+        $requeteRoles->execute(["id" => $id]); // récupère les rôles joués par l'acteur
 
         require "view/modifierActeur.php";
     }
 
+    // fonction qui récupère les informations de l'acteur saisies par l'utilisateur et modifie la BDD
     public function modifierActeur($id) {
 
-        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $dateNaissance = filter_input(INPUT_POST, 'dateNaissance');
-
-        //var_dump($_POST);
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère le prénom saisi
+        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère le nom saisi
+        $dateNaissance = filter_input(INPUT_POST, 'dateNaissance'); // récupère la date de naissance saisie
 
         if ($_POST["submit"]) {
             $pdo = Connect::seConnecter();
@@ -124,12 +126,13 @@ class ModificationController {
             WHERE p.id_personne = a.id_personne
             AND a.id_acteur = :id
         ");
-        $requeteModificationActeur->execute(["id" => $id]);
+        $requeteModificationActeur->execute(["id" => $id]); // requête qui effectue la modification de la BDD
         }
     }
 
 
 
+    // affiche le formulaire de modification des informations d'un réalisateur
     public function afficherModifierRealisateur($id) {
 
         $pdo = Connect::seConnecter();
@@ -140,7 +143,7 @@ class ModificationController {
             WHERE re.id_personne = p.id_personne
             AND id_realisateur = :id
         ");
-        $requete->execute(["id" => $id]);
+        $requete->execute(["id" => $id]); // récupère les infos du réalisateur
 
         $requeteFilms = $pdo->prepare("
             SELECT titre, YEAR(anneeSortieFrance) AS sortie, id_film
@@ -149,19 +152,17 @@ class ModificationController {
             GROUP BY f.id_film
             ORDER BY sortie DESC
         ");
-        $requeteFilms->execute(["id" => $id]);
+        $requeteFilms->execute(["id" => $id]); // récupère les films réalisés par le réalisateur
 
         require "view/modifierRealisateur.php";
     }
 
-
+    // récupère les inforations saisies pour la modification du réalisateur et modifie la base de donnée
     public function modifierRealisateur($id) {
 
-        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $dateNaissance = filter_input(INPUT_POST, 'dateNaissance');
-
-        //var_dump($_POST);
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère le prénom saisi
+        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère le nom saisi
+        $dateNaissance = filter_input(INPUT_POST, 'dateNaissance'); // récupère la date de naissance saisie
 
         if ($_POST["submit"]) {
             $pdo = Connect::seConnecter();
@@ -172,43 +173,48 @@ class ModificationController {
             WHERE p.id_personne = re.id_personne
             AND re.id_realisateur = :id
         ");
-        $requeteModificationRealisateur->execute(["id" => $id]);
+        $requeteModificationRealisateur->execute(["id" => $id]); // requête qui modifie la BDD
         }
     }
 
     
-        public function afficherModifierGenre($id) {
+
+    // affiche le formulaire de modification de genre (édition du libellé)
+    public function afficherModifierGenre($id) {
+
+        $pdo = Connect::seConnecter();
+
+        $requete = $pdo->prepare("
+            SELECT libelle, id_genre
+            FROM genre
+            WHERE id_genre = :id
+        ");
+        $requete->execute(["id" => $id]);
+
+        require "view/modifierGenre.php";
+    }
+    // effectue la modification du libellé dans la BDD selon les infos saisies par l'utilisateur
+    public function modifierGenre($id) {
+
+        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et filtre la valeur saisie par l'utilisateur
+
+        if ($_POST['submit']) {
 
             $pdo = Connect::seConnecter();
 
-            $requete = $pdo->prepare("
-                SELECT libelle, id_genre
-                FROM genre
+            $requeteModificationGenre = $pdo->prepare("
+                UPDATE genre
+                SET libelle = '$libelle'
                 WHERE id_genre = :id
             ");
-            $requete->execute(["id" => $id]);
-
-            require "view/modifierGenre.php";
+            $requeteModificationGenre->execute(["id" => $id]); // modification de la BDD
         }
-
-        public function modifierGenre($id) {
-
-            $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-            if ($_POST['submit']) {
-
-                $pdo = Connect::seConnecter();
-
-                $requeteModificationGenre = $pdo->prepare("
-                    UPDATE genre
-                    SET libelle = '$libelle'
-                    WHERE id_genre = :id
-                ");
-                $requeteModificationGenre->execute(["id" => $id]);
-            }
-        }
+    }
 
 
+//========================================FORMULAIRES DE SUPPRESSION =====================================//
+
+    // affiche la page de confirmation de suppression d'un acteur (après avoir cliqué sur 'supprimer la fiche')
     public function afficherSupprimerActeur($id) {
 
         $pdo = Connect::seConnecter();
@@ -224,16 +230,10 @@ class ModificationController {
         require "view/supprimerActeur.php";
     }
 
-
+    // supprime l'acteur de la table acteur si l'utilisateur clique sur 'oui'
     public function confirmerSuppressionActeur($id) {
 
         $pdo = Connect::seConnecter();
-
-     /*   $requeteSupressionCasting = $pdo->prepare("
-            DELETE FROM casting
-            WHERE id_acteur = :id
-        ");
-        $requeteSupressionCasting->execute(["id" => $id]); */
 
         $requeteSuppressionActeur = $pdo->prepare("
             DELETE FROM acteur
@@ -243,6 +243,7 @@ class ModificationController {
     }
 
 
+    // affiche la page de confirmation de suppression d'un réalisateur (après avoir cliqué sur 'supprimer la fiche')
     public function afficherSupprimerRealisateur($id) {
 
         $pdo = Connect::seConnecter();
@@ -257,7 +258,7 @@ class ModificationController {
 
         require "view/supprimerRealisateur.php";
     }
-
+    // effectue la suppression du réalisateur de la table réalisateur
     public function confirmerSuppressionRealisateur($id) {
 
         $pdo = Connect::seConnecter();
@@ -270,6 +271,7 @@ class ModificationController {
     }
 
 
+    // affiche la page de confirmation de suppression d'un genre
     public function afficherSupprimerGenre($id) {
 
         $pdo = Connect::seConnecter();
@@ -283,6 +285,7 @@ class ModificationController {
         require "view/supprimerGenre.php";
     }
 
+    // effectue la suppression du genre de la BDD (irreversible)
     public function confirmerSuppressionGenre ($id) {
 
         $pdo = Connect::seConnecter();
@@ -294,7 +297,7 @@ class ModificationController {
 
     }
 
-
+    //  affiche la page de confirmation de suppression d'un film (après avoir cliqué sur 'supprimer la fiche')
     public function afficherSupprimerFilm($id) {
 
         $pdo = Connect::seConnecter();
@@ -307,7 +310,7 @@ class ModificationController {
 
         require "view/supprimerFilm.php";
     }
-
+    // effectue la suppression du film de la BDD
     public function confirmerSuppressionFilm ($id) {
 
         $pdo = Connect::seConnecter();
