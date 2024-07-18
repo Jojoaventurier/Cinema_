@@ -1,10 +1,38 @@
 Exercice de formation sur un MVC maison. 
 
-Le but de l'exercice est de nous faire comprendre les intéractions entre les différentes couches du MVC, ainsi que la factorisation de certaines actions (comme la connection à la base de donnée qui se fait depuis l'entité DAO).
-Il s'agit également de comprendre comment effectuer des ajouts/suppressions/modifications sur une base de données depuis des formulaires générés dans l'application. 
+Ce projet consiste à créer un site web répertoriant des films stockés dans une base de données.
 
-L'application reprend les principes suivants :
+Fonctionnalités
 
-On pourra afficher une liste de films, d'acteurs et de réalisateurs. Cliquer sur un film, un acteur ou un réalisateur nous permettra d'en afficher les détails. 
-Il est possible d'ajouter/modifier/supprimer un film, un acteur ou un réalisateur. 
+  Affichage des détails :
 
+    D'un film.
+    D'une personne (acteur ou réalisateur).
+    D'un ou plusieurs castings d'un film (plusieurs versions du film).
+    Classement des films par genre.
+    Liste de tous les genres.
+
+    
+Détails des films :
+
+    Titre.
+    Date de sortie.
+    Affiche.
+    Résumé.
+    Réalisateur unique.
+    Un ou plusieurs genres.
+    Acteurs ayant joué dans le film.
+
+Détails des personnes :
+
+    Un acteur peut également être un réalisateur.
+    Date de naissance.
+    Biographie (à prévoir).
+    Pages pour les visiteurs
+  
+Le site proposera également des pages permettant de :
+
+    Voir tous les acteurs.
+    Voir tous les réalisateurs.
+    Voir tous les détails d'une personne.
+    Voir les détails d'un casting.
