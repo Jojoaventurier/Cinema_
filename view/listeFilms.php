@@ -13,12 +13,10 @@
                     <td><a class='link' href="index.php?action=detailFilm&id=<?=$film['id_film']?>"><?= $film["titre"] ?></td>
                     <td>(<?= $film["year"] ?>)</td>
                     <td><a class='link' href="index.php?action=detailRealisateur&id=<?=$film['id_realisateur']?>"><?= $film["realisateur"] ?></td>
-                    </tr>
+                </tr>
         <?php }   ?>
     </tbody>
 </table><br> 
-
-
 
 <?php
 $titre = "Liste des films";

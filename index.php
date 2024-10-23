@@ -17,13 +17,9 @@ $ctrlPersonne = new PersonneController();
 $ctrlFilm = new FilmController();
 $ctrlModification = new ModificationController();
 
-
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 $idRole = (isset($_GET["idRole"])) ? $_GET["idRole"] : null;
 $idGenre = (isset($_POST['filmGenre'])) ? $_POST['filmGenre'] : array(); 
-
-
-// $type = (isset($_GET["type])) ? $_GET["type"] : null;
 
 if (isset($_GET["action"])) {
     switch($_GET["action"]) {
@@ -33,7 +29,6 @@ if (isset($_GET["action"])) {
         case "listeGenres" : $ctrlCinema->listeGenres(); break; // affiche la page genre avec la liste des genres
         case "detailGenre" : $ctrlCinema->detailGenre($id); break; // affiche la page détail genre (liste des films du genre)
         
-
         case "listeFilms" : $ctrlFilm->listeFilms(); break;  // affiche la page FILMS avec la liste des films
         case "detailFilm" : $ctrlFilm->detailFilm($id); break;  // affiche la page détail film du film sur lequel on a cliqué
         
@@ -43,7 +38,6 @@ if (isset($_GET["action"])) {
         case "listeRealisateurs" : $ctrlPersonne->listeRealisateurs(); break; // affiche la page réalisateurs et affiche tous les réalisateurs de la BDD
         case "detailRealisateur" : $ctrlPersonne->detailRealisateur($id); break;  // affiche la page détail réalisateur sur lequel on a cliqué
 
-        
         // AJOUTS à LA BDD
         case "afficherFormulaireGenre" :
             $ctrlCinema->afficherFormulaireGenre(); break; // formulaire d'ajout d'un genre

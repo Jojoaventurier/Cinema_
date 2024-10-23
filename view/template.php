@@ -16,7 +16,6 @@
             <li><a class="navLink" href="index.php?action=listeGenres">GENRES</a></li>
         </ul>
     </nav>
-
     <div id="wrapper">
         <main>
             <div id="contenu">
@@ -26,8 +25,6 @@
             </div>
         </main>
     </div>
-
-    
 </body>
 
 <footer><small>Copyright Elan Formation - 2024</small></footer>
