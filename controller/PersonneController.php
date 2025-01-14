@@ -18,7 +18,6 @@ class PersonneController {
             FROM acteur a, personne p
             WHERE a.id_personne = p.id_personne
             ORDER BY nom
-        
         ");
 
             require "view/listeActeurs.php";
